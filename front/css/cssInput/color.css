@@ -1,0 +1,9 @@
+/* root */
+:root {
+    /* Color */
+    --mainColor : #6EAA5E;
+    --subColor : #DBEAD5;
+    --backgroundColor : #F8FDF9;
+    --fontColor : #333333;
+    --fontHoverColor : #dddddd;
+}
