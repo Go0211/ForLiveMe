@@ -1,14 +1,7 @@
 @import "../css/cssInput/reset.css";
+@import "../css/cssInput/color.css";
+@import "../css/header.css";
 
-/* root */
-:root {
-    /* Color */
-    --mainColor : #6EAA5E;
-    --subColor : #DBEAD5;
-    --backgroundColor : #F8FDF9;
-    --fontColor : #333333;
-    --fontHoverColor : #dddddd;
-}
 
 /* All */
 * {
@@ -68,58 +61,6 @@ h1 {
 }
 
 /* ----------------------------------------------------------- */
-
-/* header */
-header {
-    width: 100%;
-    height: 80px;
-    position: fixed;
-    background-color: white;
-    top: 0;
-    left: 0;
-    z-index: 999;
-}
-header .headerBox {
-    width: 70%;
-    height: 100%;
-    margin: 0 auto;
-    display: flex;
-}
-header .headerBox .headerBoxLeft {
-    width: 80%;
-    height: 100%;
-    display: flex;
-}
-header .headerBox .headerBoxLeft .headerLogo{
-    width: auto;
-    height: 100%;
-    margin-right: 30px;
-}
-header .headerBox .headerBoxLeft li:nth-child(n+2){
-    text-align: center;
-    margin-right: 30px;
-    padding: 30px 0;
-}
-header .headerBox .headerBoxLeft li:hover {
-    opacity: 0.8;
-}
-header .headerBox .headerBoxRight {
-    width: 20%;
-    height: 100%;
-    display: flex;
-}
-header .headerBox .headerBoxRight li{
-    padding: 20px 0;
-    margin-right: 20px;
-}
-header .headerBox .headerBoxRight li button{
-    width: 80px;
-    height: 40px;
-}
-header .headerBox .headerBoxRight li button:hover{
-    opacity: 0.8;
-}
-
 /* main */
 main #moveImage {
     width: 100%;
