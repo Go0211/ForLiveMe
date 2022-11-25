@@ -1,0 +1,59 @@
+@import "../css/cssInput/reset.css";
+@import "../css/cssInput/color.css";
+
+/* All */
+* {
+    color: var(--fontColor);
+}
+main {
+    width: 70%;
+    margin : 0 auto;
+    padding-top: 80px;
+}
+h1 {
+    font-size: 30px;
+}
+
+/* float */
+.floatLeft {
+    float: left;
+}
+.floatRight {
+    float: right;
+}
+
+
+/* text-align */
+.textLeft {
+    text-align: left;
+}
+.textCenter {
+    text-align: center;
+}
+.textRight {
+    text-align: right;
+}
+
+/* text-decoration */;
+.textDecoration {
+    text-decoration: var(--fontColor) underline;
+}
+
+/* button */
+.buttonSet {
+    color: white;
+    background-color: var(--mainColor);
+    border: 0;
+    border-radius: 10px;
+}
+
+/* frameSize */
+.innerFrame{
+    width: 75%;
+    height: auto;
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
