@@ -66,9 +66,12 @@ main #login {
 main #login .loginBox {
     width: 100%;
     height: auto;
-    background-color: var(--subColor);
+    border: 1px solid #333333;
     padding: 50px;
     box-sizing: border-box;
+}
+main #login .loginBox img {
+    width: 25%;
 }
 main #login .loginBox input {
     width: 100%;
@@ -94,6 +97,7 @@ main #login .loginBox .otherPlatform {
 }
 main #login .loginBox .otherPlatform a{
     width: 80px;
+    font-size: 24px;
     padding: 28px 0;
     margin: 0 10px;
     color: white;
