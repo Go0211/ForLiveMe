@@ -1,6 +1,6 @@
-@import "../css/cssInput/reset.css";
-@import "../css/cssInput/color.css";
-@import "../css/header.css";
+@import "cssInput/reset.css";
+@import "cssInput/color.css";
+@import "header.css";
 
 
 /* All */
@@ -40,7 +40,7 @@ h1 {
     text-align: right;
 }
 
-/* text-decoration */;
+/* text-decoration */
 .textDecoration {
     text-decoration: var(--fontColor) underline;
 }

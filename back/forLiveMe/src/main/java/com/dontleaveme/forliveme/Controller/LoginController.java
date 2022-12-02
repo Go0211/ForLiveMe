@@ -22,14 +22,14 @@ public class LoginController {
         return "login";
     }
 
-    @GetMapping("/signUp")
-    public String signUp(Model model) {
+    @GetMapping("/join")
+    public String join(Model model) {
         model.addAttribute("userDto", new UserDto());
-        return "signUp";
+        return "join";
     }
 
-    @PostMapping("/signUp")
-    public String signUp(@ModelAttribute("userDto") UserDto userDto) {
+    @PostMapping("/join")
+    public String join(@ModelAttribute("userDto") UserDto userDto) {
         userService.insert(userDto);
         return "redirect:/login";
     }
