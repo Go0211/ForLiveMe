@@ -5,92 +5,53 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Collection;
 
 @Getter
 public class CustomUserDetails implements UserDetails, Serializable {
-
-    private static final long serialVersionUID = 174726374856727L;
-
     private String id;	// DB에서 PK 값
-    private String loginId;		// 로그인용 ID 값
-    private String password;	// 비밀번호
     private String email;	//이메일
-    private boolean emailVerified;	//이메일 인증 여부
-    private boolean locked;	//계정 잠김 여부
-    private String nickname;	//닉네임
-    private Collection<GrantedAuthority> authorities;	//권한 목록
+    private String password;	// 비밀번호
+    private String gender;	//이메일 인증 여부
+    private String drop_yn;	//계정 잠김 여부
+    private LocalDateTime lastLoginTime;	//최근로그인
+    private LocalDateTime registerTime;     //가입날짜
+    private LocalDateTime modifyTime;
+    private Collection<GrantedAuthority> authorities;	//권한 목록 ??
 
-
-    /**
-     * 해당 유저의 권한 목록
-     */
-    @Override
+    @Override // 해당 유저의 권한 목록
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return authorities;
     }
 
-    /**
-     * 비밀번호
-     */
     @Override
     public String getPassword() {
         return password;
     }
 
-
-    /**
-     * PK값
-     */
     @Override
     public String getUsername() {
-        return id;
+        return email;
     }
 
-    /**
-     * 계정 만료 여부
-     * true : 만료 안됨
-     * false : 만료
-     * @return
-     */
-    @Override
+    @Override //계정 만료 여부 t : 만료안됨 , f : 만료
     public boolean isAccountNonExpired() {
         return true;
     }
 
-    /**
-     * 계정 잠김 여부
-     * true : 잠기지 않음
-     * false : 잠김
-     * @return
-     */
-    @Override
+    @Override // 계정 잠김 여부 t : 잠기지 않음 , f : 잠김
     public boolean isAccountNonLocked() {
-        return locked;
+        return false;
     }
 
-    /**
-     * 비밀번호 만료 여부
-     * true : 만료 안됨
-     * false : 만료
-     * @return
-     */
-    @Override
+    @Override // 비밀번호 만료 여부 t : 만료안됨 , f : 만료
     public boolean isCredentialsNonExpired() {
         return true;
     }
 
-
-    /**
-     * 사용자 활성화 여부
-     * ture : 활성화
-     * false : 비활성화
-     * @return
-     */
-    @Override
+    @Override // 사용자 활성화 여부 t : 활성화 , f : 비활성화
     public boolean isEnabled() {
-        //이메일이 인증되어 있고 계정이 잠겨있지 않으면 true
-        return (emailVerified && !locked);
+        return true;
     }
-
 }

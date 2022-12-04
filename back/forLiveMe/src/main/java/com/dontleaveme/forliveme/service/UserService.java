@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 @Service
 @RequiredArgsConstructor
 public class UserService {
@@ -15,7 +17,16 @@ public class UserService {
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public void insert(UserDto userDto) {
-        userDto.setPassword(bCryptPasswordEncoder.encode(userDto.getPassword()));
+        userDto.builder()
+                .password(bCryptPasswordEncoder.encode(userDto.getPassword()))
+                .build();
+        userRepository.save(userDto.toEntity());
+    }
+
+    public void updateLastLoginTime(UserDto userDto) {
+        userDto.builder()
+                .lastLoginTime(LocalDateTime.now())
+                .build();
         userRepository.save(userDto.toEntity());
     }
 }

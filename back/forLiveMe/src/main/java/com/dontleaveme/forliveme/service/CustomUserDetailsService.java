@@ -30,10 +30,9 @@ public class CustomUserDetailsService implements UserDetailsService {
 
         if (user != null) {
             grantedAuthorities.add(new SimpleGrantedAuthority("USER")); // USER 라는 역할을 넣어준다.
-            return new User(user.getId(), user.getPassword(), grantedAuthorities);
+            return new User(user.getEmail(), user.getPassword(), grantedAuthorities);
         } else {
             throw new UsernameNotFoundException("can not find User : " + email);
         }
     }
-
 }
