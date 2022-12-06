@@ -17,7 +17,7 @@ public class LoginController {
 
     private final UserService userService;
 
-    @GetMapping("/login")
+    @GetMapping("login")
     public String login(HttpServletRequest request) {
         return "login";
     }
@@ -29,7 +29,7 @@ public class LoginController {
     }
 
     @PostMapping("/join")
-    public String join(@ModelAttribute("userDto") UserDto userDto) {
+    public String join(@ModelAttribute("userDto")  UserDto userDto) {
         userService.insert(userDto);
         return "redirect:/login";
     }

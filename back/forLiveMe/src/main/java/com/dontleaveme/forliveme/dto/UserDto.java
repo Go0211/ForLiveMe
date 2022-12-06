@@ -4,10 +4,12 @@ import com.dontleaveme.forliveme.persistence.model.User;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
 @Getter
+@Setter
 @NoArgsConstructor
 public class UserDto {
     private String id;
@@ -38,8 +40,9 @@ public class UserDto {
     }
 
     public User toEntity() {
-        return User
-                .builder()
+        System.out.println(password);
+
+        return User.builder()
                 .id(id)
                 .email(email)
                 .password(password)
