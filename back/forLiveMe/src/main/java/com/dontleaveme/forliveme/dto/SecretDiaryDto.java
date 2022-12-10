@@ -21,16 +21,19 @@ public class SecretDiaryDto {
 
     private String sdContent;
 
+    private String sdUserEmail;
+
     private String sdPassword;
 
     private LocalDateTime sdWriteDate;
 
     @Builder
-    public SecretDiaryDto(int sdNum, String sdTitle, String sdContent, String sdPassword, LocalDateTime sdWriteDate) {
+    public SecretDiaryDto(int sdNum, String sdTitle, String sdContent, String sdUserEmail, String sdPassword, LocalDateTime sdWriteDate) {
 //        this.userId = userId;
         this.sdNum = sdNum;
         this.sdTitle = sdTitle;
         this.sdContent = sdContent;
+        this.sdUserEmail = sdUserEmail;
         this.sdPassword = sdPassword;
         this.sdWriteDate = sdWriteDate;
     }
@@ -41,6 +44,7 @@ public class SecretDiaryDto {
                 .sdNum(sdNum)
                 .sdTitle(sdTitle)
                 .sdContent(sdContent)
+                .sdUserEmail(sdUserEmail)
                 .sdPassword(sdPassword)
                 .sdWriteDate(LocalDateTime.now())
                 .build();
