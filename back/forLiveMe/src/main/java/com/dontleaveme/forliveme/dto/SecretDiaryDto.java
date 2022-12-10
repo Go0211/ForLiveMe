@@ -13,34 +13,34 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class SecretDiaryDto {
 
-//    public User userId;
-
-    private int sdNum;
+    private Long sdNum;
 
     private String sdTitle;
 
     private String sdContent;
+
+    private String sdUserEmail;
 
     private String sdPassword;
 
     private LocalDateTime sdWriteDate;
 
     @Builder
-    public SecretDiaryDto(int sdNum, String sdTitle, String sdContent, String sdPassword, LocalDateTime sdWriteDate) {
-//        this.userId = userId;
+    public SecretDiaryDto(Long sdNum, String sdTitle, String sdContent, String sdUserEmail, String sdPassword, LocalDateTime sdWriteDate) {
         this.sdNum = sdNum;
         this.sdTitle = sdTitle;
         this.sdContent = sdContent;
+        this.sdUserEmail = sdUserEmail;
         this.sdPassword = sdPassword;
         this.sdWriteDate = sdWriteDate;
     }
 
     public SecretDiary toEntity() {
         return SecretDiary.builder()
-//                .userId(userId)
                 .sdNum(sdNum)
                 .sdTitle(sdTitle)
                 .sdContent(sdContent)
+                .sdUserEmail(sdUserEmail)
                 .sdPassword(sdPassword)
                 .sdWriteDate(LocalDateTime.now())
                 .build();

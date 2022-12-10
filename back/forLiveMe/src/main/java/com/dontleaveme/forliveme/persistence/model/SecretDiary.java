@@ -27,17 +27,19 @@ public class SecretDiary {
     private String sdTitle;
     @Column(name = "content")
     private String sdContent;
+    @Column(name = "useremail")
+    private String sdUserEmail;
     @Column(name = "password")
     private String sdPassword;
     @Column(name = "writedate")
     private LocalDateTime sdWriteDate;
 
     @Builder
-    public SecretDiary(long sdNum, String sdTitle, String sdContent, String sdPassword, LocalDateTime sdWriteDate) {
-//        this.userId = userId;
+    public SecretDiary(Long sdNum, String sdTitle, String sdContent, String sdUserEmail, String sdPassword, LocalDateTime sdWriteDate) {
         this.sdNum = sdNum;
         this.sdTitle = sdTitle;
         this.sdContent = sdContent;
+        this.sdUserEmail = sdUserEmail;
         this.sdPassword = sdPassword;
         this.sdWriteDate = sdWriteDate;
     }

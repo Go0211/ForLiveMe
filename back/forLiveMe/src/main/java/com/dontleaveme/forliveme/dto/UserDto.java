@@ -40,8 +40,6 @@ public class UserDto {
     }
 
     public User toEntity() {
-        System.out.println(password);
-
         return User.builder()
                 .id(id)
                 .email(email)
