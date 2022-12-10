@@ -1,4 +1,4 @@
-package com.dontleaveme.forliveme.Controller;
+package com.dontleaveme.forliveme.controller;
 
 import com.dontleaveme.forliveme.dto.UserDto;
 import com.dontleaveme.forliveme.service.UserService;

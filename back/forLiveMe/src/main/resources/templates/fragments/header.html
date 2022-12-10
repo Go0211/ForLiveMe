@@ -1,7 +1,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<th:block th:fragment="header">
+<th:block th:fragment="header(userInfo)">
 
-<nav class="headerBox headerBox_login" >
+<nav th:if="${userInfo != null}" class="headerBox headerBox_login" >
     <ul class="headerBoxLeft floatLeft">
         <li>
             <img class="headerLogo" src="/icon/ForLiveMe_Logo.png" alt="ForLiveMe_Logo">
@@ -24,7 +24,7 @@
             <img class="userImage" src="/icon/ForLiveMe_Logo.png" alt="">
         </li>
         <li>
-            <p>고성태</p>
+            <p th:text="${userInfo}"></p>
         </li>
         <li>
             <button id="myPage" class="buttonSet">마이페이지</button>
@@ -34,7 +34,7 @@
         </li>
     </ul>
 </nav>
-<nav class="headerBox headerBox_logout" style="display: none">
+<nav th:unless="${userInfo != null}" class="headerBox headerBox_logout">
     <ul class="headerBoxLeft floatLeft">
         <li>
             <img class="headerLogo" src="/icon/ForLiveMe_Logo.png" alt="ForLiveMe_Logo">
