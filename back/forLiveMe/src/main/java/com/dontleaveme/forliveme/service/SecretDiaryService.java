@@ -1,11 +1,10 @@
 package com.dontleaveme.forliveme.service;
 
-import com.dontleaveme.forliveme.dto.test.BoardDto;
 import com.dontleaveme.forliveme.persistence.dao.SecretDiaryRepository;
 import com.dontleaveme.forliveme.dto.SecretDiaryDto;
 import com.dontleaveme.forliveme.persistence.model.SecretDiary;
-import com.dontleaveme.forliveme.persistence.model.test.Board;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -17,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Log4j2
 @Service
 @RequiredArgsConstructor
 public class SecretDiaryService {
@@ -25,7 +25,7 @@ public class SecretDiaryService {
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     private static final int BLOCK_PAGE_NUM_COUNT = 5; // 블럭에 존재하는 페이지 번호 수
-    private static final int PAGE_POST_COUNT = 10; // 한 페이지에 존재하는 게시글 수
+    private static final int PAGE_POST_COUNT = 10000; // 한 페이지에 존재하는 게시글 수
 
     private SecretDiaryDto convertEntityToDto(SecretDiary secretDiary) {
         return SecretDiaryDto.builder()
@@ -46,15 +46,20 @@ public class SecretDiaryService {
     }
 
     @Transactional
-    public List<SecretDiaryDto> getSecretDiaryList(Integer pageNum) {
+    public List<SecretDiaryDto> getSecretDiaryList(Integer pageNum, String user) {
+//        Page<SecretDiary> page = secretDiaryRepository.findAll(PageRequest.of(
+//                pageNum - 1, PAGE_POST_COUNT, Sort.by(Sort.Direction.ASC, "sdWriteDate")));
+
         Page<SecretDiary> page = secretDiaryRepository.findAll(PageRequest.of(
-                pageNum - 1, PAGE_POST_COUNT, Sort.by(Sort.Direction.ASC, "createdDate")));
+                pageNum - 1, PAGE_POST_COUNT, Sort.by(Sort.Direction.ASC, "sdWriteDate")));
 
         List<SecretDiary> boardEntities = page.getContent();
         List<SecretDiaryDto> secretDiaryDtoList = new ArrayList<>();
 
         for (SecretDiary secretDiary : boardEntities) {
-            secretDiaryDtoList.add(this.convertEntityToDto(secretDiary));
+            if (secretDiary.getSdUserEmail().equals(user)) {
+                secretDiaryDtoList.add(this.convertEntityToDto(secretDiary));
+            }
         }
 
         return secretDiaryDtoList;
@@ -90,7 +95,7 @@ public class SecretDiaryService {
     // 검색 API
     @Transactional
     public List<SecretDiaryDto> searchPosts(String keyword) {
-        List<SecretDiary> secretDiaryEntities = secretDiaryRepository.findByTitleContaining(keyword);
+        List<SecretDiary> secretDiaryEntities = secretDiaryRepository.findBySdTitleContaining(keyword);
         List<SecretDiaryDto> secretDiaryDtoList = new ArrayList<>();
 
         if (secretDiaryEntities.isEmpty()) {
@@ -106,15 +111,19 @@ public class SecretDiaryService {
 
     // 페이징
     @Transactional
-    public Long getBoardCount() {
-        return secretDiaryRepository.count();
+    public Long getUserSecretDiaryCount(String user) {
+//    public Long getSecretDiaryCount() {
+        return secretDiaryRepository.countBySdUserEmail(user);
+//        return secretDiaryRepository.count();
     }
 
-    public Integer[] getPageList(Integer curPageNum) {
+    public Integer[] getPageList(Integer curPageNum, String user) {
+//        public Integer[] getPageList(Integer curPageNum) {
         Integer[] pageList = new Integer[BLOCK_PAGE_NUM_COUNT];
 
         // 총 게시글 갯수
-        Double postsTotalCount = Double.valueOf(this.getBoardCount());
+        Double postsTotalCount = Double.valueOf(this.getUserSecretDiaryCount(user));
+//        Double postsTotalCount = Double.valueOf(this.getUserSecretDiaryCount(user));
 
         // 총 게시글 기준으로 계산한 마지막 페이지 번호 계산 (올림으로 계산)
         Integer totalLastPageNum = (int)(Math.ceil((postsTotalCount/PAGE_POST_COUNT)));
@@ -134,5 +143,4 @@ public class SecretDiaryService {
 
         return pageList;
     }
-
 }

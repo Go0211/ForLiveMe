@@ -1,17 +1,18 @@
 package com.dontleaveme.forliveme.controller;
 
 import com.dontleaveme.forliveme.dto.SecretDiaryDto;
-import com.dontleaveme.forliveme.dto.test.BoardDto;
 import com.dontleaveme.forliveme.service.SecretDiaryService;
-import com.dontleaveme.forliveme.service.test.BoardService;
 import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
+@Log4j2
 @Controller
 @AllArgsConstructor
 public class SecretDiaryController {
@@ -28,11 +29,14 @@ public class SecretDiaryController {
 
     @PostMapping("/secretDiaryWrite")
     public String secretDiaryWrite(@ModelAttribute("secretDiaryDto") SecretDiaryDto secretDiaryDto,
+                                   HttpServletRequest request,
                                    Model model,
                                    Authentication authentication) {
+        String referer = request.getHeader("Referer");
+
         secretDiaryService.writeSecretDiary(secretDiaryDto, authentication.getName());
         model.addAttribute("userInfo" , authentication.getName());
-        return "redirect:/secretDiary/secretDiary_list";
+        return "redirect:" + referer;
     }
 
 //    @GetMapping("/secretDiaryList")
@@ -47,18 +51,21 @@ public class SecretDiaryController {
     // 게시글 목록
     // list 경로로 GET 메서드 요청이 들어올 경우 list 메서드와 맵핑시킴
     // list 경로에 요청 파라미터가 있을 경우 (?page=1), 그에 따른 페이지네이션을 수행함.
-    @GetMapping({"", "/secretDiaryList"})
+    @GetMapping({"/secretDiaryList"})
     public String secretDiaryList(Model model, Authentication authentication,
                        @RequestParam(value="page", defaultValue = "1") Integer pageNum) {
         model.addAttribute("userInfo" , authentication.getName());
         
-        List<SecretDiaryDto> secretDiaryList = secretDiaryService.getSecretDiaryList(pageNum);
-        Integer[] pageList = secretDiaryService.getPageList(pageNum);
+        List<SecretDiaryDto> secretDiaryList = secretDiaryService.getSecretDiaryList(pageNum, authentication.getName());
+        Integer[] pageList = secretDiaryService.getPageList(pageNum, authentication.getName());
 
-        model.addAttribute("boardList", secretDiaryList);
+        log.info("secretDiaryList : " + secretDiaryList);
+        log.info("pageList : " + pageList   );
+
+        model.addAttribute("secretDiaryList", secretDiaryList);
         model.addAttribute("pageList", pageList);
 
-        return "secretDiary/secretDiary_list";
+        return "/secretDiary/secretDiary_list";
     }
 
 //    // 글쓰는 페이지
@@ -92,7 +99,6 @@ public class SecretDiaryController {
     }
 
     // 게시물 수정 페이지이며, {no}로 페이지 넘버를 받는다.
-
     @GetMapping("/secretDiaryList/update/{no}")
     public String secretDiaryUpdate(@PathVariable("no") Long no, Model model,
                        Authentication authentication) {
