@@ -59,9 +59,6 @@ public class SecretDiaryController {
         List<SecretDiaryDto> secretDiaryList = secretDiaryService.getSecretDiaryList(pageNum, authentication.getName());
         Integer[] pageList = secretDiaryService.getPageList(pageNum, authentication.getName());
 
-        log.info("secretDiaryList : " + secretDiaryList);
-        log.info("pageList : " + pageList   );
-
         model.addAttribute("secretDiaryList", secretDiaryList);
         model.addAttribute("pageList", pageList);
 
@@ -112,16 +109,20 @@ public class SecretDiaryController {
 
     // 위는 GET 메서드이며, PUT 메서드를 이용해 게시물 수정한 부분에 대해 적용
 
-    @PutMapping("/secretDiaryList/update/{no}")
-    public String secretDiaryUpdate(SecretDiaryDto secretDiaryDto) {
-        secretDiaryService.savePost(secretDiaryDto);
+    @PostMapping("/secretDiaryList/update/{no}")            //PutMapping사용했었음
+    public String secretDiaryUpdate(@PathVariable("no") Long no,
+            @ModelAttribute("secretDiaryDto") SecretDiaryDto secretDiaryDto) {
+
+        SecretDiaryDto updateSecretDiaryDto = secretDiaryService.getUpdateSecretDiary(no, secretDiaryDto);
+
+        secretDiaryService.savePost(updateSecretDiaryDto);
 
         return "redirect:/secretDiary/secretDiary_list";
     }
 
     // 게시물 삭제는 deletePost 메서드를 사용하여 간단하게 삭제할 수 있다.
 
-    @DeleteMapping("/secretDiaryList/{no}")
+    @GetMapping("/secretDiaryList/delete/{no}")        //DeleteMapping사용했었음
     public String delete(@PathVariable("no") Long no) {
         secretDiaryService.deletePost(no);
 

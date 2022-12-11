@@ -76,6 +76,7 @@ public class SecretDiaryService {
                 .sdTitle(secretDiary.getSdTitle())
                 .sdContent(secretDiary.getSdContent())
                 .sdUserEmail(secretDiary.getSdUserEmail())
+                .sdPassword(secretDiary.getSdPassword())
                 .sdWriteDate(secretDiary.getSdWriteDate())
                 .build();
 
@@ -85,6 +86,16 @@ public class SecretDiaryService {
     @Transactional
     public Long savePost(SecretDiaryDto secretDiaryDto) {
         return secretDiaryRepository.save(secretDiaryDto.toEntity()).getSdNum();
+    }
+    @Transactional
+    public SecretDiaryDto getUpdateSecretDiary(Long no, SecretDiaryDto secretDiaryDto) {
+
+        SecretDiaryDto secretDiaryDtoAfter = this.getSecretDiary(no);
+
+        secretDiaryDtoAfter.setSdTitle(secretDiaryDto.getSdTitle());
+        secretDiaryDtoAfter.setSdContent(secretDiaryDto.getSdContent());
+
+        return secretDiaryDtoAfter;
     }
 
     @Transactional
