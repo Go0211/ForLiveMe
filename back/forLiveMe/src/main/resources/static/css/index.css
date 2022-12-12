@@ -4,21 +4,35 @@
 
 
 /* All */
-html, body {
-    font-size: 62.5%;       /* 10px */
-}
-
 * {
     color: var(--fontColor);
+}
+html, body {
+    font-size: 62.5%;       /* 10px */
 }
 main {
     width: 70%;
     margin : 0 auto;
     padding-top: 8rem;
 }
-h1 {
-    font-size: 3rem;
+
+/* fontSize */
+.font-xs {
+    font-size: 1.2rem;
 }
+.font-sm {
+    font-size:  1.4rem;
+}
+.font-base {
+    font-size: 1.6rem
+}
+.font-lg {
+    font-size:  1.8rem;
+}
+.font-xl {
+    font-size:  2rem;
+}
+
 
 /* float */
 .floatLeft {

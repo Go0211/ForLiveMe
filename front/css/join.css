@@ -1,17 +1,34 @@
-@import "../css/cssInput/reset.css";
-@import "../css/cssInput/color.css";
+@import "cssInput/reset.css";
+@import "cssInput/color.css";
 
 /* All */
 * {
     color: var(--fontColor);
 }
+html, body {
+    font-size: 62.5%;       /* 10px */
+}
 main {
     width: 70%;
     margin : 0 auto;
-    padding-top: 80px;
+    padding-top: 8rem;
 }
-h1 {
-    font-size: 30px;
+
+/* fontSize */
+.font-xs {
+    font-size: 1.2rem;
+}
+.font-sm {
+    font-size:  1.4rem;
+}
+.font-base {
+    font-size: 1.6rem
+}
+.font-lg {
+    font-size:  1.8rem;
+}
+.font-xl {
+    font-size:  2rem;
 }
 
 /* float */
@@ -34,7 +51,8 @@ h1 {
     text-align: right;
 }
 
-/* text-decoration */;
+
+/* text-decoration */
 .textDecoration {
     text-decoration: var(--fontColor) underline;
 }
@@ -44,7 +62,7 @@ h1 {
     color: white;
     background-color: var(--mainColor);
     border: 0;
-    border-radius: 10px;
+    border-radius: 1rem;
 }
 
 /* frameSize */
@@ -67,37 +85,40 @@ main #join {
 main #join .joinBox {
     width: 100%;
     height: auto;
-    border: 1px solid #333333;
-    padding: 50px;
+    padding: 5rem 10rem;
     box-sizing: border-box;
 }
 main #join .joinBox img {
     width: 25%;
 }
+main #join .joinBox form {
+    padding: 5rem;
+    border: 0.1rem solid #333333;
+}
 main #join .joinBox input {
     width: 100%;
-    height: 60px;
-    margin-bottom: 35px;
+    height: 4.5rem;
+    margin-bottom: 2rem;
     box-sizing: border-box;
 }
 main #join .joinBox button {
     width: 100%;
-    height: 60px;
-    margin-bottom: 35px;
+    height: 4.5rem;
+    margin-bottom: 2rem;
     box-sizing: border-box;
     border-radius: 0;
 }
 main #join .joinBox .otherPlatform {
-    width: 400px;
-    height: 80px;
+    width: 40rem;
+    height: 8rem;
     display: flex;
-    margin: 0 auto;
+    margin: 3rem auto 0;
 }
 main #join .joinBox .otherPlatform a{
-    width: 80px;
-    font-size: 24px;
-    padding: 28px 0;
-    margin: 0 10px;
+    width: 8rem;
+    font-size: 2.4rem;
+    padding: 2.8rem 0;
+    margin: 0 1rem;
     color: white;
     border-radius: 50%;
 }

@@ -1,44 +1,48 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org">
-
+<html>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link th:href="@{/icon/ForLiveMe_Logo.png}" rel="icon" />
-    <link th:href="@{/css/login.css}" rel="stylesheet" />
+    <link href="/icon/ForLiveMe_Logo.png" rel="icon"/>
+    <link href="/css/login.css" rel="stylesheet" />
     <title>Login</title>
 </head>
-
 <body>
     <main>
         <div id="login">
             <div class="innerFrame">
-                <div class="loginBox textCenter">
-                    <div th:if="${param.error}">Invalid username and password.</div>
-                    <div th:if="${param.logout}">You have been logged out.</div>
+                <div class="loginBox textCenter font-base">
+                    <img src="/icon/ForLiveMe_Logo.png"/>
 
-                    <img src="icon/ForLiveMe_Logo.png" />
-
-                    <form th:action="@{/login}" method="post">
+                    <form th:action="/login" method="post">
                         <input class="idInput" type="text" name="username" placeholder="email" />
+                        <div class="messageFrame textLeft">
+                            <!-- <div th:if="${param.error}" class="errorMessage">이메일이나 비밀번호가 맞지 않습니다.</div>
+                            <div th:if="${param.logout}" class="logoutMessage">로그아웃완료했습니다.</div> -->
+                            <div class="logoutMessage font-xs">로그아웃완료했습니다.</div>
+                        </div>
                         <input class="pwInput" type="password" name="password" placeholder="password" />
+                        <div class="rememberMe textLeft">
+                            <div class="rememberMeCheckbox">
+                                <input type="checkbox" class="formCheckInput" id="rememberMe" name="remember-me" checked>
+                            </div>
+                            <label class="formCheckLabel font-sm" for="rememberMe">로그인 유지</label>
+                        </div>
                         <button type="submit" class="buttonSet">로그인</button>
                         <div class="joinText">
-                            <p> 아직 회원이 아니신가요?</p>
-                            <button type="button" onclick="location.href='/join';">회원가입</button>
+                            <p> 아직 회원이 아니신가요? <a href="#">회원가입</a> </p>
+                        </div>
+                        <div class="otherPlatform">
+                            <a href="" style="background-color: yellow;">k</a>
+                            <a href="" style="background-color: gray;">G</a>
+                            <a href="" style="background-color: green;">N</a>
+                            <a href="" style="background-color: blue;">F</a>
                         </div>
                     </form>
-                    <div class="otherPlatform">
-                        <a href="" style="background-color: yellow;">k</a>
-                        <a href="" style="background-color: gray;">G</a>
-                        <a href="" style="background-color: green;">N</a>
-                        <a href="" style="background-color: blue;">F</a>
-                    </div>
                 </div>
             </div>
         </div>
     </main>
 </body>
-
 </html>
