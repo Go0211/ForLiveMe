@@ -32,11 +32,10 @@ public class SecretDiaryController {
                                    HttpServletRequest request,
                                    Model model,
                                    Authentication authentication) {
-        String referer = request.getHeader("Referer");
 
         secretDiaryService.writeSecretDiary(secretDiaryDto, authentication.getName());
         model.addAttribute("userInfo" , authentication.getName());
-        return "redirect:" + referer;
+        return "redirect:/secretDiaryList";
     }
 
 //    @GetMapping("/secretDiaryList")
@@ -117,7 +116,7 @@ public class SecretDiaryController {
 
         secretDiaryService.savePost(updateSecretDiaryDto);
 
-        return "redirect:/secretDiary/secretDiary_list";
+        return "redirect:/secretDiaryList/"+no;
     }
 
     // 게시물 삭제는 deletePost 메서드를 사용하여 간단하게 삭제할 수 있다.
@@ -126,7 +125,7 @@ public class SecretDiaryController {
     public String delete(@PathVariable("no") Long no) {
         secretDiaryService.deletePost(no);
 
-        return "redirect:/secretDiary/secretDiary_list";
+        return "redirect:/secretDiaryList";
     }
 
     // 검색

@@ -1,7 +1,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <th:block th:fragment="header(userInfo)">
 
-<nav th:if="${userInfo != null}" class="headerBox headerBox_login font-base" >
+<nav th:if="${userInfo != null}" class="headerBox headerBox_login font-sm" >
     <ul class="headerBoxLeft floatLeft">
         <li>
             <img class="headerLogo" src="/icon/ForLiveMe_Logo.png" alt="ForLiveMe_Logo">
@@ -34,7 +34,7 @@
         </li>
     </ul>
 </nav>
-<nav th:unless="${userInfo != null}" class="headerBox headerBox_logout font-base">
+<nav th:unless="${userInfo != null}" class="headerBox headerBox_logout font-sm">
     <ul class="headerBoxLeft floatLeft">
         <li>
             <img class="headerLogo" src="/icon/ForLiveMe_Logo.png" alt="ForLiveMe_Logo">
