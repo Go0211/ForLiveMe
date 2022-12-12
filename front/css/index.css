@@ -32,6 +32,12 @@ main {
 .font-xl {
     font-size:  2rem;
 }
+h1 {
+    font-size: 3rem;
+}
+h2 {
+    font-size:  2.4rem;
+}
 
 
 /* float */
@@ -205,4 +211,14 @@ main #record .recordFrame .recordForm:nth-child(2){
 main #record .recordFrame .recordForm img{
     width: 100%;
     height: auto;
+    margin-bottom: 2rem;
+}
+main #record .recordFrame .recordForm p {
+    margin-bottom: 1rem;
+}
+main #record .recordFrame .recordForm p:nth-child(2){
+    font-size: 2.4rem;
+}
+main #record .recordFrame .recordForm p:nth-child(3){
+    font-size: 1rem;
 }
