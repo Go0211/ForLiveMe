@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/board/board_view.css">
+    <link rel="icon" href="../../icon/ForLiveMe_Logo.png">
+    <script  src="https://www.w3schools.com/lib/w3.js"></script>
+    <title>ForLiveMe</title>
+</head>
+<body>
+    <header w3-include-html="../static/header.html">
+    </header>
+    <main class="textLeft font-base">
+        <div id="index">
+            <div class="innerFrame">
+                <h1>게시판</h1>
+            </div>
+        </div>
+        <form action="/boardWrite" method="post">
+            <div id="view">
+                <div class="innerFrame">
+                    <div class="title">
+                        제목
+                    </div>
+                    <div class="content">
+                        컨텐츠
+                    </div>
+                    <div class="buttonFrame">
+                        <button class="updateButton buttonSet">
+                            수정
+                        </button>
+                        <button class="deleteButton buttonSet">
+                            삭제
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>>
+    </main>
+    <footer>
+
+    </footer>
+    <script>
+        w3.includeHTML();
+    </script>
+</body>
+</html>
