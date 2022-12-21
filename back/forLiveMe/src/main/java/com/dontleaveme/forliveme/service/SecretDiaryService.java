@@ -123,18 +123,14 @@ public class SecretDiaryService {
     // 페이징
     @Transactional
     public Long getUserSecretDiaryCount(String user) {
-//    public Long getSecretDiaryCount() {
         return secretDiaryRepository.countBySdUserEmail(user);
-//        return secretDiaryRepository.count();
     }
 
     public Integer[] getPageList(Integer curPageNum, String user) {
-//        public Integer[] getPageList(Integer curPageNum) {
         Integer[] pageList = new Integer[BLOCK_PAGE_NUM_COUNT];
 
         // 총 게시글 갯수
         Double postsTotalCount = Double.valueOf(this.getUserSecretDiaryCount(user));
-//        Double postsTotalCount = Double.valueOf(this.getUserSecretDiaryCount(user));
 
         // 총 게시글 기준으로 계산한 마지막 페이지 번호 계산 (올림으로 계산)
         Integer totalLastPageNum = (int)(Math.ceil((postsTotalCount/PAGE_POST_COUNT)));
