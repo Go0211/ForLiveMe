@@ -22,7 +22,7 @@ public class EmpathyBoardController {
     private EmpathyBoardService empathyBoardService;
 
     //비밀일기 작성
-    @GetMapping("/EmpathyBoardWrite")
+    @GetMapping("/empathyBoardWrite")
     public String empathyBoardWrite(Model model, Authentication authentication) {
         model.addAttribute("empathyBoardDto" , new EmpathyBoardDto());
         model.addAttribute("userInfo" , authentication.getName());
@@ -37,7 +37,7 @@ public class EmpathyBoardController {
 
         empathyBoardService.writeEmpathyBoard(empathyBoardDto, authentication.getName());
         model.addAttribute("userInfo" , authentication.getName());
-        return "redirect:/secretDiaryList";
+        return "redirect:/empathyBoardList";
     }
     // 게시판
     // 게시글 목록

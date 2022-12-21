@@ -31,15 +31,22 @@
                 <div class="serviceFrame">
                     <div class="serviceForm">
                         <img src="/icon/ForLiveMe_Logo.png" alt="편지 서비스 이미지">
-                        <button class="buttonSet">버튼</button>
+                        <button type="button"  class="buttonSet"
+                                th:onclick="|location.href='@{/secretDiaryList}'|">편지</button>
                     </div>
                     <div class="serviceForm">
                         <img src="/icon/ForLiveMe_Logo.png" alt="비밀일기 서비스 이미지">
-                        <button type="button"  class="buttonSet" onclick="location.href='/secretDiaryWrite';">버튼</button>
+                        <button type="button"  class="buttonSet"
+                                th:onclick="|location.href='@{/secretDiaryList}'|">
+                            버튼
+                        </button>
                     </div>
                     <div class="serviceForm">
                         <img src="/icon/ForLiveMe_Logo.png" alt="공감게시판 서비스 이미지">
-                        <button class="buttonSet">버튼</button>
+                        <button type="button"  class="buttonSet"
+                                th:onclick="|location.href='@{/empathyBoardList}'|">
+                            공감게시판
+                        </button>
                     </div>
                 </div>
             </div>

@@ -18,18 +18,21 @@
             <h1>게시판</h1>
         </div>
     </div>
-    <form action="#" method="post">
+    <form th:action="@{/empathyBoardList/update/{listNum}(listNum=${empathyBoardDto.ebNum})}"
+          method="post"
+          th:object="${empathyBoardDto}">
         <div id="update">
             <div class="innerFrame">
-                <input class="title" type="text" name="sdTitle"
-                       placeholder=" 제목을 적어주세요">
-                <textarea class="content" type="text" name="sdContent"
-                          placeholder=" 내용을 적어주세요."></textarea>
+                <input class="title" type="text" name="ebTitle"
+                       th:value="${empathyBoardDto.ebTitle}">
+                <textarea class="content" type="text" name="ebContent"
+                          th:value="${empathyBoardDto.ebContent}" th:text="${empathyBoardDto.ebContent}"></textarea>
                 <div class="buttonFrame">
                     <button class="updateButton buttonSet">
                         수정
                     </button>
-                    <button class="cancelButton buttonSet">
+                    <button type="button" class="cancelButton buttonSet"
+                            th:onclick="|location.href='@{/empathyBoardList/{listNum}(listNum=${empathyBoardDto.ebNum})}'|">
                         취소
                     </button>
                 </div>

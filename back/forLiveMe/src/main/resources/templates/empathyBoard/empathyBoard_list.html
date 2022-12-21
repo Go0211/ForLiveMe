@@ -26,60 +26,31 @@
                     검색
                 </button>
             </div>
-            <button class="write buttonSet">
+            <button class="write buttonSet"
+                    th:onclick="|location.href='@{/empathyBoardWrite}'|">
                 게시글 쓰기
             </button>
         </div>
     </div>
     <div id="list">
         <div class="innerFrame">
-            <div class="listContent">
-                <h2>221109 너무힘들다</h2>
-                <p>6시간 전</p>
-            </div>
-            <div class="listContent">
-                <h2>221109 너무힘들다</h2>
-                <p>6시간 전</p>
-            </div>
-            <div class="listContent">
-                <h2>221109 너무힘들다</h2>
-                <p>6시간 전</p>
-            </div>
-            <div class="listContent">
-                <h2>221109 너무힘들다</h2>
-                <p>6시간 전</p>
-            </div>
-            <div class="listContent">
-                <h2>221109 너무힘들다</h2>
-                <p>6시간 전</p>
-            </div>
-            <div class="listContent">
-                <h2>221109 너무힘들다</h2>
-                <p>6시간 전</p>
-            </div>
-            <div class="listContent">
-                <h2>221109 너무힘들다</h2>
-                <p>6시간 전</p>
-            </div>
-            <div class="listContent">
-                <h2>221109 너무힘들다</h2>
-                <p>6시간 전</p>
-            </div>
-            <div class="listContent">
-                <h2>221109 너무힘들다</h2>
-                <p>6시간 전</p>
-            </div>
-            <div class="listContent">
-                <h2>221109 너무힘들다</h2>
-                <p>6시간 전</p>
+            <div class="listContent" style="z-index: 999; margin-top:100px">
+                <div th:each="list : ${empathyBoardList}">
+                    <a th:href="@{/empathyBoardList/{listNum}(listNum=${list.ebNum})}">
+                        <h2 th:text="${list.ebTitle}"></h2>
+                        <p th:text="${list.ebWriteDate}"></p>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
     <div id="pageNation">
         <div class="innerFrame textCenter">
-            <a href="">
-                1 2 3 4 5 6 7 8 9
-            </a>
+            <div th:each="pageNum : ${pageList}">
+                <a>
+                    <p th:text="${pageNum} "></p>
+                </a>
+            </div>
         </div>
     </div>
 </main>

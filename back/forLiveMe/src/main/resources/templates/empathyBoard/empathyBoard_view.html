@@ -18,25 +18,25 @@
             <h1>게시판</h1>
         </div>
     </div>
-    <form action="/boardWrite" method="post">
-        <div id="view">
-            <div class="innerFrame">
-                <div class="title">
-                    제목
-                </div>
-                <div class="content">
-                    컨텐츠
-                </div>
-                <div class="buttonFrame">
-                    <button class="updateButton buttonSet">
-                        수정
-                    </button>
-                    <button class="deleteButton buttonSet">
-                        삭제
-                    </button>
-                </div>
+    <div id="view">
+        <div class="innerFrame">
+            <div class="title" th:text="${empathyBoardDto.ebTitle}"></div>
+            <div class="content" th:text="${empathyBoardDto.ebContent}"></div>
+            <div class="good" th:text="${empathyBoardDto.ebGood}"></div>
+            <div class="view" th:text="${empathyBoardDto.ebView}"></div>
+            <div class="buttonFrame">
+                <button class="updateButton buttonSet"
+                        th:onclick="|location.href='@{/empathyBoardList/update/{listNum}(listNum=${empathyBoardDto.ebNum})}'|">
+                    수정
+                </button>
+                <button class="deleteButton buttonSet"
+                        th:onclick="|location.href='@{/empathyBoardList/delete/{listNum}(listNum=${empathyBoardDto.ebNum})}'|">
+                    삭제
+                </button>
             </div>
         </div>
+
+    </div>
     </form>
 </main>
 <footer>
