@@ -1,0 +1,208 @@
+@import "cssInput/reset.css";
+@import "cssInput/color.css";
+@import "header.css";
+
+
+/* All */
+* {
+    color: var(--fontColor);
+}
+html, body {
+    font-size: 62.5%;       /* 10px */
+}
+main {
+    width: 70%;
+    margin : 0 auto;
+    padding-top: 8rem;
+}
+
+/* fontSize */
+.font-xs {
+    font-size: 1.2rem;
+}
+.font-sm {
+    font-size:  1.4rem;
+}
+.font-base {
+    font-size: 1.6rem
+}
+.font-lg {
+    font-size:  1.8rem;
+}
+.font-xl {
+    font-size:  2rem;
+}
+
+
+/* float */
+.floatLeft {
+    float: left;
+}
+.floatRight {
+    float: right;
+}
+
+
+/* text-align */
+.textLeft {
+    text-align: left;
+}
+.textCenter {
+    text-align: center;
+}
+.textRight {
+    text-align: right;
+}
+
+/* text-decoration */
+.textDecoration {
+    text-decoration: var(--fontColor) underline;
+}
+
+/* button */
+.buttonSet {
+    color: white;
+    background-color: var(--mainColor);
+    border: 0;
+    border-radius: 1rem;
+}
+
+/* frameSize */
+.innerFrame{
+    width: 75%;
+    height: auto;
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* ----------------------------------------------------------- */
+/* main */
+main #moveImage {
+    width: 100%;
+    height: auto;
+    position: relative;
+}
+main #moveImage .mainMoveImage {
+    z-index: 1;
+    width: 100%;
+}
+main #moveImage .moveDoingArrow {
+    z-index: 2;
+    width: 75%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+main #moveImage .moveDoingArrow img:hover { /* leftArrow + rightArrow */
+    opacity: 0.8;
+}
+
+main #recommendService {
+    width: 100%;
+    height: 60rem;
+    position: relative;
+    background-color: var(--backgroundColor);
+}
+main #recommendService h1 {
+    margin-bottom: 6rem;
+}
+main #recommendService p {
+    margin-bottom: 1rem ;
+}
+main #recommendService p:hover {
+    opacity: 0.8;
+}
+main #recommendService .serviceFrame {
+    display: flex;
+    justify-content: center;
+}
+main #recommendService .serviceFrame .serviceForm {
+    width: 30%;
+    height: 30rem;
+}
+main #recommendService .serviceFrame .serviceForm:nth-child(2){
+    margin: 0 5%;
+}
+main #recommendService .serviceFrame .serviceForm img{
+    width: 100%;
+    height: auto;
+}
+main #recommendService .serviceFrame .serviceForm button{
+    width: 65%;
+    height: 15%;
+}
+
+main #simpleTest {
+    width: 100%;
+    height: 60rem;  
+    position: relative;
+}
+main #simpleTest button{
+    width: 50%;
+    height: 12rem;
+    margin-top: 4rem;
+    font-size: 3rem;
+}
+
+main #company {
+    width: 100%;
+    height: 60rem;  
+    position: relative;
+    background-color: var(--backgroundColor);
+}
+main #company h1 {
+    margin-bottom: 6rem;
+}
+main #company p {
+    margin-bottom: 1rem ;
+}
+main #company p:hover {
+    opacity: 0.8;
+}
+main #company .companyFrame {
+    display: flex;
+    justify-content: center;
+}
+main #company .companyFrame .companyForm {
+    width: 30%;
+    height: 30rem;
+}
+main #company .companyFrame .companyForm:nth-child(2){
+    margin: 0 5%;
+}
+main #company .companyFrame .companyForm img{
+    width: 100%;
+    height: auto;
+}
+main #company .companyFrame .companyForm button{
+    width: 65%;
+    height: 15%;
+}
+
+main #record {
+    width: 100%;
+    height: 60rem;  
+    position: relative;
+}
+main #record h1 {
+    margin-bottom: 6rem;
+}
+main #record .recordFrame {
+    display: flex;
+    justify-content: center;
+}
+main #record .recordFrame .recordForm {
+    width: 30%;
+    height: 30rem;
+}
+main #record .recordFrame .recordForm:nth-child(2){
+    margin: 0 5%;
+}
+main #record .recordFrame .recordForm img{
+    width: 100%;
+    height: auto;
+}

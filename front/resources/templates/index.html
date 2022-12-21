@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link th:href="@{/icon/ForLiveMe_Logo.png}" rel="icon"/>
+    <link th:href="@{/css/index.css}" rel="stylesheet" />
+    <title>ForLiveMe</title>
+</head>
+<body>
+    <header>
+        <th:block th:replace="~{/fragments/header.html :: header(${userInfo})}"></th:block>
+    </header>
+    <main class="textCenter font-base">
+        <div id="moveImage">
+            <img class="mainMoveImage" src="/icon/main_image_sample.jpg" alt="메인화면 맨 위 이미지">
+            <div class="moveDoingArrow">
+                <img class="leftArrow floatLeft" src="/icon/left_arrow.png" alt="왼쪽 화살표">
+                <img class="rightArrow floatRight" src="/icon/right_arrow.png" alt="오른쪽 화살표">
+            </div>
+        </div>
+        <div id="recommendService">
+            <div class="innerFrame">
+                <h1 class="textLeft">
+                    저희 ForLiveMe에서<br>
+                    힘든 일, 슬픈 일 모두 놓아두고 가세요.
+                </h1>
+                <h1>추천서비스</h1>
+                <p class="textRight textDecoration">더보기</p>
+                <div class="serviceFrame">
+                    <div class="serviceForm">
+                        <img src="/icon/ForLiveMe_Logo.png" alt="편지 서비스 이미지">
+                        <button class="buttonSet">버튼</button>
+                    </div>
+                    <div class="serviceForm">
+                        <img src="/icon/ForLiveMe_Logo.png" alt="비밀일기 서비스 이미지">
+                        <button type="button"  class="buttonSet" onclick="location.href='/secretDiaryWrite';">버튼</button>
+                    </div>
+                    <div class="serviceForm">
+                        <img src="/icon/ForLiveMe_Logo.png" alt="공감게시판 서비스 이미지">
+                        <button class="buttonSet">버튼</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="simpleTest">
+            <div class="innerFrame">
+                <h1>
+                    간단한 검사로 나에게 필요한 것들을 알려드릴게요!<br>
+                    지금 나한테 필요한 건 뭘까...?
+                </h1>
+                <button class="buttonSet">
+                    간단한 검사 하러가기
+                </button>
+            </div>
+        </div>
+        <div id="company">
+            <div class="innerFrame">
+                <h1 class="textLeft">
+                    저희 ForLiveMe에서 준비한<br>
+                    회원분들을 위해 제공하는 이벤트
+                </h1>
+                <p class="textRight textDecoration">더보기</p>
+                <div class="companyFrame">
+                    <div class="companyForm">
+                        <img src="/icon/ForLiveMe_Logo.png" alt="편지 서비스 이미지">
+                        <button class="buttonSet">버튼</button>
+                    </div>
+                    <div class="companyForm">
+                        <img src="/icon/ForLiveMe_Logo.png" alt="비밀일기 서비스 이미지">
+                        <button class="buttonSet">버튼</button>
+                    </div>
+                    <div class="companyForm">
+                        <img src="/icon/ForLiveMe_Logo.png" alt="공감게시판 서비스 이미지">
+                        <button class="buttonSet">버튼</button>
+                    </div>
+                </div>
+            </div>  
+        </div>
+        <div id="record">
+            <div class="innerFrame">
+                <h1 class="textLeft">
+                    이미 (회원수)명의 사람들이<br>
+                    ForLiveME와 함께하고 있어요
+                </h1>
+                <div class="recordFrame">
+                    <div class="recordForm">
+                        <img src="/icon/ForLiveMe_Logo.png" alt="편지 서비스 이미지">
+                        <div class="recordText textLeft">
+                            <p>누적멤버</p>
+                            <p>멤버 수</p>  
+                            <p>(2022년 9월 26일 기준)</p>
+                        </div>
+                    </div>
+                    <div class="recordForm">
+                        <img src="/icon/ForLiveMe_Logo.png" alt="비밀일기 서비스 이미지">
+                        <div class="recordText textLeft">
+                            <p>누적 공감게시글 수</p>
+                            <p>게시글 수</p>
+                            <p>(2022년 9월 26일 기준)</p>
+                        </div>
+                    </div>
+                    <div class="recordForm">
+                        <img src="/icon/ForLiveMe_Logo.png" alt="공감게시판 서비스 이미지">
+                        <div class="recordText textLeft">
+                            <p>누적 편지 수</p>
+                            <p>편지 수</p>
+                            <p>(2022년 9월 26일 기준)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+        </div>
+    </main>
+    <footer>
+
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link th:href="@{/icon/ForLiveMe_Logo.png}" rel="icon"/>
+    <link th:href="@{/css/board/board_list.css}" rel="stylesheet"/>
+    <title>내 편지함</title>
+</head>
+<body>
+<header>
+    <th:block th:replace="/fragments/header.html :: header(${userInfo})"></th:block>
+</header>
+<main class="textLeft">
+    <div id="moveImage">
+        <img class="mainMoveImage" src="/icon/main_image_sample.jpg" alt="메인화면 맨 위 이미지">
+    </div>
+    <div id="index">
+        <div class="innerFrame">
+            <h1>게시판</h1>
+            <h2>공유하고 싶은 것 모두 말하고 가세요.</h2>
+            <div class="search">
+                <input type="text" placeholder="원하는 시간/내용으로 일기를 찾아보세요.">
+                <button class="searchButton buttonSet">
+                    검색
+                </button>
+            </div>
+            <button class="write buttonSet"
+                    th:onclick="|location.href='@{/empathyBoardWrite}'|">
+                게시글 쓰기
+            </button>
+        </div>
+    </div>
+    <div id="list">
+        <div class="innerFrame">
+            <div class="listContent" style="z-index: 999; margin-top:100px">
+                <div th:each="list : ${empathyBoardList}">
+                    <a th:href="@{/empathyBoardList/{listNum}(listNum=${list.ebNum})}">
+                        <h2 th:text="${list.ebTitle}"></h2>
+                        <p th:text="${list.ebWriteDate}"></p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="pageNation">
+        <div class="innerFrame textCenter">
+            <div th:each="pageNum : ${pageList}">
+                <a>
+                    <p th:text="${pageNum} "></p>
+                </a>
+            </div>
+        </div>
+    </div>
+</main>
+<footer>
+
+</footer>
+</body>
+</html>

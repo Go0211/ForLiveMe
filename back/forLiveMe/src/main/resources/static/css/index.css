@@ -4,21 +4,41 @@
 
 
 /* All */
-html, body {
-    font-size: 62.5%;       /* 10px */
-}
-
 * {
     color: var(--fontColor);
+}
+html, body {
+    font-size: 62.5%;       /* 10px */
 }
 main {
     width: 70%;
     margin : 0 auto;
     padding-top: 8rem;
 }
+
+/* fontSize */
+.font-xs {
+    font-size: 1.2rem;
+}
+.font-sm {
+    font-size:  1.4rem;
+}
+.font-base {
+    font-size: 1.6rem
+}
+.font-lg {
+    font-size:  1.8rem;
+}
+.font-xl {
+    font-size:  2rem;
+}
 h1 {
     font-size: 3rem;
 }
+h2 {
+    font-size:  2.4rem;
+}
+
 
 /* float */
 .floatLeft {
@@ -124,7 +144,7 @@ main #recommendService .serviceFrame .serviceForm button{
 
 main #simpleTest {
     width: 100%;
-    height: 60rem;  
+    height: 60rem;
     position: relative;
 }
 main #simpleTest button{
@@ -136,7 +156,7 @@ main #simpleTest button{
 
 main #company {
     width: 100%;
-    height: 60rem;  
+    height: 60rem;
     position: relative;
     background-color: var(--backgroundColor);
 }
@@ -171,7 +191,7 @@ main #company .companyFrame .companyForm button{
 
 main #record {
     width: 100%;
-    height: 60rem;  
+    height: 60rem;
     position: relative;
 }
 main #record h1 {
@@ -191,4 +211,14 @@ main #record .recordFrame .recordForm:nth-child(2){
 main #record .recordFrame .recordForm img{
     width: 100%;
     height: auto;
+    margin-bottom: 2rem;
+}
+main #record .recordFrame .recordForm p {
+    margin-bottom: 1rem;
+}
+main #record .recordFrame .recordForm p:nth-child(2){
+    font-size: 2.4rem;
+}
+main #record .recordFrame .recordForm p:nth-child(3){
+    font-size: 1rem;
 }

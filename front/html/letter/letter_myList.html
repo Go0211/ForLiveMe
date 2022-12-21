@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/letter/letter_myList.css">
+    <link rel="icon" href="../icon/ForLiveMe_Logo.png">
+    <script  src="https://www.w3schools.com/lib/w3.js"></script>
+    <title>내 편지함</title>
+</head>
+<body>
+    <header w3-include-html="../static/header.html">
+    </header>
+    <main class="textCenter font-base">
+        <div id="index">
+            <div class="innerFrame textLeft">
+                <h1>편지</h1>
+                <h2>다른 사람에게 한 마디의 편지를 보내고 받을 수 있어요.<br>
+                    힘들고 지칠 때, 써보아요</h2>
+                <div class="letterWrite">
+                    <input type="text" placeholder="한 문장으로 작성해주세요.">
+                    <button class="writeButton buttonSet">
+                        전송
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="myletterBox">
+            <div class="innerFrame textLeft">
+                <h1>내 편지함</h1>
+                <div class="letterFrame">
+                    <h2>내가 그에게 이름을 불렸을 때, 나는 그에게로 가서 꽃이 되었다.</h2>
+                    <div class="imgFrame">
+                        <img src="../../icon/left_arrow.png" alt="화살표">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+
+    </footer>
+    <script>
+        w3.includeHTML();
+    </script>
+</body>
+</html>

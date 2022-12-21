@@ -35,7 +35,11 @@ public class SecretDiary {
     private LocalDateTime sdWriteDate;
 
     @Builder
+<<<<<<< HEAD
     public SecretDiary(long sdNum, String sdTitle, String sdContent, String sdUserEmail, String sdPassword, LocalDateTime sdWriteDate) {
+=======
+    public SecretDiary(Long sdNum, String sdTitle, String sdContent, String sdUserEmail, String sdPassword, LocalDateTime sdWriteDate) {
+>>>>>>> afbf352fc8178af3d8dc1344191041d0759552bf
         this.sdNum = sdNum;
         this.sdTitle = sdTitle;
         this.sdContent = sdContent;

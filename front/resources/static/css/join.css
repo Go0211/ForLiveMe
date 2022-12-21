@@ -1,0 +1,121 @@
+@import "cssInput/reset.css";
+@import "cssInput/color.css";
+
+/* All */
+* {
+    color: var(--fontColor);
+}
+html, body {
+    font-size: 62.5%;       /* 10px */
+}
+main {
+    width: 70%;
+    margin : 0 auto;
+    padding-top: 8rem;
+}
+
+/* fontSize */
+.font-xs {
+    font-size: 1.2rem;
+}
+.font-sm {
+    font-size:  1.4rem;
+}
+.font-base {
+    font-size: 1.6rem
+}
+.font-lg {
+    font-size:  1.8rem;
+}
+.font-xl {
+    font-size:  2rem;
+}
+
+/* float */
+.floatLeft {
+    float: left;
+}
+.floatRight {
+    float: right;
+}
+
+
+/* text-align */
+.textLeft {
+    text-align: left;
+}
+.textCenter {
+    text-align: center;
+}
+.textRight {
+    text-align: right;
+}
+
+
+/* text-decoration */
+.textDecoration {
+    text-decoration: var(--fontColor) underline;
+}
+
+/* button */
+.buttonSet {
+    color: white;
+    background-color: var(--mainColor);
+    border: 0;
+    border-radius: 1rem;
+}
+
+/* frameSize */
+.innerFrame{
+    width: 75%;
+    height: auto;
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* ------------------------------------------- */
+main #join {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+main #join .joinBox {
+    width: 100%;
+    height: auto;
+    border: 0.1rem solid #333333;
+    padding: 5rem;
+    box-sizing: border-box;
+}
+main #join .joinBox img {
+    width: 25%;
+}
+main #join .joinBox input {
+    width: 100%;
+    height: 6rem;
+    margin-bottom: 3.5rem;
+    box-sizing: border-box;
+}
+main #join .joinBox button {
+    width: 100%;
+    height: 6rem;
+    margin-bottom: 3.5rem;
+    box-sizing: border-box;
+    border-radius: 0;
+}
+main #join .joinBox .otherPlatform {
+    width: 40rem;
+    height: 8rem;
+    display: flex;
+    margin: 0 auto;
+}
+main #join .joinBox .otherPlatform a{
+    width: 8rem;
+    font-size: 2.4rem;
+    padding: 2.8rem 0;
+    margin: 0 1rem;
+    color: white;
+    border-radius: 50%;
+}

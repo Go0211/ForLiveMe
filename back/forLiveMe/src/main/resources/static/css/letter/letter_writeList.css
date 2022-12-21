@@ -1,0 +1,151 @@
+@import "../cssInput/reset.css";
+@import "../cssInput/color.css";
+@import "../header.css";
+
+
+/* All */
+* {
+    color: var(--fontColor);
+}
+html, body {
+    font-size: 62.5%;       /* 10px */
+}
+main {
+    width: 70%;
+    margin : 0 auto;
+    padding-top: 8rem;
+}
+
+/* fontSize */
+.font-xs {
+    font-size: 1.2rem;
+}
+.font-sm {
+    font-size:  1.4rem;
+}
+.font-base {
+    font-size: 1.6rem
+}
+.font-lg {
+    font-size:  1.8rem;
+}
+.font-xl {
+    font-size:  2rem;
+}
+h1 {
+    font-size: 3rem;
+}
+h2 {
+    font-size:  2.4rem;
+}
+
+
+/* float */
+.floatLeft {
+    float: left;
+}
+.floatRight {
+    float: right;
+}
+
+
+/* text-align */
+.textLeft {
+    text-align: left;
+}
+.textCenter {
+    text-align: center;
+}
+.textRight {
+    text-align: right;
+}
+
+/* text-decoration */
+.textDecoration {
+    text-decoration: var(--fontColor) underline;
+}
+
+/* button */
+.buttonSet {
+    color: white;
+    background-color: var(--mainColor);
+    border: 0;
+    border-radius: 1rem;
+}
+
+/* frameSize */
+.innerFrame{
+    width: 75%;
+    height: auto;
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* ----------------------------------------------------------- */
+/* main */
+main #index {
+    width: 100%;
+    height: 25rem;
+    margin: 5rem 0 0;
+    position: relative;
+}
+main #index h1 {
+    margin-bottom: 2rem;
+}
+main #index h2 {
+    margin-bottom: 4rem;
+}
+main #index .letterWrite {
+    display: flex;
+    width: 100%;
+    height: 4rem;
+    margin-bottom: 2rem;   
+}
+main #index .letterWrite input {
+    width: 80%;
+    height: 100%;
+}
+main #index .letterWrite .writeButton{
+    margin-left: 5%;
+    width: 15%;
+    height: 100%;
+}
+
+
+main #unLetterWrite{
+    width: 100%;
+    height: auto;
+    margin: 15rem 0 0;
+    position: relative;
+}
+main #unLetterWrite h1 {
+    margin-bottom: 2rem;
+}
+main #unLetterWrite h2 {
+    margin-bottom: 4rem;
+}
+main #unLetterWrite .letterFrame {
+    width: 100%;
+    height: 7rem;
+}
+main #unLetterWrite .letterFrame h2{
+    width: 100%;
+    height: 3rem;
+}
+main #unLetterWrite .letterFrame .letterWrite {
+    width: 100%;
+    height: 4rem;
+    display: flex;
+}
+main #unLetterWrite .letterFrame .letterWrite input {
+    width: 80%;
+    height: 100%;
+}
+main #unLetterWrite .letterFrame .letterWrite .writeButton{
+    margin-left: 5%;
+    width: 15%;
+    height: 100%;
+}

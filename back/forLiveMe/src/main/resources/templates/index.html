@@ -12,7 +12,7 @@
     <header>
         <th:block th:replace="~{/fragments/header.html :: header(${userInfo})}"></th:block>
     </header>
-    <main class="textCenter">
+    <main class="textCenter font-base">
         <div id="moveImage">
             <img class="mainMoveImage" src="/icon/main_image_sample.jpg" alt="메인화면 맨 위 이미지">
             <div class="moveDoingArrow">
@@ -26,20 +26,27 @@
                     저희 ForLiveMe에서<br>
                     힘든 일, 슬픈 일 모두 놓아두고 가세요.
                 </h1>
-                <h1>추천서비스</h1>
+                <h2>추천서비스</h2>
                 <p class="textRight textDecoration">더보기</p>
                 <div class="serviceFrame">
                     <div class="serviceForm">
                         <img src="/icon/ForLiveMe_Logo.png" alt="편지 서비스 이미지">
-                        <button class="buttonSet">버튼</button>
+                        <button type="button"  class="buttonSet"
+                                th:onclick="|location.href='@{/secretDiaryList}'|">편지</button>
                     </div>
                     <div class="serviceForm">
                         <img src="/icon/ForLiveMe_Logo.png" alt="비밀일기 서비스 이미지">
-                        <button type="button"  class="buttonSet" onclick="location.href='/secretDiaryWrite';">버튼</button>
+                        <button type="button"  class="buttonSet"
+                                th:onclick="|location.href='@{/secretDiaryList}'|">
+                            버튼
+                        </button>
                     </div>
                     <div class="serviceForm">
                         <img src="/icon/ForLiveMe_Logo.png" alt="공감게시판 서비스 이미지">
-                        <button class="buttonSet">버튼</button>
+                        <button type="button"  class="buttonSet"
+                                th:onclick="|location.href='@{/empathyBoardList}'|">
+                            공감게시판
+                        </button>
                     </div>
                 </div>
             </div>
@@ -61,6 +68,7 @@
                     저희 ForLiveMe에서 준비한<br>
                     회원분들을 위해 제공하는 이벤트
                 </h1>
+                <h2>추천이벤트</h2>
                 <p class="textRight textDecoration">더보기</p>
                 <div class="companyFrame">
                     <div class="companyForm">

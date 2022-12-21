@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link th:href="@{/icon/ForLiveMe_Logo.png}" rel="icon"/>
+    <link th:href="@{/css/board/board_view.css}" rel="stylesheet"/>
+    <title>게시판</title>
+</head>
+<body>
+<header>
+    <th:block th:replace="/fragments/header.html :: header(${userInfo})"></th:block>
+</header>
+<main class="textLeft font-base">
+    <div id="index">
+        <div class="innerFrame">
+            <h1>게시판</h1>
+        </div>
+    </div>
+    <div id="view">
+        <div class="innerFrame">
+            <div class="title" th:text="${empathyBoardDto.ebTitle}"></div>
+            <div class="content" th:text="${empathyBoardDto.ebContent}"></div>
+            <div class="good" th:text="${empathyBoardDto.ebGood}"></div>
+            <div class="view" th:text="${empathyBoardDto.ebView}"></div>
+            <div class="buttonFrame">
+                <button class="updateButton buttonSet"
+                        th:onclick="|location.href='@{/empathyBoardList/update/{listNum}(listNum=${empathyBoardDto.ebNum})}'|">
+                    수정
+                </button>
+                <button class="deleteButton buttonSet"
+                        th:onclick="|location.href='@{/empathyBoardList/delete/{listNum}(listNum=${empathyBoardDto.ebNum})}'|">
+                    삭제
+                </button>
+            </div>
+        </div>
+
+    </div>
+    </form>
+</main>
+<footer>
+
+</footer>
+</body>
+</html>
