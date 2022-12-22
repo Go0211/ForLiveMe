@@ -25,7 +25,9 @@ public class SecretDiaryService {
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     private static final int BLOCK_PAGE_NUM_COUNT = 5; // 블럭에 존재하는 페이지 번호 수
-    private static final int PAGE_POST_COUNT = 10000; // 한 페이지에 존재하는 게시글 수
+    private static final int PAGE_POST_COUNT = 10; // 한 페이지에 존재하는 게시글 수
+
+    private static final int PAGE_TEN_MILLION = 10000000;
 
     private SecretDiaryDto convertEntityToDto(SecretDiary secretDiary) {
         return SecretDiaryDto.builder()
@@ -51,7 +53,7 @@ public class SecretDiaryService {
 //                pageNum - 1, PAGE_POST_COUNT, Sort.by(Sort.Direction.ASC, "sdWriteDate")));
 
         Page<SecretDiary> page = secretDiaryRepository.findAll(PageRequest.of(
-                pageNum - 1, PAGE_POST_COUNT, Sort.by(Sort.Direction.ASC, "sdWriteDate")));
+                pageNum - 1, PAGE_TEN_MILLION, Sort.by(Sort.Direction.ASC, "sdWriteDate")));
 
         List<SecretDiary> boardEntities = page.getContent();
         List<SecretDiaryDto> secretDiaryDtoList = new ArrayList<>();
@@ -127,17 +129,17 @@ public class SecretDiaryService {
     }
 
     public Integer[] getPageList(Integer curPageNum, String user) {
-        Integer[] pageList = new Integer[BLOCK_PAGE_NUM_COUNT];
+        Integer[] pageList = new Integer[PAGE_TEN_MILLION];
 
         // 총 게시글 갯수
         Double postsTotalCount = Double.valueOf(this.getUserSecretDiaryCount(user));
 
         // 총 게시글 기준으로 계산한 마지막 페이지 번호 계산 (올림으로 계산)
-        Integer totalLastPageNum = (int)(Math.ceil((postsTotalCount/PAGE_POST_COUNT)));
+        Integer totalLastPageNum = (int)(Math.ceil((postsTotalCount/PAGE_TEN_MILLION)));
 
         // 현재 페이지를 기준으로 블럭의 마지막 페이지 번호 계산
-        Integer blockLastPageNum = (totalLastPageNum > curPageNum + BLOCK_PAGE_NUM_COUNT)
-                ? curPageNum + BLOCK_PAGE_NUM_COUNT
+        Integer blockLastPageNum = (totalLastPageNum > curPageNum + PAGE_TEN_MILLION)
+                ? curPageNum + PAGE_TEN_MILLION
                 : totalLastPageNum;
 
         // 페이지 시작 번호 조정

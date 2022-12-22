@@ -30,9 +30,14 @@
         <div class="innerFrame textLeft">
             <h1>내 편지함</h1>
             <div class="letterFrame">
-                <h2>내가 그에게 이름을 불렸을 때, 나는 그에게로 가서 꽃이 되었다.</h2>
-                <div class="imgFrame">
-                    <img src="/icon/left_arrow.png" alt="화살표">
+                <div th:each="list : ${letterList}">
+                    <div>
+                        <h2 th:text="${list.leContent}"></h2>
+                        <p th:text="${list.leWriteDate}"></p>
+                    </div>
+                    <div class="imgFrame">
+                        <img src="/icon/left_arrow.png" alt="화살표">
+                    </div>
                 </div>
             </div>
         </div>

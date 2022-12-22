@@ -1,16 +1,13 @@
 package com.dontleaveme.forliveme.service;
 
 import com.dontleaveme.forliveme.dto.EmpathyBoardDto;
-import com.dontleaveme.forliveme.dto.SecretDiaryDto;
 import com.dontleaveme.forliveme.persistence.dao.EmpathyBoardRepository;
 import com.dontleaveme.forliveme.persistence.model.EmpathyBoard;
-import com.dontleaveme.forliveme.persistence.model.SecretDiary;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -27,6 +24,7 @@ public class EmpathyBoardService {
     private static final int BLOCK_PAGE_NUM_COUNT = 5; // 블럭에 존재하는 페이지 번호 수
     private static final int PAGE_POST_COUNT = 10; // 한 페이지에 존재하는 게시글 수
 
+    private static final int PAGE_TEN_MILLION = 10000000;
     private EmpathyBoardDto convertEntityToDto(EmpathyBoard empathyBoard) {
         return EmpathyBoardDto.builder()
                 .ebNum(empathyBoard.getEbNum())

@@ -1,8 +1,6 @@
 package com.dontleaveme.forliveme.controller;
 
 import com.dontleaveme.forliveme.dto.EmpathyBoardDto;
-import com.dontleaveme.forliveme.dto.SecretDiaryDto;
-import com.dontleaveme.forliveme.persistence.model.EmpathyBoard;
 import com.dontleaveme.forliveme.service.EmpathyBoardService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;

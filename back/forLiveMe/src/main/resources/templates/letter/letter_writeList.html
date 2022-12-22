@@ -26,20 +26,22 @@
             </div>
         </div>
     </div>
-    <div id="unLetterWrite">
-        <div class="innerFrame textLeft">
-            <h1>미답장 편지</h1>
-            <div class="letterFrame">
-                <h2>내가 그에게 이름을 불렸을 때, 나는 그에게로 가서 꽃이 되었다.</h2>
-                <div class="letterWrite">
-                    <input type="text" placeholder="한 문장으로 작성해주세요.">
-                    <button class="writeButton buttonSet">
-                        전송
-                    </button>
+    <form th:action="@{/letterWrite}" method="post" th:object="${letterDto}">
+        <div id="unLetterWrite">
+            <div class="innerFrame textLeft">
+                <h1>미답장 편지</h1>
+                <div class="letterFrame">
+                    <div class="letterWrite">
+                        <input type="text" placeholder="한 문장으로 작성해주세요."
+                               name="leContent">
+                        <button class="writeButton buttonSet">
+                            전송
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </form>
 </main>
 <footer>
 
