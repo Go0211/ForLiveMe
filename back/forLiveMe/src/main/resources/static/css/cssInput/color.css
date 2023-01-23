@@ -3,7 +3,13 @@
     /* Color */
     --mainColor : #6EAA5E;
     --subColor : #DBEAD5;
-    --backgroundColor : #F8FDF9;
-    --fontColor : #333333;
+
+    /* Font Color */
+    --fontBaseColor : #333333;
+    --fontgrayColor : #484b53;
     --fontHoverColor : #dddddd;
+
+    /* BackGround Color */
+    --lightGreenBackGroundColor : #F8FDF9;
+    --grayBackGroundColor: #ebebeb;
 }

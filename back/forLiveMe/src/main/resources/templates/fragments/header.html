@@ -1,55 +1,61 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <th:block th:fragment="header(userInfo)">
 
-<nav th:if="${userInfo != null}" class="headerBox headerBox_login font-sm" >
+<nav th:if="${userInfo != null}" class="headerBox headerBox_login font-sm fontBold" >
     <ul class="headerBoxLeft floatLeft">
         <li>
-            <img class="headerLogo" src="/icon/ForLiveMe_Logo.png" alt="ForLiveMe_Logo">
+            <a th:href="@{/index}">
+                <img class="headerLogo" src="/icon/ForLiveMe_Logo.png" alt="ForLiveMe_Logo">
+            </a>
         </li>
         <li>
-            <a href="">편지</a>
+            <a th:href="@{/letterMyList}">편지</a>
         </li>
         <li>
-            <a href="">비밀일기</a>
+            <a th:href="@{/secretDiaryList}">비밀일기</a>
         </li>
         <li>
-            <a href="">공감게시판</a>
+            <a th:href="@{/empathyBoardList}">공감게시판</a>
         </li>
         <li>
-            <a href="">For You</a>
+            <a th:href="@{/index}">For You(준비중)</a>
         </li>
     </ul>
     <ul class="headerBoxRight floatRight">
         <li>
-            <img class="userImage" src="/icon/ForLiveMe_Logo.png" alt="">
+            <a href="">
+                <img class="userImage" src="/icon/ForLiveMe_Logo.png" alt="">
+            </a>
         </li>
         <li>
             <p th:text="${userInfo}"></p>
         </li>
         <li>
-            <button id="myPage" class="buttonSet">마이페이지</button>
+            <button id="myPage" class="buttonSet">mypage(준비)</button>
         </li>
         <li>
             <img class="alarm" src="/icon/alarm.png" alt="알림">
         </li>
     </ul>
 </nav>
-<nav th:unless="${userInfo != null}" class="headerBox headerBox_logout font-sm">
+<nav th:unless="${userInfo != null}" class="headerBox headerBox_logout font-sm fontBold">
     <ul class="headerBoxLeft floatLeft">
         <li>
-            <img class="headerLogo" src="/icon/ForLiveMe_Logo.png" alt="ForLiveMe_Logo">
+            <a th:href="@{/index}">
+                <img class="headerLogo" src="/icon/ForLiveMe_Logo.png" alt="ForLiveMe_Logo">
+            </a>
         </li>
         <li>
-            <a href="">편지</a>
+            <a th:href="@{/letterMyList}">편지</a>
         </li>
         <li>
-            <a href="">비밀일기</a>
+            <a th:href="@{/secretDiaryList}">비밀일기</a>
         </li>
         <li>
-            <a href="">공감게시판</a>
+            <a th:href="@{/empathyBoardList}">공감게시판</a>
         </li>
         <li>
-            <a href="">For You</a>
+            <a th:href="@{/index}">For You(준비중)</a>
         </li>
     </ul>
     <ul class="headerBoxRight floatRight">

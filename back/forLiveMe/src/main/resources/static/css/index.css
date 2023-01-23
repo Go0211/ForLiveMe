@@ -5,14 +5,13 @@
 
 /* All */
 * {
-    color: var(--fontColor);
+    color: var(--fontBaseColor);
+    font-family: arial, sans-serif;
 }
 html, body {
     font-size: 62.5%;       /* 10px */
 }
 main {
-    width: 70%;
-    margin : 0 auto;
     padding-top: 8rem;
 }
 
@@ -39,6 +38,10 @@ h2 {
     font-size:  2.4rem;
 }
 
+/* font-weight*/
+.fontBold {
+    font-weight: bold;
+}
 
 /* float */
 .floatLeft {
@@ -62,7 +65,7 @@ h2 {
 
 /* text-decoration */
 .textDecoration {
-    text-decoration: var(--fontColor) underline;
+    text-decoration: var(--fontBaseColor) underline;
 }
 
 /* button */
@@ -74,6 +77,13 @@ h2 {
 }
 
 /* frameSize */
+.mainWidthSize {
+    width: 70%;
+    height: 100%;
+    position: relative;
+    margin : 0 auto;
+}
+
 .innerFrame{
     width: 75%;
     height: auto;
@@ -83,38 +93,52 @@ h2 {
     left: 50%;
     transform: translate(-50%, -50%);
 }
-
 /* ----------------------------------------------------------- */
 /* main */
 main #moveImage {
     width: 100%;
-    height: auto;
+    height: 70rem;
     position: relative;
 }
-main #moveImage .mainMoveImage {
-    z-index: 1;
-    width: 100%;
+main #moveImage .moveImageFrame {
+    overflow: hidden;
 }
-main #moveImage .moveDoingArrow {
+main #moveImage .moveImageFrame .imageSlider {
+    z-index: 1;
+    transition: 0.5s;
+}
+main #moveImage .moveImageFrame .imageSlider li {
+    float:left;
+}
+main #moveImage .moveImageFrame .imageSlider li img {
+    /*vertical-align: top;*/
+}
+main #moveImage .imageSliderArrow {
     z-index: 2;
-    width: 75%;
+    width: 65%;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
-main #moveImage .moveDoingArrow img:hover { /* leftArrow + rightArrow */
+main #moveImage .imageSliderArrow img:hover { /* leftArrow + rightArrow */
     opacity: 0.8;
 }
 
 main #recommendService {
     width: 100%;
-    height: 60rem;
-    position: relative;
-    background-color: var(--backgroundColor);
+    height: 80rem;
+    background-color: var(--grayBackGroundColor);
 }
 main #recommendService h1 {
     margin-bottom: 6rem;
+}
+main #recommendService h1 small {
+    font-size: 3.2rem;
+    color: var(--mainColor) ;
+}
+main #recommendService h2 {
+    margin-bottom: 1.5rem;
 }
 main #recommendService p {
     margin-bottom: 1rem ;
@@ -129,6 +153,7 @@ main #recommendService .serviceFrame {
 main #recommendService .serviceFrame .serviceForm {
     width: 30%;
     height: 30rem;
+    background-color: white;
 }
 main #recommendService .serviceFrame .serviceForm:nth-child(2){
     margin: 0 5%;
@@ -144,8 +169,8 @@ main #recommendService .serviceFrame .serviceForm button{
 
 main #simpleTest {
     width: 100%;
-    height: 60rem;
-    position: relative;
+    height: 80rem;
+    /*position: relative;*/
 }
 main #simpleTest button{
     width: 50%;
@@ -156,9 +181,9 @@ main #simpleTest button{
 
 main #company {
     width: 100%;
-    height: 60rem;
-    position: relative;
-    background-color: var(--backgroundColor);
+    height: 80rem;
+    /*position: relative;*/
+    background-color: var(--grayBackGroundColor);
 }
 main #company h1 {
     margin-bottom: 6rem;
@@ -191,8 +216,8 @@ main #company .companyFrame .companyForm button{
 
 main #record {
     width: 100%;
-    height: 60rem;
-    position: relative;
+    height: 80rem;
+    /*position: relative;*/
 }
 main #record h1 {
     margin-bottom: 6rem;

@@ -4,46 +4,65 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script th:src="@{/js/ImageSlide.js}"></script>
     <link th:href="@{/icon/ForLiveMe_Logo.png}" rel="icon"/>
-    <link th:href="@{/css/index.css}" rel="stylesheet" />
+    <link th:href="@{/css/index.css}" rel="stylesheet"/>
     <title>ForLiveMe</title>
 </head>
 <body>
-    <header>
-        <th:block th:replace="~{/fragments/header.html :: header(${userInfo})}"></th:block>
-    </header>
-    <main class="textCenter font-base">
-        <div id="moveImage">
-            <img class="mainMoveImage" src="/icon/main_image_sample.jpg" alt="메인화면 맨 위 이미지">
-            <div class="moveDoingArrow">
-                <img class="leftArrow floatLeft" src="/icon/left_arrow.png" alt="왼쪽 화살표">
-                <img class="rightArrow floatRight" src="/icon/right_arrow.png" alt="오른쪽 화살표">
+<header>
+    <th:block th:replace="~{/fragments/header.html :: header(${userInfo})}"></th:block>
+</header>
+<main class="textCenter font-base">
+    <div id="moveImage">
+        <div class="moveImageFrame">
+            <ul class="imageSlider">
+                <li><img src="/icon/main_image_sample.jpg" alt=""></li>
+                <li><img src="/icon/main_image_sample.jpg" alt=""></li>
+                <li><img src="/icon/main_image_sample.jpg" alt=""></li>
+                <li><img src="/icon/main_image_sample.jpg" alt=""></li>
+                <li><img src="/icon/main_image_sample.jpg" alt=""></li>
+            </ul>
+            <div class="imageSliderArrow">
+                <a href="" class="floatLeft">
+                    <img class="prev leftArrow" src="/icon/left_arrow.png" alt="왼쪽 화살표"/>
+                </a>
+                <a href="" class="floatRight">
+                    <img class="next rightArrow" src="/icon/right_arrow.png" alt="오른쪽 화살표"/>
+                </a>
             </div>
+
         </div>
-        <div id="recommendService">
+    </div>
+    <div id="recommendService">
+        <div class="mainWidthSize">
             <div class="innerFrame">
                 <h1 class="textLeft">
-                    저희 ForLiveMe에서<br>
+                    저희
+                    <small class="fontBold">ForLiveMe</small>
+                    에서<br>
                     힘든 일, 슬픈 일 모두 놓아두고 가세요.
                 </h1>
-                <h2>추천서비스</h2>
+                <h2 class="fontBold">추천서비스</h2>
+                <p>편지 - 비밀일기 - 공감게시판</p>
                 <p class="textRight textDecoration">더보기</p>
                 <div class="serviceFrame">
                     <div class="serviceForm">
                         <img src="/icon/ForLiveMe_Logo.png" alt="편지 서비스 이미지">
-                        <button type="button"  class="buttonSet"
-                                th:onclick="|location.href='@{/letterMyList}'|">편지</button>
+                        <button type="button" class="buttonSet"
+                                th:onclick="|location.href='@{/letterMyList}'|">편지
+                        </button>
                     </div>
                     <div class="serviceForm">
                         <img src="/icon/ForLiveMe_Logo.png" alt="비밀일기 서비스 이미지">
-                        <button type="button"  class="buttonSet"
+                        <button type="button" class="buttonSet"
                                 th:onclick="|location.href='@{/secretDiaryList}'|">
-                            버튼
+                            비밀일기
                         </button>
                     </div>
                     <div class="serviceForm">
                         <img src="/icon/ForLiveMe_Logo.png" alt="공감게시판 서비스 이미지">
-                        <button type="button"  class="buttonSet"
+                        <button type="button" class="buttonSet"
                                 th:onclick="|location.href='@{/empathyBoardList}'|">
                             공감게시판
                         </button>
@@ -51,7 +70,9 @@
                 </div>
             </div>
         </div>
-        <div id="simpleTest">
+    </div>
+    <div id="simpleTest">
+        <div class="mainWidthSize">
             <div class="innerFrame">
                 <h1>
                     간단한 검사로 나에게 필요한 것들을 알려드릴게요!<br>
@@ -62,7 +83,9 @@
                 </button>
             </div>
         </div>
-        <div id="company">
+    </div>
+    <div id="company">
+        <div class="mainWidthSize">
             <div class="innerFrame">
                 <h1 class="textLeft">
                     저희 ForLiveMe에서 준비한<br>
@@ -84,9 +107,11 @@
                         <button class="buttonSet">버튼</button>
                     </div>
                 </div>
-            </div>  
+            </div>
         </div>
-        <div id="record">
+    </div>
+    <div id="record">
+        <div class="mainWidthSize">
             <div class="innerFrame">
                 <h1 class="textLeft">
                     이미 (회원수)명의 사람들이<br>
@@ -97,7 +122,7 @@
                         <img src="/icon/ForLiveMe_Logo.png" alt="편지 서비스 이미지">
                         <div class="recordText textLeft">
                             <p>누적멤버</p>
-                            <p>멤버 수</p>  
+                            <p>멤버 수</p>
                             <p>(2022년 9월 26일 기준)</p>
                         </div>
                     </div>
@@ -118,12 +143,13 @@
                         </div>
                     </div>
                 </div>
-            </div>  
+            </div>
         </div>
-    </main>
-    <footer>
+    </div>
+</main>
+<footer>
 
-    </footer>
+</footer>
 </body>
 
 </html>

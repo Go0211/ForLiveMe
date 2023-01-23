@@ -8,3 +8,11 @@ spring:
     prefix : classpath:templates/
     suffix : .html
     cache : false
+  devtools:
+    livereload:
+      enabled: true
+    remote:
+      restart:
+        enabled: false
+  freemarker:
+    cache: false

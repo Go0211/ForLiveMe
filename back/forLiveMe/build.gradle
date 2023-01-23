@@ -29,12 +29,14 @@ dependencies {
 	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
 
+
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 
 	runtimeOnly 'com.mysql:mysql-connector-j'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
@@ -48,6 +50,10 @@ bootWar{
 war{
 	archiveName("ROOT.war")
 }
+test {
+	useJUnitPlatform()
+}
+
 
 tasks.named('test') {
 	useJUnitPlatform()

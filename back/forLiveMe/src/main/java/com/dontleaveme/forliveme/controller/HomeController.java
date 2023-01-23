@@ -13,8 +13,6 @@ import javax.servlet.http.HttpSession;
 @RequiredArgsConstructor
 public class HomeController {
 
-    private final HttpSession httpSession;
-
     @GetMapping({ "/", "/index" })
     public String index(Model model, Authentication authentication) {
         if (authentication != null) {
