@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--    <script th:src="@{/vendor/jquery/jquery.min.js}"></script>-->
+<!--    <script th:src="@{/js/CheckBoxAllSelect.js}"></script>-->
+    <link th:href="@{/icon/ForLiveMe_Logo.png}" rel="icon"/>
+    <link th:href="@{/css/joinTerms.css}" rel="stylesheet"/>
+    <title>ForLiveMe</title>
+</head>
+<body>
+<div class="font-base">
+    <div id="joinTerms">
+        <div id="logo">
+            <img src="/icon/ForLiveMe_Logo.png" alt="">
+        </div>
+        <form th:action="@{/join}" method="post" id="joinForm" th:object="${termsDto}">
+            <ul class="join_box">
+<!--                <li class="checkBox">-->
+<!--                    <ul class="checkBoxFrame">-->
+<!--                        <li>이용약관, 개인정보 수집 및 이용, 위치정보 이용약관(선택),-->
+<!--                            프로모션 안내 메일 수신(선택)에 <br>모두 동의합니다.-->
+<!--                        </li>-->
+<!--                        <li class="checkAllBtn">-->
+<!--                            <input type="checkbox" id="checkAll" name="checkAll">-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                </li>-->
+                <li class="checkBox">
+                    <ul class="checkBoxFrame">
+                        <li>이용약관 동의(필수)</li>
+                        <li th:if="${termsDto.isTermsUse() == true}" class="checkBtn">
+                            <input type="checkbox" th:field="*{termsUse}" checked>
+                        </li>
+                        <li th:if="${termsDto.isTermsUse() == false}" class="checkBtn">
+                            <input type="checkbox" th:field="*{termsUse}">
+                            <small th:if="${oneMore}">체크를 해주세요!</small>
+                        </li>
+                    </ul>
+                    <textarea name="" id="`"></textarea>
+                </li>
+                <li class="checkBox">
+                    <ul class="checkBoxFrame">
+                        <li>개인정보 수집 및 이용에 대한 안내(필수)</li>
+                        <li th:if="${termsDto.isPersonalInfo() == true}" class="checkBtn">
+                            <input type="checkbox" th:field="*{personalInfo}">
+                        </li>
+                        <li th:if="${termsDto.isPersonalInfo() == false}" class="checkBtn">
+                            <input type="checkbox" th:field="*{personalInfo}">
+                            <small th:if="${oneMore}">체크를 해주세요!</small>
+                        </li>
+                    </ul>
+
+                    <textarea name="" id="``"></textarea>
+                </li>
+                <li class="checkBox">
+                    <ul class="checkBoxFrame">
+                        <li>위치정보 이용약관 동의(선택)</li>
+                        <li th:if="${termsDto.isLocationInfo() == true}" class="checkBtn">
+                            <input type="checkbox" th:field="*{locationInfo}">
+                        </li>
+                        <li th:if="${termsDto.isLocationInfo() == false}" class="checkBtn">
+                            <input type="checkbox" th:field="*{locationInfo}">
+                        </li>
+                    </ul>
+
+                    <textarea name="" id="```"></textarea>
+                </li>
+                <li class="checkBox">
+                    <ul class="checkBoxFrame">
+                        <li>이벤트 등 프로모션 알림 메일 수신(선택)</li>
+                        <li th:if="${termsDto.isEventSend() == true}" class="checkBtn">
+                            <input type="checkbox" th:field="*{eventSend}">
+                        </li>
+                        <li th:if="${termsDto.isEventSend() == false}" class="checkBtn">
+                            <input type="checkbox" th:field="*{eventSend}">
+                        </li>
+                    </ul>
+
+                </li>
+            </ul>
+            <ul class="chooseButton">
+                <li>
+                    <button class="cancelButton" type="button"
+                            th:onclick="|location.href='@{/login}'|">
+                        비동의
+                    </button>
+                </li>
+                <li>
+                    <button class="nextButton" type="submit">
+                        동의
+                    </button>
+                </li>
+            </ul>
+        </form>
+
+    </div>
+</div>
+</body>
+</html>

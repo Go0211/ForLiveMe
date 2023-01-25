@@ -1,0 +1,137 @@
+@import "cssInput/reset.css";
+@import "cssInput/color.css";
+@import "header.css";
+/* All */
+* {
+    color: var(--fontBaseColor);
+    font-family: arial, sans-serif;
+    background-color: var(--grayBackGroundColor);
+}
+html, body {
+    font-size: 62.5%;       /* 10px */
+}
+main {
+    padding-top: 8rem;
+}
+
+/* fontSize */
+.font-xs {
+    font-size: 1.2rem;
+}
+.font-sm {
+    font-size:  1.4rem;
+}
+.font-base {
+    font-size: 1.6rem
+}
+.font-lg {
+    font-size:  1.8rem;
+}
+.font-xl {
+    font-size:  2rem;
+}
+h1 {
+    font-size: 3rem;
+}
+h2 {
+    font-size:  2.4rem;
+}
+
+/* font-weight*/
+.fontBold {
+    font-weight: bold;
+}
+
+/* float */
+.floatLeft {
+    float: left;
+}
+.floatRight {
+    float: right;
+}
+
+
+/* text-align */
+.textLeft {
+    text-align: left;
+}
+.textCenter {
+    text-align: center;
+}
+.textRight {
+    text-align: right;
+}
+
+/*--------------------------------------------------------*/
+
+#joinTerms {
+    width: 45rem;
+    margin: 0 auto;
+}
+
+#joinTerms #logo {
+    width: 50%;
+    height: auto;
+    margin: 0 auto;
+}
+#joinTerms #logo img {
+    width: 100%;
+}
+
+#joinTerms #joinForm .join_box .checkBox {
+    margin-bottom: 5rem;
+}
+#joinTerms #joinForm .join_box .checkBox .checkBoxFrame {
+    position: relative;
+}
+#joinTerms #joinForm .join_box .checkBox .checkBoxFrame li {
+    text-align: left;
+}
+#joinTerms #joinForm .join_box .checkBox .checkBoxFrame li:first-child {
+    width: 85%;
+    padding: 2rem;
+    margin-left: 1rem;
+    font-weight: 600;
+}
+#joinTerms #joinForm .join_box .checkBox .checkBoxFrame li:nth-child(2) {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+#joinTerms #joinForm .join_box .checkBox textarea {
+    width: 100%;
+    height: 9rem;
+    background-color: #f7f7f7;
+    color: #888;
+    border: none;
+}
+
+.chooseButton {
+    border: none;
+    display: flex;
+    margin-bottom: 5rem;
+}
+.chooseButton li {
+    width: 47.5%;
+    height: 6rem;
+    box-sizing: border-box;
+}
+.chooseButton li:first-child {
+    margin-right: 5%;
+}
+.chooseButton li button {
+    display: block;
+    width: 100%;
+    height: 100%;
+    font-size: 2rem;
+    text-align: center;
+    border: none;
+}
+.chooseButton li .cancelButton {
+    background-color: #fff;
+    color:#888;
+}
+.chooseButton li .nextButton {
+    background-color: var(--mainColor);
+    color: #fff;
+}

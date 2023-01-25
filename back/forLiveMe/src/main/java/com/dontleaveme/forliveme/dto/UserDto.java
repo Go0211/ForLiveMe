@@ -27,7 +27,9 @@ public class UserDto {
     private LocalDateTime modifyTime;
 
     @Builder
-    public UserDto(String id, String email, String password, String name,String gender , String dropYN, LocalDateTime lastLoginTime, LocalDateTime registerTime, LocalDateTime modifyTime) {
+    public UserDto(String id, String email, String password, String name,
+                   String gender, String dropYN, LocalDateTime lastLoginTime,
+                   LocalDateTime registerTime, LocalDateTime modifyTime) {
         this.id = id;
         this.email = email;
         this.password = password;

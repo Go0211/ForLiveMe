@@ -47,7 +47,8 @@ public class User implements UserDetails {
     private LocalDateTime modifyTime;
 
     @Builder
-    public User(String id, String email, String password, String name,String gender , String dropYN, LocalDateTime lastLoginTime, LocalDateTime registerTime, LocalDateTime modifyTime) {
+    public User(String id, String email, String password, String name, String gender,
+                String dropYN, LocalDateTime lastLoginTime, LocalDateTime registerTime, LocalDateTime modifyTime) {
         this.id = id;
         this.email = email;
         this.password = password;
