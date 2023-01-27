@@ -88,15 +88,18 @@ h2 {
     text-align: left;
 }
 #joinTerms #joinForm .join_box .checkBox .checkBoxFrame li:first-child {
-    width: 85%;
-    padding: 2rem;
-    margin-left: 1rem;
-    font-weight: 600;
-}
-#joinTerms #joinForm .join_box .checkBox .checkBoxFrame li:nth-child(2) {
     position: absolute;
     top: 50%;
     transform: translate(0, -50%);
+}
+#joinTerms #joinForm .join_box .checkBox .checkBoxFrame li:nth-child(2) {
+    width: 85%;
+    padding: 2.5rem;
+    margin-left: 1rem;
+    font-weight: 600;
+}
+#joinTerms #joinForm .join_box .checkBox .checkBoxFrame li:nth-child(2) .essentialCheck{
+    color : #ff4040;
 }
 #joinTerms #joinForm .join_box .checkBox textarea {
     width: 100%;

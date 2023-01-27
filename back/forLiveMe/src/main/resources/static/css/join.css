@@ -3,7 +3,7 @@
 
 /* All */
 * {
-    color: var(--fontColor);
+    color: var(--fontBaseColor);
 }
 html, body {
     font-size: 62.5%;       /* 10px */
@@ -54,7 +54,7 @@ main {
 
 /* text-decoration */
 .textDecoration {
-    text-decoration: var(--fontColor) underline;
+    text-decoration: var(--fontBaseColor) underline;
 }
 
 /* button */

@@ -24,20 +24,24 @@ public class LoginController {
 
     @GetMapping("login")
     public String login(HttpServletRequest request) {
+        log.info("login");
         return "/login";
     }
 
     @GetMapping("/join")
     public String joinTerms(Model model) {
+        log.info("Join_Start");
+        log.info("Join_Terms_In");
         model.addAttribute("termsDto", new TermsDto());
         model.addAttribute("oneMore", false);
-        log.info("termsIn");
         return "join/joinTerms";
     }
 
     @PostMapping("/join")
     public String joinGoUserInfo(Model model,
                                  @ModelAttribute("termsDto") TermsDto termsDtos) {
+        log.info("Join_Terms_Post");
+
         termsDto = termsDtos;
 
         if (termsDto.isTermsUse() == false || termsDto.isPersonalInfo() == false) {
@@ -54,14 +58,16 @@ public class LoginController {
 
     @GetMapping("/joinResult")
     public String joinUserInfo(Model model) {
+        log.info("Join_UserInfo_In");
         model.addAttribute("userDto", new UserDto());
         return "/join/joinUserInfo";
     }
 
     @PostMapping("/joinResult")
     public String join(@ModelAttribute("userDto")  UserDto userDto){
-        log.info(userDto.getEmail());
+        log.info("Join_UserInfo_Post");
         userService.insertUser(userDto, termsDto);
+        log.info("Join_Finish");
         return "redirect:/login";
     }
 }

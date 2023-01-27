@@ -15,6 +15,8 @@ public class HomeController {
 
     @GetMapping({ "/", "/index" })
     public String index(Model model, Authentication authentication) {
+        log.info("index");
+
         if (authentication != null) {
             model.addAttribute("userInfo", authentication.getName());
         }

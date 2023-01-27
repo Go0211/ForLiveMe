@@ -30,53 +30,53 @@
 <!--                </li>-->
                 <li class="checkBox">
                     <ul class="checkBoxFrame">
-                        <li>이용약관 동의(필수)</li>
                         <li th:if="${termsDto.isTermsUse() == true}" class="checkBtn">
                             <input type="checkbox" th:field="*{termsUse}" checked>
                         </li>
                         <li th:if="${termsDto.isTermsUse() == false}" class="checkBtn">
                             <input type="checkbox" th:field="*{termsUse}">
-                            <small th:if="${oneMore}">체크를 해주세요!</small>
+                            <span class="essentialCheck" th:if="${oneMore}">*</span>
                         </li>
+                        <li>이용약관 동의(필수)</li>
                     </ul>
                     <textarea name="" id="`"></textarea>
                 </li>
                 <li class="checkBox">
                     <ul class="checkBoxFrame">
-                        <li>개인정보 수집 및 이용에 대한 안내(필수)</li>
                         <li th:if="${termsDto.isPersonalInfo() == true}" class="checkBtn">
-                            <input type="checkbox" th:field="*{personalInfo}">
+                            <input type="checkbox" th:field="*{personalInfo}" checked>
                         </li>
                         <li th:if="${termsDto.isPersonalInfo() == false}" class="checkBtn">
                             <input type="checkbox" th:field="*{personalInfo}">
-                            <small th:if="${oneMore}">체크를 해주세요!</small>
+                            <small th:if="${oneMore}">*</small>
                         </li>
+                        <li>개인정보 수집 및 이용에 대한 안내(필수)</li>
                     </ul>
 
                     <textarea name="" id="``"></textarea>
                 </li>
                 <li class="checkBox">
                     <ul class="checkBoxFrame">
-                        <li>위치정보 이용약관 동의(선택)</li>
                         <li th:if="${termsDto.isLocationInfo() == true}" class="checkBtn">
-                            <input type="checkbox" th:field="*{locationInfo}">
+                            <input type="checkbox" th:field="*{locationInfo}" checked>
                         </li>
                         <li th:if="${termsDto.isLocationInfo() == false}" class="checkBtn">
                             <input type="checkbox" th:field="*{locationInfo}">
                         </li>
+                        <li>위치정보 이용약관 동의(선택)</li>
                     </ul>
 
                     <textarea name="" id="```"></textarea>
                 </li>
                 <li class="checkBox">
                     <ul class="checkBoxFrame">
-                        <li>이벤트 등 프로모션 알림 메일 수신(선택)</li>
                         <li th:if="${termsDto.isEventSend() == true}" class="checkBtn">
-                            <input type="checkbox" th:field="*{eventSend}">
+                            <input type="checkbox" th:field="*{eventSend}" checked>
                         </li>
                         <li th:if="${termsDto.isEventSend() == false}" class="checkBtn">
                             <input type="checkbox" th:field="*{eventSend}">
                         </li>
+                        <li>이벤트 등 프로모션 알림 메일 수신(선택)</li>
                     </ul>
 
                 </li>
