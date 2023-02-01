@@ -1,5 +1,5 @@
-@import "cssInput/reset.css";
-@import "cssInput/color.css";
+@import "../cssInput/reset.css";
+@import "../cssInput/color.css";
 
 /* All */
 * {

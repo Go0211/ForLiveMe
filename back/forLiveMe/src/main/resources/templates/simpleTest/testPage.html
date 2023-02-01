@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link th:href="@{/icon/ForLiveMe_Logo.png}" rel="icon"/>
+    <link th:href="@{/css/simpleTest/testPage.css}" rel="stylesheet"/>
+    <title>ForLiveMe</title>
+</head>
+<body>
+<header>
+    <th:block th:replace="~{/fragments/header.html :: header(${userInfo})}"></th:block>
+</header>
+<main>
+    <div id="simpleTest">
+        <div class="test">
+            <form th:action="@{/simpleTest}" method="post">
+                <div class="testFrame" > <!--th:each="test:${simpleTest}"-->
+                    <span>설명</span>
+                    <input type="radio" id="veryBad" name="test" value="veryBad"/>
+                    <label for="veryBad">veryBad</label>
+                    <input type="radio" id="bad" name="test" value="bad"/>
+                    <label for="bad">bad</label>
+                    <input type="radio" id="normal" name="test" value="normal"/>
+                    <label for="normal">normal</label>
+                    <input type="radio" id="good" name="test" value="good"/>
+                    <label for="good">good</label>
+                    <input type="radio" id="veryGood" name="test" value="veryGood" />
+                    <label for="veryGood">veryGood</label>
+                    <button type="submit">test</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+</body>
+</html>

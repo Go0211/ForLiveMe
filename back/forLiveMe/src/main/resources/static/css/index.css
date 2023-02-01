@@ -182,11 +182,17 @@ main #simpleTest button{
 main #company {
     width: 100%;
     height: 80rem;
-    /*position: relative;*/
     background-color: var(--grayBackGroundColor);
 }
 main #company h1 {
     margin-bottom: 6rem;
+}
+main #company h1 small {
+    font-size: 3.2rem;
+    color: var(--mainColor) ;
+}
+main #company h2 {
+    margin-bottom: 1.5rem;
 }
 main #company p {
     margin-bottom: 1rem ;
@@ -201,6 +207,7 @@ main #company .companyFrame {
 main #company .companyFrame .companyForm {
     width: 30%;
     height: 30rem;
+    background-color: white;
 }
 main #company .companyFrame .companyForm:nth-child(2){
     margin: 0 5%;

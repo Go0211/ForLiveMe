@@ -3,7 +3,7 @@
 
 /* All */
 * {
-    color: var(--fontColor);
+    color: var(--fontBaseColor);
 }
 html, body {
     font-size: 62.5%;       /* 10px */
@@ -53,7 +53,7 @@ main {
 
 /* text-decoration */
 .textDecoration {
-    text-decoration: var(--fontColor) underline;
+    text-decoration: var(--fontBaseColor) underline;
 }
 
 /* button */
@@ -84,7 +84,7 @@ main #login {
 main #login .loginBox {
     width: 100%;
     height: auto;
-    padding: 5rem 10rem;
+    padding: 5rem 12rem;
     box-sizing: border-box;
 }
 main #login .loginBox form {
@@ -96,7 +96,7 @@ main #login .loginBox img {
 }
 main #login .loginBox input {
     width: 100%;
-    height: 4.5rem;
+    height: 5rem;
     margin-bottom: 2rem;
     box-sizing: border-box;
 }

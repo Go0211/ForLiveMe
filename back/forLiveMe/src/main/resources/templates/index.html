@@ -78,7 +78,8 @@
                     간단한 검사로 나에게 필요한 것들을 알려드릴게요!<br>
                     지금 나한테 필요한 건 뭘까...?
                 </h1>
-                <button class="buttonSet">
+                <button type="button" class="buttonSet"
+                        th:onclick="|location.href='@{/simpleTest}'|">
                     간단한 검사 하러가기
                 </button>
             </div>
@@ -88,23 +89,30 @@
         <div class="mainWidthSize">
             <div class="innerFrame">
                 <h1 class="textLeft">
-                    저희 ForLiveMe에서 준비한<br>
-                    회원분들을 위해 제공하는 이벤트
+                    <small class="fontBold">ForLiveMe</small>
+                    에서<br>
+                    준비한 추천 이벤트!
                 </h1>
-                <h2>추천이벤트</h2>
+                <h2 class="fontBold">추천이벤트</h2>
                 <p class="textRight textDecoration">더보기</p>
                 <div class="companyFrame">
                     <div class="companyForm">
                         <img src="/icon/ForLiveMe_Logo.png" alt="편지 서비스 이미지">
-                        <button class="buttonSet">버튼</button>
+                        <button type="button" class="buttonSet"
+                                th:onclick="|location.href='@{/letterMyList}'|">편지
+                        </button>
                     </div>
                     <div class="companyForm">
-                        <img src="/icon/ForLiveMe_Logo.png" alt="비밀일기 서비스 이미지">
-                        <button class="buttonSet">버튼</button>
+                        <img src="/icon/ForLiveMe_Logo.png" alt="편지 서비스 이미지">
+                        <button type="button" class="buttonSet"
+                                th:onclick="|location.href='@{/letterMyList}'|">편지
+                        </button>
                     </div>
                     <div class="companyForm">
-                        <img src="/icon/ForLiveMe_Logo.png" alt="공감게시판 서비스 이미지">
-                        <button class="buttonSet">버튼</button>
+                        <img src="/icon/ForLiveMe_Logo.png" alt="편지 서비스 이미지">
+                        <button type="button" class="buttonSet"
+                                th:onclick="|location.href='@{/letterMyList}'|">편지
+                        </button>
                     </div>
                 </div>
             </div>
