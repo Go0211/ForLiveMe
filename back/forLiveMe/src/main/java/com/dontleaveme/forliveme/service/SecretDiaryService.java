@@ -130,6 +130,11 @@ public class SecretDiaryService {
         return secretDiaryRepository.countBySdUserEmail(user);
     }
 
+    @Transactional
+    public String getPassword(Long sdNum) {
+        return secretDiaryRepository.findBySdNum(sdNum).getSdPassword();
+    }
+
     public Integer[] getPageList(Integer curPageNum, String user) {
         Integer[] pageList = new Integer[PAGE_TEN_MILLION];
 

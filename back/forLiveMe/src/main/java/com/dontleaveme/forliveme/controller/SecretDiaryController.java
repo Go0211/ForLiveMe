@@ -6,6 +6,7 @@ import com.dontleaveme.forliveme.service.SecretDiaryService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +23,7 @@ public class SecretDiaryController {
 
     private SecretDiaryService secretDiaryService;
 
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private OtherService otherService;
 
     //비밀일기 작성
@@ -68,6 +70,33 @@ public class SecretDiaryController {
         model.addAttribute("timeCheckList", timeCheckList);
 
         return "/secretDiary/secretDiary_list";
+    }
+
+    @GetMapping("/secretDiaryList/before/{no}")
+    public String secretDiaryViewBefore(Model model, Authentication authentication,
+                                        @PathVariable("no") Long no) {
+        model.addAttribute("userInfo" , authentication.getName());
+        model.addAttribute("password", new String());
+        model.addAttribute("num", no);
+
+        return "/secretDiary/secretDiary_view_before";
+    }
+
+    @PostMapping("/secretDiaryList/before/{no}")
+    public String secretDiaryPwCheck(Model model, Authentication authentication,
+                                     @ModelAttribute("password") String pw,
+                                     @PathVariable("no") Long no) {
+
+        model.addAttribute("userInfo" , authentication.getName());
+
+        String sDPassword = secretDiaryService.getPassword(no);
+        boolean check = bCryptPasswordEncoder.matches(pw, sDPassword);
+
+        if (check) {
+            return "redirect:/secretDiaryList/"+no;
+        } else {
+            return "redirect:/secretDiaryList/before/"+no;
+        }
     }
 
     //비밀일기 보기
