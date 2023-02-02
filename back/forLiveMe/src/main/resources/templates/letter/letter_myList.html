@@ -31,12 +31,14 @@
             <h1>내 편지함</h1>
             <div class="letterFrame">
                 <div class="letterSends"
-                     th:each="list : ${letterList}">
+                     th:each="leList : ${letterList}">
                     <div class="letterSendsContent">
                         <h2 class="letterTitle"
-                            th:text="${list.leContent}"></h2>
+                            th:text="${leList.leContent}"></h2>
                         <p class="letterDate"
-                           th:text="${list.leWriteDate}"></p>
+                           th:text="${timeCheckList
+                                        .get(letterList.indexOf(leList))}">
+                        </p>
                     </div>
                     <div class="imgFrame">
                         <svg xmlns="http://www.w3.org/2000/svg"

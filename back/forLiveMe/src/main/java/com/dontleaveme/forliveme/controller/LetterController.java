@@ -2,6 +2,7 @@ package com.dontleaveme.forliveme.controller;
 
 import com.dontleaveme.forliveme.dto.LetterDto;
 import com.dontleaveme.forliveme.service.LetterService;
+import com.dontleaveme.forliveme.service.OtherService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.security.core.Authentication;
@@ -10,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 @Log4j2
@@ -18,6 +20,8 @@ import java.util.List;
 public class LetterController {
 
     private LetterService letterService;
+
+    private OtherService otherService;
 
     //편지 목록
     @GetMapping("/letterMyList")
@@ -29,9 +33,15 @@ public class LetterController {
 
         List<LetterDto> letterList = letterService.getMyLetterList(pageNum, authentication.getName());
         Integer[] pageList = letterService.getPageList(pageNum, null);
+        List<String> timeCheckList = new ArrayList<>();
+
+        for (int i = 0; i < letterList.size(); i++) {
+            timeCheckList.add(otherService.timeCheck(letterList.get(i).getLeWriteDate()));
+        }
 
         model.addAttribute("letterList", letterList);
         model.addAttribute("pageList", pageList);
+        model.addAttribute("timeCheckList", timeCheckList);
 
         return "/letter/letter_myList";
     }

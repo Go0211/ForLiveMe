@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -57,6 +58,8 @@ public class EmpathyBoardService {
                 empathyBoardDtoList.add(this.convertEntityToDto(empathyBoard));
             }
         }
+
+        Collections.reverse(empathyBoardDtoList);
 
         return empathyBoardDtoList;
     }
@@ -113,6 +116,7 @@ public class EmpathyBoardService {
         for (EmpathyBoard empathyBoard : empathyBoardEntities) {
             empathyBoardDtoList.add(this.convertEntityToDto(empathyBoard));
         }
+
 
         return empathyBoardDtoList;
     }

@@ -12,6 +12,8 @@ html, body {
     font-size: 62.5%;       /* 10px */
 }
 main {
+    width: 100%;
+    margin : 0 auto;
     padding-top: 8rem;
 }
 /* 클릭 이벤트용 */
@@ -101,7 +103,7 @@ h2 {
 /* main */
 main #moveImage {
     width: 100%;
-    height: 70rem;
+    height: auto;
     position: relative;
 }
 main #moveImage .moveImageFrame {
@@ -237,18 +239,22 @@ main #record {
 main #record h1 {
     margin-bottom: 6rem;
 }
+main #record h1 small{
+    color: var(--mainColor);
+    font-size: 3.2rem;
+}
 main #record .recordFrame {
     display: flex;
     justify-content: center;
 }
 main #record .recordFrame .recordForm {
-    width: 30%;
-    height: 30rem;
+    width: 20%;
+    height: 20rem;
 }
 main #record .recordFrame .recordForm:nth-child(2){
-    margin: 0 5%;
+    margin: 0 20%;
 }
-main #record .recordFrame .recordForm img{
+main #record .recordFrame .recordForm svg{
     width: 100%;
     height: auto;
     margin-bottom: 2rem;

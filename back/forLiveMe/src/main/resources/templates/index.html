@@ -51,7 +51,7 @@
             <div class="innerFrame">
                 <h1 class="textLeft">
                     저희
-                    <small class="fontBold">ForLiveMe</small>
+                    <small class="fontBold">ForLiveME</small>
                     에서<br>
                     힘든 일, 슬픈 일 모두 놓아두고 가세요.
                 </h1>
@@ -101,7 +101,7 @@
         <div class="mainWidthSize">
             <div class="innerFrame">
                 <h1 class="textLeft">
-                    <small class="fontBold">ForLiveMe</small>
+                    <small class="fontBold">ForLiveME</small>
                     에서<br>
                     준비한 추천 이벤트!
                 </h1>
@@ -134,32 +134,56 @@
         <div class="mainWidthSize">
             <div class="innerFrame">
                 <h1 class="textLeft">
-                    이미 (회원수)명의 사람들이<br>
-                    ForLiveME와 함께하고 있어요
+                    이미 <small class="fontBold" th:text="${userTotalCount}"></small>명의 사람들이<br>
+                    <small class="fontBold">ForLiveME</small>와 함께하고 있어요
                 </h1>
                 <div class="recordFrame">
                     <div class="recordForm">
-                        <img src="/icon/ForLiveMe_Logo.png" alt="편지 서비스 이미지">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             fill="currentColor"
+                             class="humanIcon"
+                             viewBox="0 0 32 32">
+                            <path d="M21.947,16.332C23.219,14.915,24,13.049,24,11c0-4.411-3.589-8-8-8s-8,3.589-8,8s3.589,8,8,8  c1.555,0,3.003-0.453,4.233-1.224c4.35,1.639,7.345,5.62,7.726,10.224H4.042c0.259-3.099,1.713-5.989,4.078-8.051  c0.417-0.363,0.46-0.994,0.097-1.411c-0.362-0.416-0.994-0.46-1.411-0.097C3.751,21.103,2,24.951,2,29c0,0.553,0.448,1,1,1h26  c0.553,0,1-0.447,1-1C30,23.514,26.82,18.615,21.947,16.332z M10,11c0-3.309,2.691-6,6-6s6,2.691,6,6s-2.691,6-6,6S10,14.309,10,11z  "/>
+                        </svg>
                         <div class="recordText textLeft">
                             <p>누적멤버</p>
-                            <p>멤버 수</p>
-                            <p>(2022년 9월 26일 기준)</p>
+                            <p th:text="${userTotalCount}"></p>
                         </div>
                     </div>
                     <div class="recordForm">
-                        <img src="/icon/ForLiveMe_Logo.png" alt="비밀일기 서비스 이미지">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             fill="currentColor"
+                             class="boardIcon"
+                             viewBox="0 0 64 64">
+                            <path d="M63,15h-6V1H1v48h8v6h22v8h28v-8h4V15z M61,23H11v-6h50V23z M55,3v6H3V3H55z M3,47V11h52v4H9v32H3z M39,41h-8v8H15V31h24   V41z M57,61H33V43h24V61z M59,53V41H41V29H13v22h18v2H11V25h50v28H59z"/>
+                            <g>
+                                <rect height="2" width="2" x="13" y="19"/>
+                                <rect height="2" width="2" x="17" y="19"/>
+                                <rect height="2" width="2" x="21" y="19"/>
+                                <rect height="2" width="20" x="17" y="33"/>
+                                <rect height="2" width="20" x="17" y="37"/>
+                                <rect height="2" width="12" x="17" y="41"/>
+                                <rect height="2" width="12" x="17" y="45"/>
+                                <rect height="2" width="20" x="35" y="45"/>
+                                <rect height="2" width="20" x="35" y="49"/>
+                                <rect height="2" width="20" x="35" y="53"/>
+                                <rect height="2" width="2" x="53" y="57"/>
+                                <rect height="2" width="16" x="35" y="57"/>
+                            </g>
+                        </svg>
                         <div class="recordText textLeft">
                             <p>누적 공감게시글 수</p>
-                            <p>게시글 수</p>
-                            <p>(2022년 9월 26일 기준)</p>
+                            <p th:text="${empathyBoardTotalCount}">게시글 수</p>
                         </div>
                     </div>
                     <div class="recordForm">
-                        <img src="/icon/ForLiveMe_Logo.png" alt="공감게시판 서비스 이미지">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 200 200" >
+                            <path d="M100,18.54C45,18.54,10,52,10,93s35,74.5,90,74.5c9.5,0,22.5-1.5,30-4L159,180c6.5,4,15-1,15-8.5v-36c.5-.5.5-1,1-1,10-15,15-22.5,15-41.5C190,52,155,18.54,100,18.54Zm67.5,89a168.37,168.37,0,0,1-10,17c-2,3.5-3.5,7-3.5,11v19L140,146a18.22,18.22,0,0,0-16-1.5c-4.5,1.5-15,2.5-23.5,2.5-47,0-70-27-70-54.5-.5-27,22.5-54,69.5-54s70,27,70,54.5c0,7.5-1,11-2.5,14.5ZM85,93.54a15,15,0,1,0,15-15A15,15,0,0,0,85,93.54Zm-40,0a15,15,0,1,0,30,0h0a15,15,0,0,0-30,0Zm80,0a15,15,0,0,0,30,0v0a15,15,0,1,0-30,0Z"/>
+                        </svg>
                         <div class="recordText textLeft">
                             <p>누적 편지 수</p>
-                            <p>편지 수</p>
-                            <p>(2022년 9월 26일 기준)</p>
+                            <p th:text="${letterTotalCount}">편지 수</p>
                         </div>
                     </div>
                 </div>

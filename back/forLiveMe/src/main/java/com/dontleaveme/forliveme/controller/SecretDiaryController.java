@@ -1,6 +1,7 @@
 package com.dontleaveme.forliveme.controller;
 
 import com.dontleaveme.forliveme.dto.SecretDiaryDto;
+import com.dontleaveme.forliveme.service.OtherService;
 import com.dontleaveme.forliveme.service.SecretDiaryService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -9,7 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.print.attribute.standard.MediaSize;
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 @Log4j2
@@ -18,6 +21,8 @@ import java.util.List;
 public class SecretDiaryController {
 
     private SecretDiaryService secretDiaryService;
+
+    private OtherService otherService;
 
     //비밀일기 작성
     @GetMapping("/secretDiaryWrite")
@@ -52,9 +57,15 @@ public class SecretDiaryController {
         
         List<SecretDiaryDto> secretDiaryList = secretDiaryService.getSecretDiaryList(pageNum, authentication.getName());
         Integer[] pageList = secretDiaryService.getPageList(pageNum, authentication.getName());
+        List<String> timeCheckList = new ArrayList<>();
+
+        for (int i = 0; i < secretDiaryList.size(); i++) {
+            timeCheckList.add(otherService.timeCheck(secretDiaryList.get(i).getSdWriteDate()));
+        }
 
         model.addAttribute("secretDiaryList", secretDiaryList);
         model.addAttribute("pageList", pageList);
+        model.addAttribute("timeCheckList", timeCheckList);
 
         return "/secretDiary/secretDiary_list";
     }

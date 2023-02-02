@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -63,6 +64,8 @@ public class SecretDiaryService {
                 secretDiaryDtoList.add(this.convertEntityToDto(secretDiary));
             }
         }
+
+        Collections.reverse(secretDiaryDtoList);
 
         return secretDiaryDtoList;
     }
@@ -120,7 +123,6 @@ public class SecretDiaryService {
 
         return secretDiaryDtoList;
     }
-
 
     // 페이징
     @Transactional

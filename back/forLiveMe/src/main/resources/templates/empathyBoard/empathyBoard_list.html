@@ -13,9 +13,6 @@
     <th:block th:replace="/fragments/header.html :: header(${userInfo})"></th:block>
 </header>
 <main class="textLeft">
-    <div id="moveImage">
-        <img class="mainMoveImage" src="/icon/main_image_sample.jpg" alt="메인화면 맨 위 이미지">
-    </div>
     <div id="index">
         <div class="innerFrame">
             <h1>게시판</h1>
@@ -34,7 +31,7 @@
     </div>
     <div id="list">
         <div class="innerFrame">
-            <div class="listContent" style="z-index: 999; margin-top:100px">
+            <div class="listContent">
                 <div th:each="list : ${empathyBoardList}">
                     <a th:href="@{/empathyBoardList/{listNum}(listNum=${list.ebNum})}">
                         <h2 th:text="${list.ebTitle}"></h2>

@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
 @Service
 @RequiredArgsConstructor
 public class UserService {
@@ -25,16 +27,7 @@ public class UserService {
         userRepository.save(userDto.toEntity());
     }
 
-//    public void insertUserTerms(UserDto userDto ,TermsDto termsDto) {
-//        termsDto.setEmail(userDto.getEmail());
-//
-//        termsRepository.save(termsDto.toEntity());
-//    }
-
-//    public void updateLastLoginTime(UserDto userDto) {
-//        userDto.builder()
-//                .lastLoginTime(LocalDateTime.now())
-//                .build();
-//        userRepository.save(userDto.toEntity());
-//    }
+    public Long getUserCount() {
+        return userRepository.count();
+    }
 }

@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,7 +26,7 @@ public class LetterService {
     private final LetterRepository letterRepository;
 
     private static final int BLOCK_PAGE_NUM_COUNT = 5; // 블럭에 존재하는 페이지 번호 수
-    private static final int PAGE_POST_COUNT = 10; // 한 페이지에 존재하는 게시글 수
+    private static final int PAGE_POST_COUNT = 10; // 한 페이지에 x  존재하는 게시글 수
     private static final int PAGE_TEN_MILLION = 10000000;
 
     private LetterDto convertEntityToDto(Letter letter) {
@@ -50,15 +51,18 @@ public class LetterService {
                 pageNum - 1, PAGE_TEN_MILLION, Sort.by(Sort.Direction.ASC, "leWriteDate")));
 
         List<Letter> letterEntities = page.getContent();
-        List<LetterDto> LetterDtoList = new ArrayList<>();
+        List<LetterDto> letterDtoList = new ArrayList<>();
 
         for (Letter letter : letterEntities) {
             if (letter.getLeUserEmail().equals(user)) {
-                LetterDtoList.add(this.convertEntityToDto(letter));
+                letterDtoList.add(this.convertEntityToDto(letter));
             }
         }
 
-        return LetterDtoList;
+        Collections.reverse(letterDtoList);
+
+
+        return letterDtoList;
     }
 
     @Transactional

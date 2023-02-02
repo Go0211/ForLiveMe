@@ -132,7 +132,10 @@ main #myLetterBox .letterFrame .letterSends{
     display: flex;
     padding: 2% 5%;
     box-sizing: border-box;
-    background-color: var(--grayBackGroundColor);
+    border-top: 1px solid var(--fontHoverColor);
+}
+main #myLetterBox .letterFrame .letterSends:last-child {
+    border-bottom: 1px solid var(--fontHoverColor);
 }
 main #myLetterBox .letterFrame .letterSends .letterSendsContent{
     width: 95%;
