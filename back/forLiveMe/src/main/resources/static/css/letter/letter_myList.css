@@ -114,33 +114,49 @@ main #index .letterWrite .writeButton{
     height: 100%;
 }
 
-main #myletterBox{
+main #myLetterBox{
     width: 100%;
     height: auto;
     margin: 15rem 0 0;
     position: relative;
 }
-main #myletterBox h1 {
+main #myLetterBox h1 {
     margin-bottom: 2rem;
 }
-main #myletterBox h2 {
-    margin-bottom: 4rem;
-}
-main #myletterBox .letterFrame {
+main #myLetterBox .letterFrame {
     width: 100%;
-    height: 7rem;
+}
+main #myLetterBox .letterFrame .letterSends{
+    width: 100%;
+    height: 12rem;
     display: flex;
+    padding: 2% 5%;
+    box-sizing: border-box;
+    background-color: var(--grayBackGroundColor);
 }
-main #myletterBox .letterFrame h2{
-    width: 90%;
-    height: 3rem;
+main #myLetterBox .letterFrame .letterSends .letterSendsContent{
+    width: 95%;
+    height: 100%;
 }
-main #myletterBox .letterFrame .imgFrame {
-    width: 10%;
-    height: 3rem;
+main #myLetterBox .letterFrame .letterSends .letterSendsContent .letterTitle {
+    width: 100%;
+    height: 80%;
 }
-main #myletterBox .letterFrame .imgFrame img{
-    width: 10%;
+main #myLetterBox .letterFrame .letterSends .letterSendsContent .letterDate {
+    width: 100%;
+    height: 20%;
+}
+main #myLetterBox .letterFrame .letterSends .imgFrame {
+    position: relative;
+    width: 5%;
+    height: 100%;;
+}
+main #myLetterBox .letterFrame .letterSends .imgFrame svg{
+    position: absolute;
+    width: 100%;
     height: auto;
-    color: var(--fontBaseColor);
+    fill: var(--fontBaseColor);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

@@ -26,17 +26,25 @@
             </div>
         </div>
     </div>
-    <div id="myletterBox">
+    <div id="myLetterBox">
         <div class="innerFrame textLeft">
             <h1>내 편지함</h1>
             <div class="letterFrame">
-                <div th:each="list : ${letterList}">
-                    <div>
-                        <h2 th:text="${list.leContent}"></h2>
-                        <p th:text="${list.leWriteDate}"></p>
+                <div class="letterSends"
+                     th:each="list : ${letterList}">
+                    <div class="letterSendsContent">
+                        <h2 class="letterTitle"
+                            th:text="${list.leContent}"></h2>
+                        <p class="letterDate"
+                           th:text="${list.leWriteDate}"></p>
                     </div>
                     <div class="imgFrame">
-                        <img src="/icon/left_arrow.png" alt="화살표">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             fill="currentColor"
+                             class=""
+                             viewBox="0 0 16 16">
+                            <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                        </svg>
                     </div>
                 </div>
             </div>
