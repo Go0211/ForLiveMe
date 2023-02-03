@@ -14,5 +14,4 @@ public interface SecretDiaryRepository extends JpaRepository<SecretDiary, Long> 
 
     Long countBySdUserEmail(String userEmail);
 
-    String findBySdPassword(String userEmail);
 }

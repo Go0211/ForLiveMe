@@ -1,7 +1,9 @@
 package com.dontleaveme.forliveme.controller;
 
 import com.dontleaveme.forliveme.dto.EmpathyBoardDto;
+import com.dontleaveme.forliveme.dto.SecretDiaryDto;
 import com.dontleaveme.forliveme.service.EmpathyBoardService;
+import com.dontleaveme.forliveme.service.OtherService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.security.core.Authentication;
@@ -10,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 @Log4j2
@@ -18,6 +21,8 @@ import java.util.List;
 public class EmpathyBoardController {
 
     private EmpathyBoardService empathyBoardService;
+
+    private OtherService otherService;
 
     //공감게시판 작성
     @GetMapping("/empathyBoardWrite")
@@ -53,8 +58,15 @@ public class EmpathyBoardController {
         List<EmpathyBoardDto> empathyBoardList = empathyBoardService.getEmpathyBoardList(pageNum, authentication.getName());
         Integer[] pageList = empathyBoardService.getPageList(pageNum);
 
+        List<String> timeCheckList = new ArrayList<>();
+        for (int i = 0; i < empathyBoardList.size(); i++) {
+            timeCheckList.add(otherService.timeCheck(empathyBoardList.get(i).getEbWriteDate()));
+        }
+
+
         model.addAttribute("empathyBoardList", empathyBoardList);
         model.addAttribute("pageList", pageList);
+        model.addAttribute("timeCheckList", timeCheckList);
 
         return "/empathyBoard/empathyBoard_list";
     }
@@ -116,13 +128,20 @@ public class EmpathyBoardController {
     // Service로부터 받은 boardDtoList를 model의 attribute로 전달해준다.
 
     @GetMapping("/empathyBoardList/search")
-    public String search(@RequestParam(value="keyword") String keyword, Model model
-            ,Authentication authentication) {
+    public String search(@RequestParam(value="keyword") String keyword,
+                         Model model, Authentication authentication) {
         model.addAttribute("userInfo" , authentication.getName());
 
         List<EmpathyBoardDto> empathyBoardDtoList = empathyBoardService.searchPosts(keyword);
 
-        model.addAttribute("empathyBoardDtoList", empathyBoardDtoList);
+        List<String> timeCheckList = new ArrayList<>();
+        for (int i = 0; i < empathyBoardDtoList.size(); i++) {
+            timeCheckList.add(otherService.timeCheck(empathyBoardDtoList.get(i).getEbWriteDate()));
+        }
+
+        model.addAttribute("empathyBoardList", empathyBoardDtoList);
+        model.addAttribute("timeCheckList", timeCheckList);
+
 
         return "empathyBoard/empathyBoard_list";
     }

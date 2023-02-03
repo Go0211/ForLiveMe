@@ -18,10 +18,12 @@
             <h1>게시판</h1>
             <h2>공유하고 싶은 것 모두 말하고 가세요.</h2>
             <div class="search">
-                <input type="text" placeholder="원하는 시간/내용으로 일기를 찾아보세요.">
-                <button class="searchButton buttonSet">
-                    검색
-                </button>
+                <form th:action="@{/empathyBoardList/search}" method="get">
+                    <input type="text" name="keyword" th:value="${keyword}" placeholder="원하는 시간/내용으로 일기를 찾아보세요.">
+                    <button class="searchButton buttonSet">
+                        검색
+                    </button>
+                </form>
             </div>
             <button class="write buttonSet"
                     th:onclick="|location.href='@{/empathyBoardWrite}'|">
@@ -32,10 +34,11 @@
     <div id="list">
         <div class="innerFrame">
             <div class="listContent">
-                <div th:each="list : ${empathyBoardList}">
-                    <a th:href="@{/empathyBoardList/{listNum}(listNum=${list.ebNum})}">
-                        <h2 th:text="${list.ebTitle}"></h2>
-                        <p th:text="${list.ebWriteDate}"></p>
+                <div th:each="ebList : ${empathyBoardList}">
+                    <a th:href="@{/empathyBoardList/{listNum}(listNum=${ebList.ebNum})}">
+                        <h2 th:text="${ebList.ebTitle}"></h2>
+                        <p th:text="${timeCheckList
+                                        .get(empathyBoardList.indexOf(ebList))}"></p>
                     </a>
                 </div>
             </div>

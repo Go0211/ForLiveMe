@@ -11,8 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.print.attribute.standard.MediaSize;
-import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,22 +20,21 @@ import java.util.List;
 public class SecretDiaryController {
 
     private SecretDiaryService secretDiaryService;
-
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private OtherService otherService;
 
     //비밀일기 작성
     @GetMapping("/secretDiaryWrite")
-    public String secretDiaryWrite(Model model, Authentication authentication) {
+    public String writeSecretDiary(Model model, Authentication authentication) {
         log.info("SD_Write_Start");
+
         model.addAttribute("secretDiaryDto" , new SecretDiaryDto());
         model.addAttribute("userInfo" , authentication.getName());
+
         return "/secretDiary/secretDiary_write";
     }
-
     @PostMapping("/secretDiaryWrite")
-    public String secretDiaryWrite(@ModelAttribute("secretDiaryDto") SecretDiaryDto secretDiaryDto,
-                                   HttpServletRequest request,
+    public String writeSecretDiary(@ModelAttribute("secretDiaryDto") SecretDiaryDto secretDiaryDto,
                                    Model model,
                                    Authentication authentication) {
         log.info("SD_Write_Post");
@@ -51,16 +48,17 @@ public class SecretDiaryController {
 
     //비밀일기 목록
     @GetMapping({"/secretDiaryList"})
-    public String secretDiaryList(Model model, Authentication authentication,
-                       @RequestParam(value="page", defaultValue = "1") Integer pageNum) {
+    public String secretDiaryList(Model model,
+                                  Authentication authentication,
+                                  @RequestParam(value="page", defaultValue = "1") Integer pageNum) {
         log.info("SD_List");
 
         model.addAttribute("userInfo" , authentication.getName());
         
         List<SecretDiaryDto> secretDiaryList = secretDiaryService.getSecretDiaryList(pageNum, authentication.getName());
         Integer[] pageList = secretDiaryService.getPageList(pageNum, authentication.getName());
-        List<String> timeCheckList = new ArrayList<>();
 
+        List<String> timeCheckList = new ArrayList<>();
         for (int i = 0; i < secretDiaryList.size(); i++) {
             timeCheckList.add(otherService.timeCheck(secretDiaryList.get(i).getSdWriteDate()));
         }
@@ -83,9 +81,9 @@ public class SecretDiaryController {
     }
 
     @PostMapping("/secretDiaryList/before/{no}")
-    public String secretDiaryPwCheck(Model model, Authentication authentication,
-                                     @ModelAttribute("password") String pw,
-                                     @PathVariable("no") Long no) {
+    public String secretDiaryViewBefore(Model model, Authentication authentication,
+                                        @ModelAttribute("password") String pw,
+                                        @PathVariable("no") Long no) {
 
         model.addAttribute("userInfo" , authentication.getName());
 
@@ -158,11 +156,18 @@ public class SecretDiaryController {
     @GetMapping("/secretDiaryList/search")
     public String search(@RequestParam(value="keyword") String keyword, Model model
                          ,Authentication authentication) {
+
         model.addAttribute("userInfo" , authentication.getName());
 
         List<SecretDiaryDto> secretDiaryDtoList = secretDiaryService.searchPosts(keyword);
 
-        model.addAttribute("secretDiaryDtoList", secretDiaryDtoList);
+        List<String> timeCheckList = new ArrayList<>();
+        for (int i = 0; i < secretDiaryDtoList.size(); i++) {
+            timeCheckList.add(otherService.timeCheck(secretDiaryDtoList.get(i).getSdWriteDate()));
+        }
+
+        model.addAttribute("secretDiaryList", secretDiaryDtoList);
+        model.addAttribute("timeCheckList", timeCheckList);
 
         return "secretDiary/secretDiary_list";
     }

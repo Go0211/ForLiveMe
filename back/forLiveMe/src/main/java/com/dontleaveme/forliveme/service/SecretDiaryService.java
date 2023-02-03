@@ -30,7 +30,7 @@ public class SecretDiaryService {
 
     private static final int PAGE_TEN_MILLION = 10000000;
 
-    private SecretDiaryDto convertEntityToDto(SecretDiary secretDiary) {
+    private SecretDiaryDto changeEntityToDto(SecretDiary secretDiary) {
         return SecretDiaryDto.builder()
                 .sdNum(secretDiary.getSdNum())
                 .sdTitle(secretDiary.getSdTitle())
@@ -61,7 +61,7 @@ public class SecretDiaryService {
 
         for (SecretDiary secretDiary : boardEntities) {
             if (secretDiary.getSdUserEmail().equals(user)) {
-                secretDiaryDtoList.add(this.convertEntityToDto(secretDiary));
+                secretDiaryDtoList.add(this.changeEntityToDto(secretDiary));
             }
         }
 
@@ -114,11 +114,14 @@ public class SecretDiaryService {
         List<SecretDiary> secretDiaryEntities = secretDiaryRepository.findBySdTitleContaining(keyword);
         List<SecretDiaryDto> secretDiaryDtoList = new ArrayList<>();
 
+        log.info(keyword);
+        log.info(secretDiaryEntities.get(0).getSdTitle());
+
         if (secretDiaryEntities.isEmpty()) {
             return secretDiaryDtoList;
         }
         for (SecretDiary secretDiary : secretDiaryEntities) {
-            secretDiaryDtoList.add(this.convertEntityToDto(secretDiary));
+            secretDiaryDtoList.add(this.changeEntityToDto(secretDiary));
         }
 
         return secretDiaryDtoList;
