@@ -79,9 +79,23 @@ public class EmpathyBoardController {
 
         model.addAttribute("userInfo" , authentication.getName());
 
+        empathyBoardService.upViewCount(no);
         EmpathyBoardDto empathyBoardDto = empathyBoardService.getEmpathyBoard(no);
 
         model.addAttribute("empathyBoardDto", empathyBoardDto);
+        return "empathyBoard/empathyBoard_view";
+    }
+
+    @PostMapping("/empathyBoardList/{no}")
+    public String empathyBoardGoodUp(@PathVariable("no") Long no, Model model,
+                                     Authentication authentication) {
+        model.addAttribute("userInfo" , authentication.getName());
+
+        empathyBoardService.upGoodCount(no);
+
+        EmpathyBoardDto empathyBoardDto = empathyBoardService.getEmpathyBoard(no);
+        model.addAttribute("empathyBoardDto", empathyBoardDto);
+
         return "empathyBoard/empathyBoard_view";
     }
 

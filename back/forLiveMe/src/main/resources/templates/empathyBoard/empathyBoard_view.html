@@ -22,7 +22,10 @@
         <div class="innerFrame">
             <div class="title" th:text="${empathyBoardDto.ebTitle}"></div>
             <div class="content" th:text="${empathyBoardDto.ebContent}"></div>
-            <div class="good" th:text="${empathyBoardDto.ebGood}"></div>
+            <form th:action="@{/empathyBoardList/{no}(no=${empathyBoardDto.ebNum})}" method="post">
+                <div class="good" th:text="${empathyBoardDto.ebGood}"></div>
+                <button type="submit">추천 업</button>
+            </form>
             <div class="view" th:text="${empathyBoardDto.ebView}"></div>
             <div class="buttonFrame">
                 <button class="updateButton buttonSet"

@@ -43,6 +43,8 @@ public class EmpathyBoardService {
     //일기 작성
     public void writeEmpathyBoard(EmpathyBoardDto empathyBoardDto, String userName) {
         empathyBoardDto.setEbUserEmail(userName);
+        empathyBoardDto.setEbGood(0);
+        empathyBoardDto.setEbView(0);
 
         empathyBoardRepository.save(empathyBoardDto.toEntity());
     }
@@ -153,5 +155,21 @@ public class EmpathyBoardService {
         }
 
         return pageList;
+    }
+
+    public int upViewCount(Long boardNum) {
+        EmpathyBoardDto empathyBoardDto = this.getEmpathyBoard(boardNum);
+        empathyBoardDto.setEbView(empathyBoardDto.getEbView() + 1);
+
+        log.info(empathyBoardRepository.save(empathyBoardDto.toEntity()).getEbView());
+        return empathyBoardRepository.save(empathyBoardDto.toEntity()).getEbView();
+    }
+
+    public int upGoodCount(Long boardNum) {
+        EmpathyBoardDto empathyBoardDto = this.getEmpathyBoard(boardNum);
+        empathyBoardDto.setEbGood(empathyBoardDto.getEbGood() + 1);
+
+        log.info(empathyBoardRepository.save(empathyBoardDto.toEntity()).getEbGood());
+        return empathyBoardRepository.save(empathyBoardDto.toEntity()).getEbGood();
     }
 }

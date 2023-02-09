@@ -46,8 +46,8 @@ public class EmpathyBoardDto {
                 .ebContent(ebContent)
                 .ebUserEmail(ebUserEmail)
                 .ebWriteDate(LocalDateTime.now())
-                .ebGood(0)
-                .ebView(0)
+                .ebGood(ebGood)
+                .ebView(ebView)
                 .build();
     }
 }
