@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link th:href="@{/icon/ForLiveMe_Logo.png}" rel="icon"/>
-    <link th:href="@{/css/board/board_list.css}" rel="stylesheet"/>
+    <link th:href="@{/css/board/empathyBoard_list.css}" rel="stylesheet"/>
     <title>내 편지함</title>
 </head>
 <body>
@@ -33,12 +33,14 @@
     </div>
     <div id="list">
         <div class="innerFrame">
-            <div class="listContent">
-                <div th:each="ebList : ${empathyBoardList}">
+            <div class="listFrame">
+                <div class="listContent"
+                     th:each="ebList : ${empathyBoardList}">
                     <a th:href="@{/empathyBoardList/{listNum}(listNum=${ebList.ebNum})}">
                         <h2 th:text="${ebList.ebTitle}"></h2>
                         <p th:text="${timeCheckList
-                                        .get(empathyBoardList.indexOf(ebList))}"></p>
+                                        .get(empathyBoardList.indexOf(ebList))}">
+                        </p>
                     </a>
                 </div>
             </div>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link th:href="@{/icon/ForLiveMe_Logo.png}" rel="icon"/>
+    <link th:href="@{/css/myPage/myPage.css}" rel="stylesheet"/>
+    <title>게시판</title>
+</head>
+<header>
+    <th:block th:replace="/fragments/header.html :: header(${userInfo})"></th:block>
+</header>
+<main>
+    <div style="display: flex">
+        <div class="menu">
+            <span th:onclick="|location.href='@{/myPage/{infoChangeFrame}(infoChangeFrame=myInfo)}'|">회원정보</span>
+            <span th:onclick="|location.href='@{/myPage/{infoChangeFrame}(infoChangeFrame=myContent)}'|">내 게시물</span>
+            <span th:onclick="|location.href='@{/myPage/{infoChangeFrame}(infoChangeFrame=pwChange)}'|">비밀번호변경</span>
+        </div>
+        <div class="frame">
+            <div th:if="${(chooseFrame == 'myContent' || chooseFrame == 'pwChange')}">
+                <div th:if="${chooseFrame == 'myContent'}">
+                    <th:block th:replace="~{myPage/myContent:: myContent()}"></th:block>
+                </div>
+                <div th:if="${chooseFrame == 'pwChage'}">
+                    <th:block th:replace="~{myPage/pwChange :: pwChange()}"></th:block>
+                </div>
+            </div>
+            <div th:unless="${chooseFrame == 'myContent' || chooseFrame == 'pwChange'}">
+                <th:block th:replace="~{myPage/myInfo :: myInfo()}"></th:block>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

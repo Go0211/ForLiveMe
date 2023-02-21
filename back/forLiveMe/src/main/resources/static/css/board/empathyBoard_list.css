@@ -110,19 +110,24 @@ main #index h2 {
     margin-bottom: 4rem;
 }
 main #index .search {
+    width: 100%;
+    height: 5rem;
+    margin-bottom: 2rem;
+    box-sizing: border-box;
+}
+main #index .search form{
     display: flex;
     width: 100%;
-    height: 4rem;
-    margin-bottom: 2rem;
+    height: 100%;
 }
 main #index .search input {
-    width: 70%;
-    height: 100%;
+    width: 80%;
+    height: auto;
 }
 main #index .search .searchButton{
     margin-left: 5%;
-    width: 25%;
-    height: 110%;
+    width: 15%;
+    height: 100%;
 }
 main #index .write{
     width: 100%;
@@ -131,30 +136,47 @@ main #index .write{
 
 main #list {
     width: 100%;
-    height: 110rem;
+    height: auto;
+    margin: 15rem 0 0;
     position: relative;
-    margin: 5rem 0 0;
 }
-main #list .listContent {
+main #list .listFrame {
     width: 100%;
-    height: 10rem;
-    padding: 1.5rem 2rem;
+}
+main #list .listFrame .listContent {
+    width: 100%;
+    height: 12rem;
+    padding: 2% 5%;
     box-sizing: border-box;
+    border-top: 1px solid var(--fontHoverColor);
 }
-main #list .listContent:nth-child(2n-1) {
-    background-color: var(--subColor);
+main #list .listFrame .listContent:last-child {
+    border-bottom: 1px solid var(--fontHoverColor);
 }
-main #list .listContent h2 {
-    margin-bottom: 4rem;
+main #list .listFrame .listContent a{
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
 }
-main #list .listContent p {
+main #list .listFrame .listContent a h2 {
+    position: absolute;
+    width: 100%;
+    text-align: left;
+    top: 0;
+}
+main #list .listFrame .listContent a p {
+    position: absolute;
+    width: 100%;
     text-align: right;
+    bottom: 0;
 }
 
 main #pageNation {
+    position: relative;
     width: 100%;
     height: 5rem;
-    position: relative;
+    margin: 145rem 0 0;
 }
 main #pageNation a {
     width: 100%;

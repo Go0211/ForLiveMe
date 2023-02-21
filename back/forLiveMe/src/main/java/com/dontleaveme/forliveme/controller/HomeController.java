@@ -53,7 +53,7 @@ public class HomeController {
         model.addAttribute("userInfo", authentication.getName());
         model.addAttribute("test", new ArrayList<String>());
 
-        return "/simpleTest/testPage";
+        return "simpleTest/testPage";
     }
 
     @PostMapping({"/simpleTest"})
@@ -62,6 +62,6 @@ public class HomeController {
         log.info(test.get(0));
         log.info("testFinish");
 
-        return "/simpleTest/testPage";
+        return "simpleTest/testPage";
     }
 }

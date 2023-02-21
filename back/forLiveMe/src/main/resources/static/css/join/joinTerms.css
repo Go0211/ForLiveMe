@@ -1,6 +1,6 @@
-@import "cssInput/reset.css";
-@import "cssInput/color.css";
-@import "header.css";
+@import "../cssInput/reset.css";
+@import "../cssInput/color.css";
+@import "../header.css";
 /* All */
 * {
     color: var(--fontBaseColor);

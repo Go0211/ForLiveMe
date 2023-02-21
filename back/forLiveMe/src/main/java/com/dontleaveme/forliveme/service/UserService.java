@@ -30,4 +30,6 @@ public class UserService {
     public Long getUserCount() {
         return userRepository.count();
     }
+
+
 }
