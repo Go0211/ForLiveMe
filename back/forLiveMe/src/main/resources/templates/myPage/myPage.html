@@ -12,26 +12,71 @@
     <th:block th:replace="/fragments/header.html :: header(${userInfo})"></th:block>
 </header>
 <main>
-    <div style="display: flex">
-        <div class="menu">
-            <span th:onclick="|location.href='@{/myPage/{infoChangeFrame}(infoChangeFrame=myInfo)}'|">회원정보</span>
-            <span th:onclick="|location.href='@{/myPage/{infoChangeFrame}(infoChangeFrame=myContent)}'|">내 게시물</span>
-            <span th:onclick="|location.href='@{/myPage/{infoChangeFrame}(infoChangeFrame=pwChange)}'|">비밀번호변경</span>
-        </div>
-        <div class="frame">
-            <div th:if="${(chooseFrame == 'myContent' || chooseFrame == 'pwChange')}">
-                <div th:if="${chooseFrame == 'myContent'}">
-                    <th:block th:replace="~{myPage/myContent:: myContent()}"></th:block>
-                </div>
-                <div th:if="${chooseFrame == 'pwChage'}">
-                    <th:block th:replace="~{myPage/pwChange :: pwChange()}"></th:block>
+    <div id="menu">
+        <ul class="menuList">
+            <li class="defaultMenu">
+                <a href="#tab1" class="btn">내 정보</a>
+            </li>
+            <li>
+                <a href="#tab2" class="btn">내 게시물</a>
+            </li>
+            <li>
+                <a href="#tab3" class="btn">비밀번호 변경</a>
+            </li>
+        </ul>
+    </div>
+    <div id="myPage">
+        <div class="pageFrame">
+            <div id="tab1"
+                 style="display:block;">
+                <div th:replace="/myPage/myInfo :: myInfo()">
+
                 </div>
             </div>
-            <div th:unless="${chooseFrame == 'myContent' || chooseFrame == 'pwChange'}">
-                <th:block th:replace="~{myPage/myInfo :: myInfo()}"></th:block>
+            <div id="tab2"
+                 style="display: none;">
+                <div th:replace="/myPage/myContent :: myContent()">
+
+                </div>
+            </div>
+            <div id="tab3"
+                 style="display: none;">
+                <div th:replace="/myPage/pwChange :: pwChange()">
+
+                </div>
             </div>
         </div>
     </div>
 </main>
 </body>
 </html>
+
+<!--.tab_menu-->
+
+<script>
+    const chooseMenu = document.querySelectorAll('.menuList li');
+    const chooseContents = document.querySelectorAll('.pageFrame > div')
+    let activeCont = ''; // 현재 활성화 된 컨텐츠 (기본:#tab1 활성화)
+
+    for (let i = 0; i < chooseMenu.length; i++) {
+        chooseMenu[i].querySelector('.btn').addEventListener('click', function (e) {
+            e.preventDefault();
+            for (let j = 0; j < chooseMenu.length; j++) {
+                // 나머지 버튼 클래스 제거
+                chooseMenu[j].classList.remove('defaultMenu');
+
+                // 나머지 컨텐츠 display:none 처리
+                chooseContents[j].style.display = 'none';
+            }
+
+            // 버튼 관련 이벤트
+            this.parentNode.classList.add('defaultMenu');
+
+            // 버튼 클릭시 컨텐츠 전환
+            activeCont = this.getAttribute('href');
+            document.querySelector(activeCont).style.display = 'block';
+        });
+    }
+</script>
+
+
