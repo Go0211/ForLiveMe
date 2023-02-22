@@ -29,7 +29,7 @@ public class EmpathyBoardController {
     public String empathyBoardWrite(Model model, Authentication authentication) {
         log.info("EB_Write_Start");
         model.addAttribute("empathyBoardDto" , new EmpathyBoardDto());
-        model.addAttribute("userInfo" , authentication.getName());
+        model.addAttribute("userName" , authentication.getName());
         return "/empathyBoard/empathyBoard_write";
     }
 
@@ -41,7 +41,7 @@ public class EmpathyBoardController {
         log.info("EB_Write_Post");
 
         empathyBoardService.writeEmpathyBoard(empathyBoardDto, authentication.getName());
-        model.addAttribute("userInfo" , authentication.getName());
+        model.addAttribute("userName" , authentication.getName());
 
         log.info("EB_Write_Finish");
         return "redirect:/empathyBoardList";
@@ -53,7 +53,7 @@ public class EmpathyBoardController {
                                   @RequestParam(value="page", defaultValue = "1") Integer pageNum) {
         log.info("EB_List");
 
-        model.addAttribute("userInfo" , authentication.getName());
+        model.addAttribute("userName" , authentication.getName());
 
         List<EmpathyBoardDto> empathyBoardList = empathyBoardService.getEmpathyBoardList(pageNum, authentication.getName());
         Integer[] pageList = empathyBoardService.getPageList(pageNum);
@@ -77,7 +77,7 @@ public class EmpathyBoardController {
                                   Authentication authentication) {
         log.info("EB_View");
 
-        model.addAttribute("userInfo" , authentication.getName());
+        model.addAttribute("userName" , authentication.getName());
 
         empathyBoardService.upViewCount(no);
         EmpathyBoardDto empathyBoardDto = empathyBoardService.getEmpathyBoard(no);
@@ -89,7 +89,7 @@ public class EmpathyBoardController {
     @PostMapping("/empathyBoardList/{no}")
     public String empathyBoardGoodUp(@PathVariable("no") Long no, Model model,
                                      Authentication authentication) {
-        model.addAttribute("userInfo" , authentication.getName());
+        model.addAttribute("userName" , authentication.getName());
 
         empathyBoardService.upGoodCount(no);
 
@@ -105,7 +105,7 @@ public class EmpathyBoardController {
                                     Authentication authentication) {
         log.info("EB_Update_Start");
 
-        model.addAttribute("userInfo" , authentication.getName());
+        model.addAttribute("userName" , authentication.getName());
 
         EmpathyBoardDto empathyBoardDto = empathyBoardService.getEmpathyBoard(no);
 
@@ -144,7 +144,7 @@ public class EmpathyBoardController {
     @GetMapping("/empathyBoardList/search")
     public String search(@RequestParam(value="keyword") String keyword,
                          Model model, Authentication authentication) {
-        model.addAttribute("userInfo" , authentication.getName());
+        model.addAttribute("userName" , authentication.getName());
 
         List<EmpathyBoardDto> empathyBoardDtoList = empathyBoardService.searchPosts(keyword);
 

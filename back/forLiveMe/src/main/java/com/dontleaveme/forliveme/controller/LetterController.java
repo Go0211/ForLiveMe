@@ -29,7 +29,7 @@ public class LetterController {
             , @RequestParam(value="page", defaultValue = "1") Integer pageNum) {
         log.info("L_List");
 
-        model.addAttribute("userInfo" , authentication.getName());
+        model.addAttribute("userName" , authentication.getName());
 
         List<LetterDto> letterList = letterService.getMyLetterList(pageNum, authentication.getName());
         Integer[] pageList = letterService.getPageList(pageNum, null);
@@ -53,7 +53,7 @@ public class LetterController {
         log.info("L_Write_Start");
 
         model.addAttribute("letterDto" , new LetterDto());
-        model.addAttribute("userInfo" , authentication.getName());
+        model.addAttribute("userName" , authentication.getName());
 
         List<LetterDto> letterList = letterService.getLetterList(pageNum);
         Integer[] pageList = letterService.getPageList(pageNum, null);
@@ -72,7 +72,7 @@ public class LetterController {
         log.info("L_Write_Post");
 
         letterService.writeLetter(letterDto, authentication.getName());
-        model.addAttribute("userInfo" , authentication.getName());
+        model.addAttribute("userName" , authentication.getName());
 
         log.info("L_Write_Finish");
         return "redirect:/letterMyList";

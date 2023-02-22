@@ -10,7 +10,7 @@
 </head>
 <body>
 <header>
-    <th:block th:replace="/fragments/header.html :: header(${userInfo})"></th:block>
+    <th:block th:replace="~{/fragments/header.html :: header(${userName})}"></th:block>
 </header>
 <main class="textCenter font-base">
     <div id="index">

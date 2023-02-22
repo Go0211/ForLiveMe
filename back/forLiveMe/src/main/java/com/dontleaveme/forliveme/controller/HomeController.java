@@ -34,7 +34,7 @@ public class HomeController {
         log.info("index");
 
         if (authentication != null) {
-            model.addAttribute("userInfo", authentication.getName());
+            model.addAttribute("userName", authentication.getName());
         }
 
         model.addAttribute("userTotalCount" ,userService.getUserCount());
@@ -50,7 +50,7 @@ public class HomeController {
     public String simpleTestStart(Model model, Authentication authentication) {
         log.info("testStart");
 
-        model.addAttribute("userInfo", authentication.getName());
+        model.addAttribute("userName", authentication.getName());
         model.addAttribute("test", new ArrayList<String>());
 
         return "simpleTest/testPage";

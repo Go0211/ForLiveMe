@@ -1,5 +1,8 @@
 package com.dontleaveme.forliveme.controller;
 
+import com.dontleaveme.forliveme.dto.LetterDto;
+import com.dontleaveme.forliveme.dto.UserDto;
+import com.dontleaveme.forliveme.service.UserService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.security.core.Authentication;
@@ -16,27 +19,32 @@ import org.springframework.web.bind.annotation.PostMapping;
 @AllArgsConstructor
 public class UserController {
 
+    private final UserService userService;
+
     @GetMapping({ "/myPage" })
     public String myPage(Model model, Authentication authentication) {
         log.info("myPage");
 
-        model.addAttribute("userInfo", authentication.getName());
+        model.addAttribute("userName", authentication.getName());
+        model.addAttribute("userInfo", userService.getUser(authentication.getName()));
 
         return "myPage/myPage";
     }
 
-    @GetMapping("/myPage/{infoChangeFrame}")
-    public String myPage(@PathVariable("infoChangeFrame") String infoChangeFrame
-                         , Model model) {
-        if (infoChangeFrame == "myInfo") {
-            model.addAttribute("chooseFrame", "myInfo");
-        } else if (infoChangeFrame == "myContent") {
-            model.addAttribute("chooseFrame", "myContent");
-        } else if (infoChangeFrame == "pwChange"){
-            model.addAttribute("chooseFrame", "pwChange");
-        } else {
-            model.addAttribute("chooseFrame", "myInfo");
-        }
+    @PostMapping({"/myPage/updateUserInfo"})
+    public String updateUserInfo(@ModelAttribute("updateUserInfo") UserDto updateUserInfo,
+                                 Authentication authentication) {
+        log.info("updateUserInfo");
+
+        UserDto beforeUser = userService.getUser(authentication.getName());
+
+        log.info(updateUserInfo.getId() + " " + updateUserInfo.getEmail() + " "
+                + updateUserInfo.getPassword() + " " + updateUserInfo.getName() + " "
+                + updateUserInfo.getGender() + " " + updateUserInfo.getDropYN() + " "
+                + updateUserInfo.getLastLoginTime() + " " + updateUserInfo.getRegisterTime() + " "
+                + updateUserInfo.getModifyTime());
+
+        userService.updateUser(updateUserInfo, beforeUser);
 
         return "redirect:/myPage";
     }

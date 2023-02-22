@@ -9,7 +9,7 @@
     <title>게시판</title>
 </head>
 <header>
-    <th:block th:replace="/fragments/header.html :: header(${userInfo})"></th:block>
+    <th:block th:replace="~{/fragments/header.html :: header(${userName})}"></th:block>
 </header>
 <main>
     <div id="menu">
@@ -29,19 +29,19 @@
         <div class="pageFrame">
             <div id="tab1"
                  style="display:block;">
-                <div th:replace="/myPage/myInfo :: myInfo()">
+                <div th:replace="/myPage/myInfo :: myInfo(${userInfo})">
 
                 </div>
             </div>
             <div id="tab2"
                  style="display: none;">
-                <div th:replace="/myPage/myContent :: myContent()">
+                <div th:replace="/myPage/myContent :: myContent(${userInfo})">
 
                 </div>
             </div>
             <div id="tab3"
                  style="display: none;">
-                <div th:replace="/myPage/pwChange :: pwChange()">
+                <div th:replace="/myPage/pwChange :: pwChange(${userInfo})">
 
                 </div>
             </div>

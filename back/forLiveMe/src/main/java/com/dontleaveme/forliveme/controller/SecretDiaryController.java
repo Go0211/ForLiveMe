@@ -29,7 +29,7 @@ public class SecretDiaryController {
         log.info("SD_Write_Start");
 
         model.addAttribute("secretDiaryDto" , new SecretDiaryDto());
-        model.addAttribute("userInfo" , authentication.getName());
+        model.addAttribute("userName" , authentication.getName());
 
         return "/secretDiary/secretDiary_write";
     }
@@ -40,7 +40,7 @@ public class SecretDiaryController {
         log.info("SD_Write_Post");
 
         secretDiaryService.writeSecretDiary(secretDiaryDto, authentication.getName());
-        model.addAttribute("userInfo" , authentication.getName());
+        model.addAttribute("userName" , authentication.getName());
 
         log.info("SD_Write_Finish");
         return "redirect:/secretDiaryList";
@@ -53,7 +53,7 @@ public class SecretDiaryController {
                                   @RequestParam(value="page", defaultValue = "1") Integer pageNum) {
         log.info("SD_List");
 
-        model.addAttribute("userInfo" , authentication.getName());
+        model.addAttribute("userName" , authentication.getName());
         
         List<SecretDiaryDto> secretDiaryList = secretDiaryService.getSecretDiaryList(pageNum, authentication.getName());
         Integer[] pageList = secretDiaryService.getPageList(pageNum, authentication.getName());
@@ -73,7 +73,7 @@ public class SecretDiaryController {
     @GetMapping("/secretDiaryList/before/{no}")
     public String secretDiaryViewBefore(Model model, Authentication authentication,
                                         @PathVariable("no") Long no) {
-        model.addAttribute("userInfo" , authentication.getName());
+        model.addAttribute("userName" , authentication.getName());
         model.addAttribute("password", new String());
         model.addAttribute("num", no);
 
@@ -85,7 +85,7 @@ public class SecretDiaryController {
                                         @ModelAttribute("password") String pw,
                                         @PathVariable("no") Long no) {
 
-        model.addAttribute("userInfo" , authentication.getName());
+        model.addAttribute("userName" , authentication.getName());
 
         String sDPassword = secretDiaryService.getPassword(no);
         boolean check = bCryptPasswordEncoder.matches(pw, sDPassword);
@@ -103,7 +103,7 @@ public class SecretDiaryController {
                          Authentication authentication) {
         log.info("SD_View");
 
-        model.addAttribute("userInfo" , authentication.getName());
+        model.addAttribute("userName" , authentication.getName());
 
         SecretDiaryDto secretDiaryDto = secretDiaryService.getSecretDiary(no);
 
@@ -117,7 +117,7 @@ public class SecretDiaryController {
                        Authentication authentication) {
         log.info("SD_Update_Start");
 
-        model.addAttribute("userInfo" , authentication.getName());
+        model.addAttribute("userName" , authentication.getName());
         SecretDiaryDto secretDiaryDto = secretDiaryService.getSecretDiary(no);
         model.addAttribute("secretDiaryDto", secretDiaryDto);
 
@@ -157,7 +157,7 @@ public class SecretDiaryController {
     public String search(@RequestParam(value="keyword") String keyword, Model model
                          ,Authentication authentication) {
 
-        model.addAttribute("userInfo" , authentication.getName());
+        model.addAttribute("userName" , authentication.getName());
 
         List<SecretDiaryDto> secretDiaryDtoList = secretDiaryService.searchPosts(keyword);
 
