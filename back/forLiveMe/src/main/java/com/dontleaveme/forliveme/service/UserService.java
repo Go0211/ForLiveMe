@@ -3,10 +3,8 @@ package com.dontleaveme.forliveme.service;
 import com.dontleaveme.forliveme.data.PasswordCheck;
 import com.dontleaveme.forliveme.dto.TermsDto;
 import com.dontleaveme.forliveme.dto.UserDto;
-import com.dontleaveme.forliveme.persistence.dao.PersistentLoginRepository;
 import com.dontleaveme.forliveme.persistence.dao.TermsRepository;
 import com.dontleaveme.forliveme.persistence.dao.UserRepository;
-import com.dontleaveme.forliveme.persistence.model.PersistentLogin;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -14,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Log4j2
 @Service

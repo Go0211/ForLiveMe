@@ -30,19 +30,6 @@ public class LoginController {
         return "/login";
     }
 
-//    @GetMapping("/login?logout")
-//    public String logout(HttpServletRequest request, Authentication authentication) {
-//        log.info("logout");
-//
-//        userService.updateLastLoginTime(
-//                userService.getUser(
-//                        authentication.getName()
-//                )
-//        );
-//
-//        return "redirect:/login";
-//    }
-
     @GetMapping("/join")
     public String joinTerms(Model model) {
         log.info("Join_Start");

@@ -1,10 +1,7 @@
 package com.dontleaveme.forliveme.controller;
 
 import com.dontleaveme.forliveme.persistence.dao.UserRepository;
-import com.dontleaveme.forliveme.service.EmpathyBoardService;
-import com.dontleaveme.forliveme.service.LetterService;
-import com.dontleaveme.forliveme.service.SecretDiaryService;
-import com.dontleaveme.forliveme.service.UserService;
+import com.dontleaveme.forliveme.service.*;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -24,9 +21,10 @@ import java.util.ArrayList;
 @AllArgsConstructor
 public class HomeController {
 
-    private LetterService letterService;
-    private EmpathyBoardService empathyBoardService;
-    private UserService userService;
+    private final LetterService letterService;
+    private final EmpathyBoardService empathyBoardService;
+    private final UserService userService;
+    private final OtherService otherService;
 
 
     @GetMapping({ "/", "/index" })
@@ -53,6 +51,7 @@ public class HomeController {
         log.info("testStart");
 
         model.addAttribute("userName", authentication.getName());
+//        model.addAttribute("testQuestion", otherService.getTestQuestion());
         model.addAttribute("test", new ArrayList<String>());
 
         return "simpleTest/testPage";

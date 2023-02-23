@@ -10,27 +10,33 @@
 </head>
 <body>
 <header>
-    <th:block th:replace="~{/fragments/header.html :: header(${userInfo})}"></th:block>
+    <th:block th:replace="~{/fragments/header.html :: header(${userName})}"></th:block>
 </header>
 <main>
     <div id="simpleTest">
         <div class="test">
-            <form th:action="@{/simpleTest}" method="post">
-                <div class="testFrame" > <!--th:each="test:${simpleTest}"-->
-                    <span>설명</span>
-                    <input type="radio" id="veryBad" name="test" value="veryBad"/>
-                    <label for="veryBad">veryBad</label>
-                    <input type="radio" id="bad" name="test" value="bad"/>
-                    <label for="bad">bad</label>
-                    <input type="radio" id="normal" name="test" value="normal"/>
-                    <label for="normal">normal</label>
-                    <input type="radio" id="good" name="test" value="good"/>
-                    <label for="good">good</label>
-                    <input type="radio" id="veryGood" name="test" value="veryGood" />
-                    <label for="veryGood">veryGood</label>
-                    <button type="submit">test</button>
-                </div>
-            </form>
+            <div>
+<!--            <div th:each="testList : ${testQuestion}">-->
+<!--                <small  th:text="${testList.getId()}"></small>-->
+<!--                <small  th:text="${testList.getTestQuestion()}"></small>-->
+                <br>
+                <form th:action="@{/simpleTest}" method="post">
+                    <div class="testFrame"> <!--th:each="test:${simpleTest}"-->
+                        <span>설명</span>
+                        <input type="radio" id="veryBad" name="test" value="veryBad"/>
+                        <label for="veryBad">veryBad</label>
+                        <input type="radio" id="bad" name="test" value="bad"/>
+                        <label for="bad">bad</label>
+                        <input type="radio" id="normal" name="test" value="normal"/>
+                        <label for="normal">normal</label>
+                        <input type="radio" id="good" name="test" value="good"/>
+                        <label for="good">good</label>
+                        <input type="radio" id="veryGood" name="test" value="veryGood"/>
+                        <label for="veryGood">veryGood</label>
+                        <button type="submit">test</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </main>
