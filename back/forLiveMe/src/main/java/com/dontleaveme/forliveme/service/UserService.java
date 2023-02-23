@@ -1,13 +1,12 @@
 package com.dontleaveme.forliveme.service;
 
-import com.dontleaveme.forliveme.dto.SecretDiaryDto;
+import com.dontleaveme.forliveme.data.PasswordCheck;
 import com.dontleaveme.forliveme.dto.TermsDto;
 import com.dontleaveme.forliveme.dto.UserDto;
+import com.dontleaveme.forliveme.persistence.dao.PersistentLoginRepository;
 import com.dontleaveme.forliveme.persistence.dao.TermsRepository;
 import com.dontleaveme.forliveme.persistence.dao.UserRepository;
-import com.dontleaveme.forliveme.persistence.model.SecretDiary;
-import com.dontleaveme.forliveme.persistence.model.User;
-import lombok.AllArgsConstructor;
+import com.dontleaveme.forliveme.persistence.model.PersistentLogin;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -15,7 +14,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
-import java.util.Optional;
+import java.util.List;
 
 @Log4j2
 @Service
@@ -24,7 +23,6 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final TermsRepository termsRepository;
-
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
 //  유저정보
@@ -45,12 +43,6 @@ public class UserService {
                 .modifyTime(user.getModifyTime())
                 .build();
 
-        log.info(userDto.getId() + " " + userDto.getEmail() + " "
-                + userDto.getPassword() + " " + userDto.getName() + " "
-                + userDto.getGender() + " " + userDto.getDropYN() + " "
-                + userDto.getLastLoginTime() + " " + userDto.getRegisterTime() + " "
-                + userDto.getModifyTime());
-
         return userDto;
     }
 
@@ -60,11 +52,7 @@ public class UserService {
         beforeUser.setName(userDto.getName());
         beforeUser.setGender(userDto.getGender());
 
-        log.info(beforeUser.getId() + " " + beforeUser.getEmail() + " "
-                + beforeUser.getPassword() + " " + beforeUser.getName() + " "
-                + beforeUser.getGender() + " " + beforeUser.getDropYN() + " "
-                + beforeUser.getLastLoginTime() + " " + beforeUser.getRegisterTime() + " "
-                + beforeUser.getModifyTime());
+        beforeUser.setModifyTime(LocalDateTime.now());
 
         userRepository.save(beforeUser.toEntity());
     }
@@ -73,13 +61,53 @@ public class UserService {
     @Transactional
     public void insertUser(UserDto userDto, TermsDto termsDto) {
         userDto.setPassword(bCryptPasswordEncoder.encode(userDto.getPassword()));
+        userDto.setRegisterTime(LocalDateTime.now());
+        userDto.setModifyTime(LocalDateTime.now());
+        userDto.setLastLoginTime(LocalDateTime.now());
+
         termsDto.setEmail(userDto.getEmail());
 
         termsRepository.save(termsDto.toEntity());
         userRepository.save(userDto.toEntity());
     }
 
-//  유저명수
+//  로그인 시간 갱신
+    @Transactional
+    public void updateLastLoginTime(String email) {
+        UserDto userDto = this.getUser(email);
+
+        userDto.setLastLoginTime(LocalDateTime.now());
+
+        userRepository.save(userDto.toEntity());
+    }
+
+//  비밀번호 변경
+    @Transactional
+    public boolean updatePw(PasswordCheck updateUserPw, String email) {
+        boolean beforePwCheck =
+                bCryptPasswordEncoder.matches(updateUserPw.getBeforePw()
+                        , this.getUser(email).getPassword());
+
+        boolean afterPwCheck =
+                updateUserPw.getAfterPw().equals(updateUserPw.getOneMoreAfterPw());
+
+        if (beforePwCheck && afterPwCheck) {
+            UserDto userDto = this.getUser(email);
+            userDto.setPassword(
+                    bCryptPasswordEncoder.encode(updateUserPw.getAfterPw())
+            );
+
+            userDto.setModifyTime(LocalDateTime.now());
+
+            userRepository.save(userDto.toEntity());
+
+            return true;
+        }
+
+        return false;
+    }
+
+//  유저 수
     @Transactional
     public Long getUserCount() {
         return userRepository.count();

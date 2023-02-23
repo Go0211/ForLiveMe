@@ -49,9 +49,9 @@ public class UserDto {
                 .name(name)
                 .gender(gender)
                 .dropYN("N")
-                .lastLoginTime(LocalDateTime.now())
-                .registerTime(LocalDateTime.now())
-                .modifyTime(LocalDateTime.now())
+                .lastLoginTime(lastLoginTime)
+                .registerTime(registerTime)
+                .modifyTime(modifyTime)
                 .build();
     }
 }

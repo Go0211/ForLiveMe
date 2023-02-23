@@ -4,6 +4,7 @@ import com.dontleaveme.forliveme.dto.TermsDto;
 import com.dontleaveme.forliveme.dto.UserDto;
 import com.dontleaveme.forliveme.service.UserService;
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import lombok.extern.log4j.Log4j2;
@@ -25,8 +26,22 @@ public class LoginController {
     @GetMapping("login")
     public String login(HttpServletRequest request) {
         log.info("login");
+
         return "/login";
     }
+
+//    @GetMapping("/login?logout")
+//    public String logout(HttpServletRequest request, Authentication authentication) {
+//        log.info("logout");
+//
+//        userService.updateLastLoginTime(
+//                userService.getUser(
+//                        authentication.getName()
+//                )
+//        );
+//
+//        return "redirect:/login";
+//    }
 
     @GetMapping("/join")
     public String joinTerms(Model model) {

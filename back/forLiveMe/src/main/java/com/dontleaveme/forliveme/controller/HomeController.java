@@ -35,6 +35,8 @@ public class HomeController {
 
         if (authentication != null) {
             model.addAttribute("userName", authentication.getName());
+
+            userService.updateLastLoginTime(authentication.getName());
         }
 
         model.addAttribute("userTotalCount" ,userService.getUserCount());

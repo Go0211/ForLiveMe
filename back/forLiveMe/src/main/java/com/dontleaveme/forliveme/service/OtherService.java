@@ -23,7 +23,7 @@ public class OtherService {
         } else if (checkTime.toHours() < 24) {
             return checkTime.toHours() + "시간 전";
         } else if (checkTime.toHours() < 24*31) {
-            return checkTime.toHours() + "일 전";
+            return (checkTime.toHours() / 24) + "일 전";
         } else if (checkTime.toHours() < 24*365) {
             return (checkTime.toHours() / (24*30)) + "달 전";
         } else {

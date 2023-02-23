@@ -8,10 +8,14 @@
 <th:block th:fragment="pwChange(userInfo)">
 <main>
 <div>
-    <input type="text" /> 현재 패스워드
-    <input type="text" /> 바꾸려는 패스워드
-    <input type="text" /> 한 번더 패스워드
-    <button>변경하기</button>
+    <form th:action="@{/myPage/updateUserPw}"
+    method="post"
+    th:object="${updateUserPw}">
+        <input type="text" th:field="*{beforePw}" placeholder="현재 패스워드"/>
+        <input type="text" th:field="*{afterPw}" placeholder="바꾸려는 패스워드"/>
+        <input type="text" th:field="*{oneMoreAfterPw}" placeholder="한 번더 패스워드"/>
+        <button>변경하기</button>
+    </form>
 </div>
 </main>
 </th:block>
