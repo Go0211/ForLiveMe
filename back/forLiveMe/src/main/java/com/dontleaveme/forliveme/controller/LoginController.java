@@ -4,7 +4,6 @@ import com.dontleaveme.forliveme.dto.TermsDto;
 import com.dontleaveme.forliveme.dto.UserDto;
 import com.dontleaveme.forliveme.service.UserService;
 import lombok.AllArgsConstructor;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import lombok.extern.log4j.Log4j2;
@@ -12,24 +11,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import javax.servlet.http.HttpServletRequest;
-
 @Controller
 @AllArgsConstructor
 @Log4j2
 public class LoginController {
-
     private final UserService userService;
-
     public static TermsDto termsDto;
 
+//  로그인
     @GetMapping("login")
-    public String login(HttpServletRequest request) {
+    public String login() {
         log.info("login");
 
         return "/login";
     }
 
+//  회원가입(약관 check)
     @GetMapping("/join")
     public String joinTerms(Model model) {
         log.info("Join_Start");
@@ -58,6 +55,7 @@ public class LoginController {
         }
     }
 
+//  회원가입(회원정보 입력)    
     @GetMapping("/joinResult")
     public String joinUserInfo(Model model) {
         log.info("Join_UserInfo_In");

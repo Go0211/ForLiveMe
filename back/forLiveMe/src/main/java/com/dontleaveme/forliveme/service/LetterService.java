@@ -1,9 +1,7 @@
 package com.dontleaveme.forliveme.service;
 
-import com.dontleaveme.forliveme.dto.EmpathyBoardDto;
 import com.dontleaveme.forliveme.dto.LetterDto;
 import com.dontleaveme.forliveme.persistence.dao.LetterRepository;
-import com.dontleaveme.forliveme.persistence.model.EmpathyBoard;
 import com.dontleaveme.forliveme.persistence.model.Letter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -24,7 +22,6 @@ import java.util.Optional;
 public class LetterService {
 
     private final LetterRepository letterRepository;
-
     private static final int BLOCK_PAGE_NUM_COUNT = 5; // 블럭에 존재하는 페이지 번호 수
     private static final int PAGE_POST_COUNT = 10; // 한 페이지에 x  존재하는 게시글 수
     private static final int PAGE_TEN_MILLION = 10000000;

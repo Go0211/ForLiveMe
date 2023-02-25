@@ -9,8 +9,6 @@ import java.util.List;
 @Repository
 public interface LetterRepository extends JpaRepository<Letter, Long> {
     Letter findByLeNum(Long leNum);
-
     List<Letter> findByLeContentContaining(String keyword);
-
     Long countByLeUserEmail(String userEmail);
 }

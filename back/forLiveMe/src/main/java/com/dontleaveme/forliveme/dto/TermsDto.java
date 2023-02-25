@@ -16,15 +16,10 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 public class TermsDto {
-
     private String email;
-
     private boolean termsUse;
-
     private boolean personalInfo;
-
     private boolean locationInfo;
-
     private boolean eventSend;
 
     @Builder

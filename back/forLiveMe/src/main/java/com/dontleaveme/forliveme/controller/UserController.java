@@ -6,7 +6,6 @@ import com.dontleaveme.forliveme.service.UserService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,11 +17,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 @AllArgsConstructor
 public class UserController {
-
     private final UserService userService;
 
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
-
+//  마이페이지
     @GetMapping({ "/myPage" })
     public String myPage(Model model, Authentication authentication) {
         log.info("myPage");
@@ -34,6 +31,7 @@ public class UserController {
         return "myPage/myPage";
     }
 
+//  유저정보 수정
     @PostMapping({"/myPage/updateUserInfo"})
     public String updateUserInfo(@ModelAttribute("updateUserInfo") UserDto updateUserInfo,
                                  Authentication authentication) {
@@ -46,17 +44,13 @@ public class UserController {
         return "redirect:/myPage";
     }
 
+//  비밀번호 변경
     @PostMapping({"/myPage/updateUserPw"})
     public String updateUserPw(@ModelAttribute("updateUserPw") PasswordCheck updateUserPw,
                                  Authentication authentication) {
         log.info("updateUserInfo");
 
-        boolean updatePwCheck =
-                userService.updatePw(updateUserPw, authentication.getName());
-
-        if (updatePwCheck) {
-            return "redirect:/myPage";
-        }
+        userService.updatePw(updateUserPw, authentication.getName());
 
         return "redirect:/myPage";
     }

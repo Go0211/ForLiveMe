@@ -14,20 +14,15 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "terms")
 public class Terms {
-
     @Id
     @Column(name = "email")
     private String email;
-
     @Column(name = "termsuse")
     private boolean termsUse;
-
     @Column(name = "personalinfo")
     private boolean personalInfo;
-
     @Column(name = "locationinfo")
     private boolean locationInfo;
-
     @Column(name = "eventsend")
     private boolean eventSend;
 

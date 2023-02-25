@@ -13,27 +13,20 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "empathyboard")
 public class EmpathyBoard {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "num")
     private Long ebNum;
-
     @Column(name = "title")
     private String ebTitle;
-
     @Column(name = "content")
     private String ebContent;
-
     @Column(name = "useremail")
     private String ebUserEmail;
-
     @Column(name = "writedate")
     private LocalDateTime ebWriteDate;
-
     @Column(name = "good")
     private int ebGood;
-
     @Column(name = "view")
     private int ebView;
 

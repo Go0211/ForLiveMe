@@ -1,18 +1,15 @@
 package com.dontleaveme.forliveme.controller;
 
 import com.dontleaveme.forliveme.dto.EmpathyBoardDto;
-import com.dontleaveme.forliveme.dto.SecretDiaryDto;
 import com.dontleaveme.forliveme.service.EmpathyBoardService;
 import com.dontleaveme.forliveme.service.OtherService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,12 +17,10 @@ import java.util.List;
 @Controller
 @AllArgsConstructor
 public class EmpathyBoardController {
-
     private EmpathyBoardService empathyBoardService;
-
     private OtherService otherService;
 
-    //공감게시판 작성
+//  공감게시판 작성
     @GetMapping("/empathyBoardWrite")
     public String empathyBoardWrite(Model model, Authentication authentication) {
         log.info("EB_Write_Start");
@@ -36,7 +31,6 @@ public class EmpathyBoardController {
 
     @PostMapping("/empathyBoardWrite")
     public String empathyBoardWrite(@ModelAttribute("empathyBoardDto") EmpathyBoardDto empathyBoardDto,
-                                    HttpServletRequest request,
                                     Model model,
                                     Authentication authentication) {
         log.info("EB_Write_Post");
@@ -48,7 +42,7 @@ public class EmpathyBoardController {
         return "redirect:/empathyBoardList";
     }
 
-    //공감게시판 목록
+//  공감게시판 목록
     @GetMapping({"/empathyBoardList"})
     public String empathyBoardList(Model model, Authentication authentication,
                                   @RequestParam(value="page", defaultValue = "1") Integer pageNum) {
@@ -60,8 +54,8 @@ public class EmpathyBoardController {
         Integer[] pageList = empathyBoardService.getPageList(pageNum);
 
         List<String> timeCheckList = new ArrayList<>();
-        for (int i = 0; i < empathyBoardList.size(); i++) {
-            timeCheckList.add(otherService.timeCheck(empathyBoardList.get(i).getEbWriteDate()));
+        for (EmpathyBoardDto empathyBoardDto : empathyBoardList) {
+            timeCheckList.add(otherService.timeCheck(empathyBoardDto.getEbWriteDate()));
         }
 
 
@@ -72,7 +66,7 @@ public class EmpathyBoardController {
         return "/empathyBoard/empathyBoard_list";
     }
 
-    //공감게시판 보기
+//  공감게시판 보기
     @GetMapping("/empathyBoardList/{no}")
     public String empathyBoardView(@PathVariable("no") Long no, Model model,
                                   Authentication authentication) {
@@ -100,7 +94,7 @@ public class EmpathyBoardController {
         return "empathyBoard/empathyBoard_view";
     }
 
-    //공감게시판 수정
+//  공감게시판 수정
     @GetMapping("/empathyBoardList/update/{no}")
     public String empathyBoardUpdate(@PathVariable("no") Long no, Model model,
                                     Authentication authentication) {
@@ -114,7 +108,7 @@ public class EmpathyBoardController {
         return "empathyBoard/empathyBoard_update";
     }
     
-    @PostMapping("/empathyBoardList/update/{no}")            //PutMapping사용했었음
+    @PostMapping("/empathyBoardList/update/{no}")
     public String empathyBoardUpdate(@PathVariable("no") Long no,
                                     @ModelAttribute("empathyBoardDto") EmpathyBoardDto empathyBoardDto) {
         log.info("EB_Update_Post");
@@ -127,8 +121,8 @@ public class EmpathyBoardController {
         return "redirect:/empathyBoardList/"+no;
     }
 
-    //공감게시판 삭제
-    @GetMapping("/empathyBoardList/delete/{no}")        //DeleteMapping사용했었음
+//  공감게시판 삭제
+    @GetMapping("/empathyBoardList/delete/{no}")
     public String delete(@PathVariable("no") Long no) {
         log.info("EB_Delete_Start");
 
@@ -138,10 +132,7 @@ public class EmpathyBoardController {
         return "redirect:/empathyBoardList";
     }
 
-    // 검색
-    // keyword를 view로부터 전달 받고
-    // Service로부터 받은 boardDtoList를 model의 attribute로 전달해준다.
-
+//  검색
     @GetMapping("/empathyBoardList/search")
     public String search(@RequestParam(value="keyword") String keyword,
                          Model model, Authentication authentication) {
@@ -150,8 +141,8 @@ public class EmpathyBoardController {
         List<EmpathyBoardDto> empathyBoardDtoList = empathyBoardService.searchPosts(keyword);
 
         List<String> timeCheckList = new ArrayList<>();
-        for (int i = 0; i < empathyBoardDtoList.size(); i++) {
-            timeCheckList.add(otherService.timeCheck(empathyBoardDtoList.get(i).getEbWriteDate()));
+        for (EmpathyBoardDto empathyBoardDto : empathyBoardDtoList) {
+            timeCheckList.add(otherService.timeCheck(empathyBoardDto.getEbWriteDate()));
         }
 
         model.addAttribute("empathyBoardList", empathyBoardDtoList);

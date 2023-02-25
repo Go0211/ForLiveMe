@@ -18,12 +18,11 @@ import java.util.List;
 @Controller
 @AllArgsConstructor
 public class SecretDiaryController {
-
     private SecretDiaryService secretDiaryService;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private OtherService otherService;
 
-    //비밀일기 작성
+//  비밀일기 작성
     @GetMapping("/secretDiaryWrite")
     public String writeSecretDiary(Model model, Authentication authentication) {
         log.info("SD_Write_Start");
@@ -46,7 +45,7 @@ public class SecretDiaryController {
         return "redirect:/secretDiaryList";
     }
 
-    //비밀일기 목록
+//  비밀일기 목록
     @GetMapping({"/secretDiaryList"})
     public String secretDiaryList(Model model,
                                   Authentication authentication,
@@ -59,8 +58,8 @@ public class SecretDiaryController {
         Integer[] pageList = secretDiaryService.getPageList(pageNum, authentication.getName());
 
         List<String> timeCheckList = new ArrayList<>();
-        for (int i = 0; i < secretDiaryList.size(); i++) {
-            timeCheckList.add(otherService.timeCheck(secretDiaryList.get(i).getSdWriteDate()));
+        for (SecretDiaryDto secretDiaryDto : secretDiaryList) {
+            timeCheckList.add(otherService.timeCheck(secretDiaryDto.getSdWriteDate()));
         }
 
         model.addAttribute("secretDiaryList", secretDiaryList);
@@ -70,11 +69,11 @@ public class SecretDiaryController {
         return "/secretDiary/secretDiary_list";
     }
 
+//  비밀일기 비밀번호 해제
     @GetMapping("/secretDiaryList/before/{no}")
     public String secretDiaryViewBefore(Model model, Authentication authentication,
                                         @PathVariable("no") Long no) {
         model.addAttribute("userName" , authentication.getName());
-        model.addAttribute("password", new String());
         model.addAttribute("num", no);
 
         return "/secretDiary/secretDiary_view_before";
@@ -97,7 +96,7 @@ public class SecretDiaryController {
         }
     }
 
-    //비밀일기 보기
+//  비밀일기 보기
     @GetMapping("/secretDiaryList/{no}")
     public String secretDiaryView(@PathVariable("no") Long no, Model model,
                          Authentication authentication) {
@@ -111,7 +110,7 @@ public class SecretDiaryController {
         return "secretDiary/secretDiary_view";
     }
 
-    //비밀일기 수정
+//  비밀일기 수정
     @GetMapping("/secretDiaryList/update/{no}")
     public String secretDiaryUpdate(@PathVariable("no") Long no, Model model,
                        Authentication authentication) {
@@ -137,7 +136,7 @@ public class SecretDiaryController {
         return "redirect:/secretDiaryList/"+no;
     }
     
-    //비밀일기 삭제
+//  비밀일기 삭제
     @GetMapping("/secretDiaryList/delete/{no}")        //DeleteMapping사용했었음
     public String delete(@PathVariable("no") Long no) {
         log.info("SD_Delete_Start");
@@ -149,10 +148,7 @@ public class SecretDiaryController {
         return "redirect:/secretDiaryList";
     }
 
-    // 검색
-    // keyword를 view로부터 전달 받고
-    // Service로부터 받은 boardDtoList를 model의 attribute로 전달해준다.
-
+//  검색
     @GetMapping("/secretDiaryList/search")
     public String search(@RequestParam(value="keyword") String keyword, Model model
                          ,Authentication authentication) {
@@ -162,8 +158,8 @@ public class SecretDiaryController {
         List<SecretDiaryDto> secretDiaryDtoList = secretDiaryService.searchPosts(keyword);
 
         List<String> timeCheckList = new ArrayList<>();
-        for (int i = 0; i < secretDiaryDtoList.size(); i++) {
-            timeCheckList.add(otherService.timeCheck(secretDiaryDtoList.get(i).getSdWriteDate()));
+        for (SecretDiaryDto secretDiaryDto : secretDiaryDtoList) {
+            timeCheckList.add(otherService.timeCheck(secretDiaryDto.getSdWriteDate()));
         }
 
         model.addAttribute("secretDiaryList", secretDiaryDtoList);

@@ -16,33 +16,24 @@ import java.util.Collection;
 @Entity
 @Table(name = "user")
 public class User implements UserDetails {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private String id;
-
     @Column(name = "email")
     private String email;
-
     @Column(name = "password")
     private String password;
-
     @Column(name = "name")
     private String name;
-
     @Column(name = "gender")
     private String gender;
-
     @Column(name = "drop_yn")
     private String dropYN;
-
     @Column(name = "last_login_time")
     private LocalDateTime lastLoginTime;
-
     @Column(name = "register_time")
     private LocalDateTime registerTime;
-
     @Column(name = "modify_time")
     private LocalDateTime modifyTime;
 

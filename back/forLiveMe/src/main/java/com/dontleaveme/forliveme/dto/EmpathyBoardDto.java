@@ -7,24 +7,17 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 @Getter
 @Setter
 @NoArgsConstructor
 public class EmpathyBoardDto {
     private Long ebNum;
-
     private String ebTitle;
-
     private String ebContent;
-
     private String ebUserEmail;
-
     private LocalDateTime ebWriteDate;
-
     private int ebGood;
-
     private int ebView;
 
     @Builder

@@ -17,13 +17,9 @@ public class UserDto {
     private String password;
     private String name;
     private String gender;
-
     private String dropYN;
-
     private LocalDateTime lastLoginTime;
-
     private LocalDateTime registerTime;
-
     private LocalDateTime modifyTime;
 
     @Builder

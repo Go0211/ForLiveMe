@@ -13,12 +13,6 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "secretdiary")
 public class SecretDiary {
-
-//    @Id
-//    @ManyToOne(cascade = CascadeType.PERSIST)
-//    @JoinColumn(name="userID", columnDefinition = "int", nullable = false)
-//    public User userId;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "num")

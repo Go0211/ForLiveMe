@@ -1,10 +1,8 @@
 package com.dontleaveme.forliveme.service;
 
 import com.dontleaveme.forliveme.dto.EmpathyBoardDto;
-import com.dontleaveme.forliveme.dto.SecretDiaryDto;
 import com.dontleaveme.forliveme.persistence.dao.EmpathyBoardRepository;
 import com.dontleaveme.forliveme.persistence.model.EmpathyBoard;
-import com.dontleaveme.forliveme.persistence.model.SecretDiary;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;

@@ -12,17 +12,11 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 public class SecretDiaryDto {
-
     private Long sdNum;
-
     private String sdTitle;
-
     private String sdContent;
-
     private String sdUserEmail;
-
     private String sdPassword;
-
     private LocalDateTime sdWriteDate;
 
     @Builder
