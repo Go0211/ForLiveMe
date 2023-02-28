@@ -6,18 +6,27 @@
 </head>
 <body>
 <th:block th:fragment="pwChange(userInfo)">
-<main>
-<div>
-    <form th:action="@{/myPage/updateUserPw}"
-    method="post"
-    th:object="${updateUserPw}">
-        <input type="text" th:field="*{beforePw}" placeholder="현재 패스워드"/>
-        <input type="text" th:field="*{afterPw}" placeholder="바꾸려는 패스워드"/>
-        <input type="text" th:field="*{oneMoreAfterPw}" placeholder="한 번더 패스워드"/>
-        <button>변경하기</button>
-    </form>
-</div>
-</main>
+    <div id="pwChangeFragment" class="textCenter">
+        <form th:action="@{/myPage/updateUserPw}"
+              method="post"
+              th:object="${updateUserPw}">
+            <div class="pwChangeFrame textLeft">
+                <p>
+                    <label for="beforePw">현재 비밀번호</label>
+                    <input id="beforePw" type="text" th:field="*{beforePw}" placeholder="현재 패스워드"/>
+                </p>
+                <p>
+                    <label for="afterPw">새로운 비밀번호</label>
+                    <input id="afterPw" type="text" th:field="*{afterPw}" placeholder="새로운 비밀번호"/>
+                </p>
+                <p>
+                    <label for="oneMoreAfterPw">새로운 비밀번호 확인</label>
+                    <input id="oneMoreAfterPw" type="text" th:field="*{oneMoreAfterPw}" placeholder="새로운 비밀번호 확인"/>
+                </p>
+                <button class="buttonSet" type="submit">변경하기</button>
+            </div>
+        </form>
+    </div>
 </th:block>
 </body>
 

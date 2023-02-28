@@ -4,21 +4,29 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+<body>
 <th:block th:fragment="myInfo(userInfo)">
-    <body>
-    <div>
+    <div id="myInfoFragment" class="textCenter">
         <form th:action="@{/myPage/updateUserInfo}"
         method="post"
         th:object="${updateUserInfo}">
-            이미지 <button> 변경하기 </button>
-            <small name="email" th:text="${userInfo.email}"></small>
-            <input type="text" name="name" th:value="${userInfo.name}"/> 이름
-            <input type="text" name="gender" th:value="${userInfo.gender}"/> 성별
-            <button type="submit">변경하기</button>
+            <div class="myInfoChangeFrame textLeft">
+                <p>
+                    <label for="myInfoEmail">이메일</label>
+                    <span id="myInfoEmail" name="email" th:text="|${userInfo.email}@forliveme.com|"></span>
+                </p>
+                <p>
+                    <label for="myInfoInputName">이름</label>
+                    <input id="myInfoInputName" type="text" name="name" th:value="${userInfo.name}"/>
+                </p>
+                <p>
+                    <label for="myInfoInputGender">성별</label>
+                    <input id="myInfoInputGender" type="text" name="gender" th:value="${userInfo.gender}"/>
+                </p>
+                <button class="buttonSet" type="submit">변경하기</button>
+            </div>
         </form>
     </div>
-
-    </body>
 </th:block>
-
+</body>
 </html>

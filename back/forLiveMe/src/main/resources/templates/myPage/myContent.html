@@ -4,9 +4,32 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<th:block th:fragment="myContent(userInfo)">
 <body>
-자신의 게시물들 링크
-</body>
+<th:block th:fragment="myContent(userInfo)">
+    <div id="myContentFragment" class="textCenter" style="display: flex">
+        <div>
+            <div class="testButton">secretDiary</div>
+            <div class="secretDiaryFrame testFrame " style="display: none">
+                <div th:each="sdList : ${secretDiaryList}">
+                    <a th:href="@{/secretDiaryList/before/{listNum}(listNum=${sdList.sdNum})}">
+                        <h2 th:text="|${sdList.sdNum}sb|"></h2><br>
+                        <h2 th:text="${sdList.sdTitle}"></h2>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="testButton">empathyBoard</div>
+            <div class="empathyBoardFrame testFrame">
+                <div th:each="ebList : ${empathyBoardList}">
+                    <a th:href="@{/empathyBoardList/{listNum}(listNum=${ebList.ebNum})}">
+                        <h2 th:text="|${ebList.ebNum}eb|"></h2><br>
+                        <h2 th:text="${ebList.ebTitle}"></h2>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 </th:block>
+</body>
 </html>

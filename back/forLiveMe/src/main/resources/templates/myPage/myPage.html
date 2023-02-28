@@ -11,35 +11,47 @@
 <header>
     <th:block th:replace="~{/fragments/header.html :: header(${userName})}"></th:block>
 </header>
-<main>
-    <div id="menu">
+<main class="font-base">
+    <div id="menu" class="textRight">
         <ul class="menuList">
+            <div class="myImageChangeFrame">
+                <div>
+
+                </div>
+                <button> 변경하기</button>
+            </div>
             <li class="defaultMenu">
-                <a href="#tab1" class="btn">내 정보</a>
+                <a href="#myInfo" class="btn">
+                    <span>내 정보</span>
+                </a>
             </li>
             <li>
-                <a href="#tab2" class="btn">내 게시물</a>
+                <a href="#myContent" class="btn">
+                    <span>내 게시물</span>
+                </a>
             </li>
             <li>
-                <a href="#tab3" class="btn">비밀번호 변경</a>
+                <a href="#pwChange" class="btn">
+                    <span>비밀번호 변경</span>
+                </a>
             </li>
         </ul>
     </div>
     <div id="myPage">
         <div class="pageFrame">
-            <div id="tab1"
+            <div id="myInfo"
                  style="display:block;">
                 <div th:replace="/myPage/myInfo :: myInfo(${userInfo})">
 
                 </div>
             </div>
-            <div id="tab2"
+            <div id="myContent"
                  style="display: none;">
                 <div th:replace="/myPage/myContent :: myContent(${userInfo})">
 
                 </div>
             </div>
-            <div id="tab3"
+            <div id="pwChange"
                  style="display: none;">
                 <div th:replace="/myPage/pwChange :: pwChange(${userInfo})">
 
@@ -56,12 +68,16 @@
 <script>
     const chooseMenu = document.querySelectorAll('.menuList li');
     const chooseContents = document.querySelectorAll('.pageFrame > div')
+    const beforeClickMenu = document.getElementsByClassName('btn');
     let activeCont = ''; // 현재 활성화 된 컨텐츠 (기본:#tab1 활성화)
 
     for (let i = 0; i < chooseMenu.length; i++) {
         chooseMenu[i].querySelector('.btn').addEventListener('click', function (e) {
             e.preventDefault();
             for (let j = 0; j < chooseMenu.length; j++) {
+                // 나머지 버튼 클릭 색상 제거
+                beforeClickMenu[j].style.backgroundColor = "white";
+
                 // 나머지 버튼 클래스 제거
                 chooseMenu[j].classList.remove('defaultMenu');
 
@@ -71,10 +87,31 @@
 
             // 버튼 관련 이벤트
             this.parentNode.classList.add('defaultMenu');
+            this.style.backgroundColor = "#6EAA5E";
 
-            // 버튼 클릭시 컨텐츠 전환
+            // 버튼 클릭시 컨텐츠 전환 + 버튼 변환
             activeCont = this.getAttribute('href');
             document.querySelector(activeCont).style.display = 'block';
+        });
+    }
+
+    const btn = document.querySelectorAll('.testButton');
+    const div = document.querySelectorAll('.testFrame');
+
+    for (let i = 0; i < btn.length; i++) {
+        btn[i].addEventListener('click', function (e) {
+            for (let j = 0; j < btn.length; j++) {
+                div[j].style.display = 'none';
+            }
+
+            if(div[i].style.display !== 'none'){
+                div[i].style.display = 'none';
+            } else {
+                div[i].style.display = 'block';
+            }
+
+            console.log(i);
+            console.log(div[i]);
         });
     }
 </script>
