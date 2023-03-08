@@ -40,7 +40,7 @@ public class LetterController {
         model.addAttribute("pageList", pageList);
         model.addAttribute("timeCheckList", timeCheckList);
 
-        return "/letter/letter_myList";
+        return "letter/letter_myList";
     }
 
 //  편지 작성
@@ -58,7 +58,7 @@ public class LetterController {
         model.addAttribute("letterList", letterList);
         model.addAttribute("pageList", pageList);
 
-        return "/letter/letter_writeList";
+        return "letter/letter_writeList";
     }
 
     @PostMapping("/letterWrite")

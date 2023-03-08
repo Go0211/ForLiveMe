@@ -26,7 +26,7 @@ public class EmpathyBoardController {
         log.info("EB_Write_Start");
         model.addAttribute("empathyBoardDto" , new EmpathyBoardDto());
         model.addAttribute("userName" , authentication.getName());
-        return "/empathyBoard/empathyBoard_write";
+        return "empathyBoard/empathyBoard_write";
     }
 
     @PostMapping("/empathyBoardWrite")
@@ -63,7 +63,7 @@ public class EmpathyBoardController {
         model.addAttribute("pageList", pageList);
         model.addAttribute("timeCheckList", timeCheckList);
 
-        return "/empathyBoard/empathyBoard_list";
+        return "empathyBoard/empathyBoard_list";
     }
 
 //  공감게시판 보기

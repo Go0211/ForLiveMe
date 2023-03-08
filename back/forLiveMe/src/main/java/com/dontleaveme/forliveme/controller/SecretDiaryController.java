@@ -30,7 +30,7 @@ public class SecretDiaryController {
         model.addAttribute("secretDiaryDto" , new SecretDiaryDto());
         model.addAttribute("userName" , authentication.getName());
 
-        return "/secretDiary/secretDiary_write";
+        return "secretDiary/secretDiary_write";
     }
     @PostMapping("/secretDiaryWrite")
     public String writeSecretDiary(@ModelAttribute("secretDiaryDto") SecretDiaryDto secretDiaryDto,
@@ -66,7 +66,7 @@ public class SecretDiaryController {
         model.addAttribute("pageList", pageList);
         model.addAttribute("timeCheckList", timeCheckList);
 
-        return "/secretDiary/secretDiary_list";
+        return "secretDiary/secretDiary_list";
     }
 
 //  비밀일기 비밀번호 해제
@@ -76,7 +76,7 @@ public class SecretDiaryController {
         model.addAttribute("userName" , authentication.getName());
         model.addAttribute("num", no);
 
-        return "/secretDiary/secretDiary_view_before";
+        return "secretDiary/secretDiary_view_before";
     }
 
     @PostMapping("/secretDiaryList/before/{no}")

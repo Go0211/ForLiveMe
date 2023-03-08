@@ -9,7 +9,7 @@
     <title>게시판</title>
 </head>
 <header>
-    <th:block th:replace="~{/fragments/header.html :: header(${userName})}"></th:block>
+    <th:block th:replace="~{fragments/header.html :: header(${userName})}"></th:block>
 </header>
 <main class="font-base">
     <div id="menu" class="textRight">
@@ -41,19 +41,19 @@
         <div class="pageFrame">
             <div id="myInfo"
                  style="display:block;">
-                <div th:replace="/myPage/myInfo :: myInfo(${userInfo})">
+                <div th:replace="myPage/myInfo :: myInfo(${userInfo})">
 
                 </div>
             </div>
             <div id="myContent"
                  style="display: none;">
-                <div th:replace="/myPage/myContent :: myContent(${userInfo})">
+                <div th:replace="myPage/myContent :: myContent(${userInfo})">
 
                 </div>
             </div>
             <div id="pwChange"
                  style="display: none;">
-                <div th:replace="/myPage/pwChange :: pwChange(${userInfo})">
+                <div th:replace="myPage/pwChange :: pwChange(${userInfo})">
 
                 </div>
             </div>

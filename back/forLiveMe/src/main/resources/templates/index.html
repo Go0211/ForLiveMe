@@ -11,7 +11,7 @@
 </head>
 <body>
 <header>
-    <th:block th:replace="~{/fragments/header.html :: header(${userName})}"></th:block>
+    <th:block th:replace="~{fragments/header.html :: header(${userName})}"></th:block>
 </header>
 <main class="textCenter font-base">
     <div id="moveImage">
@@ -62,20 +62,20 @@
                     <div class="serviceForm">
                         <img src="/icon/ForLiveMe_Logo.png" alt="편지 서비스 이미지">
                         <button type="button" class="buttonSet"
-                                th:onclick="|location.href='@{/letterMyList}'|">편지
+                                th:onclick="|location.href='@{letterMyList}'|">편지
                         </button>
                     </div>
                     <div class="serviceForm">
                         <img src="/icon/ForLiveMe_Logo.png" alt="비밀일기 서비스 이미지">
                         <button type="button" class="buttonSet"
-                                th:onclick="|location.href='@{/secretDiaryList}'|">
+                                th:onclick="|location.href='@{secretDiaryList}'|">
                             비밀일기
                         </button>
                     </div>
                     <div class="serviceForm">
                         <img src="/icon/ForLiveMe_Logo.png" alt="공감게시판 서비스 이미지">
                         <button type="button" class="buttonSet"
-                                th:onclick="|location.href='@{/empathyBoardList}'|">
+                                th:onclick="|location.href='@{empathyBoardList}'|">
                             공감게시판
                         </button>
                     </div>
@@ -91,7 +91,7 @@
                     지금 나한테 필요한 건 뭘까...?
                 </h1>
                 <button type="button" class="buttonSet"
-                        th:onclick="|location.href='@{/simpleTest}'|">
+                        th:onclick="|location.href='@{simpleTest}'|">
                     간단한 검사 하러가기
                 </button>
             </div>
@@ -111,19 +111,19 @@
                     <div class="companyForm">
                         <img src="/icon/ForLiveMe_Logo.png" alt="편지 서비스 이미지">
                         <button type="button" class="buttonSet"
-                                th:onclick="|location.href='@{/letterMyList}'|">편지
+                                th:onclick="|location.href='@{letterMyList}'|">편지
                         </button>
                     </div>
                     <div class="companyForm">
                         <img src="/icon/ForLiveMe_Logo.png" alt="편지 서비스 이미지">
                         <button type="button" class="buttonSet"
-                                th:onclick="|location.href='@{/letterMyList}'|">편지
+                                th:onclick="|location.href='@{letterMyList}'|">편지
                         </button>
                     </div>
                     <div class="companyForm">
                         <img src="/icon/ForLiveMe_Logo.png" alt="편지 서비스 이미지">
                         <button type="button" class="buttonSet"
-                                th:onclick="|location.href='@{/letterMyList}'|">편지
+                                th:onclick="|location.href='@{letterMyList}'|">편지
                         </button>
                     </div>
                 </div>

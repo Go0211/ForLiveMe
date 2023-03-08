@@ -19,11 +19,11 @@ public class LoginController {
     public static TermsDto termsDto;
 
 //  로그인
-    @GetMapping("login")
+    @GetMapping("/login")
     public String login() {
         log.info("login");
 
-        return "/login";
+        return "login";
     }
 
 //  회원가입(약관 check)
@@ -60,7 +60,7 @@ public class LoginController {
     public String joinUserInfo(Model model) {
         log.info("Join_UserInfo_In");
         model.addAttribute("userDto", new UserDto());
-        return "/join/joinUserInfo";
+        return "join/joinUserInfo";
     }
 
     @PostMapping("/joinResult")
