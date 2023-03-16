@@ -109,4 +109,9 @@ public class UserService {
     public Long getUserCount() {
         return userRepository.count();
     }
+
+//    @Transactional
+//    public String CheckLoginUser(String username) {
+//        return userRepository.findByEmail(username).getEmail();
+//    }
 }
