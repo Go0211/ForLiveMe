@@ -101,6 +101,11 @@ main #join .joinBox input {
     margin-bottom: 2rem;
     box-sizing: border-box;
 }
+main #join .joinBox .genderInput {
+    width: 2rem;
+    margin-bottom: 2rem;
+    box-sizing: border-box;
+}
 main #join .joinBox button {
     width: 100%;
     height: 4.5rem;
