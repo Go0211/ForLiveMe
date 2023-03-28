@@ -138,6 +138,16 @@ main #menu .menuList .myImageChangeFrame button {
     transform: translate(50%, 25%);
     border-radius: 50%;
 }
+main #menu .menuList .logoutButtonFrame {
+    width: 100%;
+    height: 4rem;
+    padding-bottom: 1rem;
+    border-bottom: 0.1rem solid var(--fontHoverColor);
+}
+main #menu .menuList .logoutButtonFrame #logout {
+    width: 80%;
+    height: 100%;
+}
 main #menu .menuList li{
     width: 100%;
     height: 5rem;
