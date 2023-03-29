@@ -1,82 +1,87 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <th:block th:fragment="header(userInfo)">
-
-<nav th:if="${userInfo != null}" class="headerBox headerBox_login font-sm fontBold" >
-    <ul class="headerBoxLeft floatLeft">
-        <li>
-            <a th:href="@{/index}">
-                <img class="headerLogo" src="/icon/ForLiveMe_Logo.png" alt="ForLiveMe_Logo">
-            </a>
-        </li>
-        <li>
-            <a th:href="@{/letterMyList}">편지</a>
-        </li>
-        <li>
-            <a th:href="@{/secretDiaryList}">비밀일기</a>
-        </li>
-        <li>
-            <a th:href="@{/empathyBoardList}">공감게시판</a>
-        </li>
-        <li>
-            <a th:href="@{/index}">For You(준비중)</a>
-        </li>
-    </ul>
-    <ul class="headerBoxRight floatRight">
-        <li>
-            <a href="">
-                <img class="userImage" src="/icon/ForLiveMe_Logo.png" alt="">
-            </a>
-        </li>
-        <li>
-            <p th:text="${userInfo}"></p>
-        </li>
-        <li>
-            <button id="myPage" class="buttonSet"
-                    onclick="location.href='/myPage';">mypage</button>
-        </li>
-        <li>
-            <img class="alarm" src="/icon/alarm.png" alt="알림">
-        </li>
-    </ul>
-</nav>
-<nav th:unless="${userInfo != null}" class="headerBox headerBox_login font-sm fontBold">
-    <ul class="headerBoxLeft floatLeft">
-        <li>
-            <a th:href="@{/index}">
-                <img class="headerLogo" src="/icon/ForLiveMe_Logo.png" alt="ForLiveMe_Logo">
-            </a>
-        </li>
-        <li>
-            <a th:href="@{/letterMyList}">편지</a>
-        </li>
-        <li>
-            <a th:href="@{/secretDiaryList}">비밀일기</a>
-        </li>
-        <li>
-            <a th:href="@{/empathyBoardList}">공감게시판</a>
-        </li>
-        <li>
-            <a th:href="@{/index}">For You(준비중)</a>
-        </li>
-    </ul>
-    <ul class="headerBoxRight floatRight">
-        <li>
-            <form th:action="@{/login}" method="post">
-                <button id="login" class="buttonSet"
-                        type="button" onclick="location.href='/login';">
-                    Login
-                </button>
-            </form>
-        </li>
-        <li>
-            <form th:action="@{/join}" method="post">
-                <button id="join" class="buttonSet"
-                        type="button" onclick="location.href='/join';">
-                    Join
-                </button>
-            </form>
-        </li>
-    </ul>
-</nav>
+    <nav th:if="${userInfo != null}" class="headerBox headerBox_login font-sm fontBold">
+        <ul style="display: block">
+            <ul class="headerBoxLeft floatLeft">
+                <li>
+                    <a th:href="@{/index}">
+                        <img class="headerLogo" src="/icon/ForLiveMe_Logo.png" alt="ForLiveMe_Logo">
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/letterMyList}">편지</a>
+                </li>
+                <li>
+                    <a th:href="@{/secretDiaryList}">비밀일기</a>
+                </li>
+                <li>
+                    <a th:href="@{/empathyBoardList}">공감게시판</a>
+                </li>
+                <li>
+                    <a th:href="@{/index}">For You(준비중)</a>
+                </li>
+            </ul>
+            <ul class="headerBoxRight floatRight">
+                <li>
+                    <a href="">
+                        <img class="userImage" src="/icon/ForLiveMe_Logo.png" alt="">
+                    </a>
+                </li>
+                <li>
+                    <p th:text="${userInfo}"></p>
+                </li>
+                <li>
+                    <button id="myPage" class="buttonSet"
+                            onclick="location.href='/myPage';">
+                        mypage
+                    </button>
+                </li>
+                <li>
+                    <img class="alarm" src="/icon/alarm.png" alt="알림">
+                </li>
+            </ul>
+        </ul>
+    </nav>
+    <nav th:unless="${userInfo != null}" class="headerBox headerBox_login font-sm fontBold">
+        <ul style="display: block">
+            <ul class="headerBoxLeft floatLeft">
+                <li>
+                    <a th:href="@{/index}">
+                        <img class="headerLogo" src="/icon/ForLiveMe_Logo.png" alt="ForLiveMe_Logo">
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/letterMyList}">편지</a>
+                </li>
+                <li>
+                    <a th:href="@{/secretDiaryList}">비밀일기</a>
+                </li>
+                <li>
+                    <a th:href="@{/empathyBoardList}">공감게시판</a>
+                </li>
+                <li>
+                    <a th:href="@{/index}">For You(준비중)</a>
+                </li>
+            </ul>
+            <ul class="headerBoxRight floatRight">
+                <li>
+                    <form th:action="@{/login}" method="post">
+                        <button id="login" class="buttonSet"
+                                type="button" onclick="location.href='/login';">
+                            Login
+                        </button>
+                    </form>
+                </li>
+                <li>
+                    <form th:action="@{/join}" method="post">
+                        <button id="join" class="buttonSet"
+                                type="button" onclick="location.href='/join';">
+                            Join
+                        </button>
+                    </form>
+                </li>
+            </ul>
+        </ul>
+    </nav>
 </th:block>
 </html>
