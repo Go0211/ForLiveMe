@@ -18,7 +18,7 @@ import java.util.ArrayList;
 @AllArgsConstructor
 public class HomeController {
 
-    private final LetterService letterService;
+    private final SecretDiaryService secretDiaryService;
     private final EmpathyBoardService empathyBoardService;
     private final UserService userService;
 
@@ -35,7 +35,7 @@ public class HomeController {
 
         model.addAttribute("userTotalCount" ,userService.getUserCount());
         model.addAttribute("empathyBoardTotalCount" ,empathyBoardService.getEmpathyBoardCount());
-        model.addAttribute("letterTotalCount" ,letterService.getLetterCount());
+        model.addAttribute("secretDiaryTotalCount" ,secretDiaryService.getSecretDiaryCount());
 
         model.addAttribute("nowTime", LocalDateTime.now());
 

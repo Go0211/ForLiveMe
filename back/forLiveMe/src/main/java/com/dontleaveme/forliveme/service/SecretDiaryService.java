@@ -162,4 +162,9 @@ public class SecretDiaryService {
 
         return pageList;
     }
+
+    //누적 비밀일기 수
+    public long getSecretDiaryCount() {
+        return secretDiaryRepository.count();
+    }
 }

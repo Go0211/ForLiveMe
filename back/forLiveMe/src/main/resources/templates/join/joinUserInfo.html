@@ -4,6 +4,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        function formCheck() {
+            const form = document.querySelector('form');
+            const email = form.querySelector('.emailInput');
+            const password = form.querySelector('.pwInput');
+            const name = form.querySelector('.nameInput');
+            const gender = form.querySelector('.genderInput');
+            const genderMan = form.querySelector('.man');
+            const genderWoman = form.querySelector('.woman');
+
+            if (email.value === "") {
+                alert("아이디 기입");
+                email.focus();
+                return false;
+            }
+            if (password.value === "") {
+                alert("패스워드 기입");
+                password.focus();
+                return false;
+            }
+            if (name.value === "") {
+                alert("이름 기입");
+                name.focus();
+                return false;
+            }
+            if (!(genderMan.checked || genderWoman.checked)){
+                alert("성별 입력");
+                gender.focus();
+                return false;
+            }
+
+            return true;
+        }
+    </script>
     <link th:href="@{/icon/ForLiveMe_Logo.png}" rel="icon"/>
     <link th:href="@{/css/join/joinUserInfo.css}" rel="stylesheet" />
     <title>Join</title>
@@ -16,19 +50,19 @@
                     <div>
                         <img src="/icon/ForLiveMe_Logo.png" alt="">
                     </div>
-                    <form th:action="@{/joinResult}" method="post" th:object="${userDto}">
-                        <input class="emailInput" name="email" type="text" placeholder="이메일">
+                    <form th:action="@{/joinResult}" method="post" th:object="${userDto}" onsubmit="return formCheck()">
+                        <input class="emailInput" name="email" type="text" placeholder="아이디">
                         <input class="pwInput" name="password"  type="password" placeholder="패스워드">
 <!--                        <input class="oneMorePwInput" type="password" placeholder="패스워드">-->
                         <input class="nameInput"  name="name"  type="text" placeholder="이름">
                         <p class="textLeft">성별</p>
                         <div class="textLeft">
-                            <input class="genderInput"  name="gender" value="m" type="radio">
+                            <input class="genderInput man"  name="gender" value="m" type="radio">
                             <label>남자</label>
-                            <input class="genderInput"  name="gender" value="w" type="radio">
+                            <input class="genderInput woman"  name="gender" value="w" type="radio">
                             <label>여자</label>
                         </div>
-                        <button class="buttonSet" type="submit">가입하기</button>
+                        <button class="buttonSet" type="submit" >가입하기</button>
                         <button class="buttonSet" style="background-color: #dddddd" type="button" onclick="location.href='/';">취소</button>
                         <div class="otherPlatform">
                             <a href="" style="background-color: yellow;">k</a>
