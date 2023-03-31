@@ -9,6 +9,7 @@
             const form = document.querySelector('form');
             const email = form.querySelector('.emailInput');
             const password = form.querySelector('.pwInput');
+            const passwordCheck = form.querySelector('.oneMorePwInput');
             const name = form.querySelector('.nameInput');
             const gender = form.querySelector('.genderInput');
             const genderMan = form.querySelector('.man');
@@ -18,10 +19,14 @@
                 alert("아이디 기입");
                 email.focus();
                 return false;
-            }
+            } // else if (email.value === )
             if (password.value === "") {
                 alert("패스워드 기입");
                 password.focus();
+                return false;
+            } else if (password.value != passwordCheck.value) {
+                alert("패스워드가 서로 맞지않습니다.")
+                passwordCheck.focus();
                 return false;
             }
             if (name.value === "") {
@@ -53,7 +58,7 @@
                     <form th:action="@{/joinResult}" method="post" th:object="${userDto}" onsubmit="return formCheck()">
                         <input class="emailInput" name="email" type="text" placeholder="아이디">
                         <input class="pwInput" name="password"  type="password" placeholder="패스워드">
-<!--                        <input class="oneMorePwInput" type="password" placeholder="패스워드">-->
+                        <input class="oneMorePwInput" type="password" placeholder="다시 한 번더 패스워드를 입력해주세요">
                         <input class="nameInput"  name="name"  type="text" placeholder="이름">
                         <p class="textLeft">성별</p>
                         <div class="textLeft">

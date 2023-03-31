@@ -68,6 +68,7 @@ public class UserService {
         userRepository.save(userDto.toEntity());
     }
 
+
 //  로그인 시간 갱신
     @Transactional
     public void updateLastLoginTime(String email) {
