@@ -40,7 +40,8 @@ public class KaKaoService {
             bw.flush();
 
             int responseCode = urlConnection.getResponseCode();
-            System.out.println("responseCode = " + responseCode);
+//          응답코드 :  System.out.println("responseCode = " + responseCode);
+//          ex) 200
 
             BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
             String line = "";
@@ -48,7 +49,7 @@ public class KaKaoService {
             while ((line = br.readLine()) != null) {
                 result += line;
             }
-            System.out.println("result = " + result);
+//            System.out.println("result = " + result);
 
             // json parsing
             JSONParser parser = new JSONParser();
@@ -56,8 +57,8 @@ public class KaKaoService {
 
             String access_token = elem.get("access_token").toString();
             String refresh_token = elem.get("refresh_token").toString();
-            System.out.println("refresh_token = " + refresh_token);
-            System.out.println("access_token = " + access_token);
+//            System.out.println("refresh_token = " + refresh_token);
+//            System.out.println("access_token = " + access_token);
 
             token = access_token;
 
@@ -84,8 +85,8 @@ public class KaKaoService {
             urlConnection.setRequestMethod("GET");
 
             int responseCode = urlConnection.getResponseCode();
-            System.out.println("responseCode = " + responseCode);
-
+//          응답코드 :  System.out.println("responseCode = " + responseCode);
+//          ex) 200
 
             BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
             String line = "";
@@ -95,7 +96,7 @@ public class KaKaoService {
                 res+=line;
             }
 
-            System.out.println("res = " + res);
+//          return 값 : System.out.println("res = " + res);
 
 
             JSONParser parser = new JSONParser();
