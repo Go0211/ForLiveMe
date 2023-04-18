@@ -5,9 +5,9 @@ spring:
     username: root
     password: rnraneh23!
   thymeleaf:
-    prefix : classpath:templates/
-    suffix : .html
-    cache : false
+    prefix: classpath:templates/
+    suffix: .html
+    cache: false
   devtools:
     livereload:
       enabled: true
@@ -16,3 +16,15 @@ spring:
         enabled: false
   freemarker:
     cache: false
+#google login
+google:
+  auth:
+    url: https://oauth2.googleapis.com
+    scope: profile,email,openid
+  login:
+    url: https://accounts.google.com
+  redirect:
+    uri: http://localhost:8080/google/callback
+  client:
+    id: 663817687961-jtkiu977usb6dviogmir4v9thkdif7al.apps.googleusercontent.com
+  secret: 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

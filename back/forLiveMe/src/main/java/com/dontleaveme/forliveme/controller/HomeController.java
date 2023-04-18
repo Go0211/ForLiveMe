@@ -1,6 +1,6 @@
 package com.dontleaveme.forliveme.controller;
 
-import com.dontleaveme.forliveme.data.KaKaoData;
+import com.dontleaveme.forliveme.data.SNSNameData;
 import com.dontleaveme.forliveme.service.*;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -11,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -26,18 +25,21 @@ public class HomeController {
     private final UserService userService;
 
     @Autowired
-    KaKaoData kd;
+    SNSNameData snsNameData;
 
     @GetMapping({ "/", "/index" })
     public String index(Model model, Authentication authentication) {
         log.info("index");
 
-        if ((authentication != null) && (kd.getUsername() == null)) {
+        if ((authentication != null) && (snsNameData.getKakaoUsername() == null) &&
+                (snsNameData.getGoogleUsername() == null)) {
             model.addAttribute("userName", authentication.getName());
 
             userService.updateLastLoginTime(authentication.getName());
-        } else if (kd.getUsername() != null) {
-            model.addAttribute("userName", kd.getUsername());
+        } else if (snsNameData.getKakaoUsername() != null) {
+            model.addAttribute("userName", snsNameData.getKakaoUsername());
+        } else if (snsNameData.getGoogleUsername() != null) {
+            model.addAttribute("userName", snsNameData.getGoogleUsername());
         }
 
         model.addAttribute("userTotalCount" ,userService.getUserCount());
